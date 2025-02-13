@@ -1,2 +1,6 @@
 # talk-template
-Pixu Talk Template
+Talk Template
+
+Check the slides here
+
+[Talk Template](https://pixu1980.github.io/talk-template/)
