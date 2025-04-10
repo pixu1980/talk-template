@@ -7,39 +7,77 @@
     <link rel="stylesheet" href="/talk-template.ebeadb08.css">
   </head>
   <body>
-    <div class="reveal">
-  <div class="slides">
+    <main class="reveal">
+      <div class="slides">
+        
     <section intro="">
   <h2>
     This slide acts like a doodle visually resuming the talk
   </h2>
 </section>
 
-<section pixu="">
-  <figure>
-    <picture>
-      <source srcset="/pixu.8dc4bcd7.webp" type="image/webp">
-      <img src="/pixu.8cd71433.jpg" alt="Pixu">
-    </picture>
-  </figure>
-  <h3>Emiliano <mark>Pisu</mark></h3>
-  <p>
-    <mark>Sensei</mark> & Co-Host
-    <br>
-    @ Dev<mark>Dojo</mark> IT
-  </p>
+<section>
+  <section pixu="" data-transition="convex">
+    <comparison>
+      <left>
+        <figure>
+          <picture>
+            <source srcset="/pixu.8dc4bcd7.webp" type="image/webp">
+            <img src="/pixu.8cd71433.jpg" alt="Pixu">
+          </picture>
+        </figure>
+        <h3>Emiliano <mark>Pisu</mark></h3>
+        <small balance="" class="fragment">
+          <p><mark>Father</mark> of 2 lovely monsters</p>
+          <p><mark>D&D</mark> master, player ... whatever</p>
+          <p>
+            Senior <mark>Design Engineer</mark>, <mark>Sensei</mark> & Co-Host
+            <br>
+            @ Dev <mark>Dojo</mark> IT
+          </p>
+        </small>
+      </left>
+      <right class="fragment">
+        <h6>
+          <img src="/linkedin.1b8d1573.svg" alt="pixu1980@linkedin">
+          linkedin.com/in/pixu1980
+        </h6>
+        <h6>
+          <img src="/github.dd65c88f.svg" alt="pixu1980@github">
+          github.com/pixu1980
+        </h6>
+        <h6>
+          <img src="/codepen.1d70fbe2.svg" alt="pixu1980@codepen">
+          codepen.io/pixu1980
+        </h6>
+        <h6>
+          <img src="/linkedin.1b8d1573.svg" alt="devdojo@linkedin">
+          linkedin.com/company/dev-dojo-it/
+        </h6>
+        <h6>
+          <img src="/youtube.33d88a05.svg" alt="devdojo@youtube">
+          youtube.com/@devdojo_it
+        </h6>
+        <h6>
+          <img src="/twitch.b8c97bdd.svg" alt="devdojo@twitch">
+          twitch.tv/devdojo_it
+        </h6>
+        <h6>
+          <img src="/telegram.baf0a86a.svg" alt="devdojo@telegram">
+          @devdojo_it
+        </h6>
+      </right>
+    </comparison>
+  </section>
 </section>
 
 <section>
   <section>
-  <h4>Here goes the <mark>main</mark> topic title</h4>
-</section>
-
-<section>
-  <h4>
-    Here goes the main topic description
-  </h4>
-</section>
+    <h4>Here goes the <mark>main</mark> topic title</h4>
+  </section>
+  <section>
+    <h4>Here goes the main topic description</h4>
+  </section>
 </section>
 
 
@@ -114,78 +152,7 @@
 </section>
 
 <section>
-  <!-- <section data-transition="convex">
-  <h4>Slides Links</h4>
-  <comparison links>
-    <figure>
-      <picture>
-        <source srcset="./assets/qrcodes/slides.png?as=webp" type="image/webp" />
-        <img src="./assets/qrcodes/slides.png" alt="Slides" />
-      </picture>
-      <figcaption>
-        <small>Slides</small>
-      </figcaption>
-    </figure>
-    <figure>
-      <picture>
-        <source srcset="./assets/qrcodes/slides-repo.png?as=webp" type="image/webp" />
-        <img src="./assets/qrcodes/slides-repo.png" alt="Slides Repo on Github" />
-      </picture>
-      <figcaption>
-        <small>Slides Repo</small>
-      </figcaption>
-    </figure>
-  </comparison>
-</section> -->
-
-<section data-transition="convex">
-  <h4>Personal Links</h4>
-  <comparison links="">
-    <figure>
-      <picture>
-        <source srcset="/pixu-dev.2695fc16.webp" type="image/webp">
-        <img src="/pixu-dev.eb9169a4.png" alt="Pixu.dev">
-      </picture>
-      <figcaption>
-        <small>pixu.dev</small>
-      </figcaption>
-    </figure>
-    <figure>
-      <picture>
-        <source srcset="/linkedin.64f9af3d.webp" type="image/webp">
-        <img src="/linkedin.70ec7f8e.png" alt="Pixu LinkedIn Profile">
-      </picture>
-      <figcaption>
-        <small>LinkedIn</small>
-      </figcaption>
-    </figure>
-  </comparison>
-</section>
-
-<section data-transition="convex">
-  <h4>DevDojo Links</h4>
-  <comparison links="">
-    <figure>
-      <picture>
-        <source srcset="/dev-dojo.505dabf9.webp" type="image/webp">
-        <img src="/dev-dojo.a4239a33.png" alt="devdojo.it">
-      </picture>
-      <figcaption>
-        <small>devdojo.it</small>
-      </figcaption>
-    </figure>
-    <figure>
-      <picture>
-        <source srcset="/dev-dojo-linkedin.bb68796f.webp" type="image/webp">
-        <img src="/dev-dojo-linkedin.6fe28649.png" alt="devdojo @ linkedin">
-      </picture>
-      <figcaption>
-        <small>LinkedIn</small>
-      </figcaption>
-    </figure>
-  </comparison>
-</section>
-
+  <!-- <include src="./slides/outro/_links.html"></include> -->
   <section class="slide-outro-taf" data-transition="convex">
   <!-- <div sr-only data-menu-title>That's All Folks</div> -->
   <audio data-autoplay="" src="/taf.d3b3531a.mp3"></audio>
@@ -199,6 +166,12 @@
       <div class="circle six"></div>
       <small>&copy; 1987-2025 - Warner Bros. Entertainment Inc.</small>
     </div>
+    <figure pixu="">
+      <picture>
+        <source srcset="/pixu.8dc4bcd7.webp" type="image/webp">
+        <img src="/pixu.8cd71433.jpg" alt="Pixu">
+      </picture>
+    </figure>
     <svg style="isolation: isolate" viewBox="0 0 566.44 157.5">
       <g id="thats-all-folks">
         <path id="Q1" data-name="Q1" d="M14.07,103.92c-1.34,6.6-2,9.89-3.2,16.46l-1.65.87c.14-6,.23-9,.46-15Z"></path>
@@ -236,30 +209,21 @@
       </g>
     </svg>
   </div>
-  <aside class="notes">
-    <small>
-      https://codepen.io/akhil_001/pen/pxBzyZ
-      <br>
-      https://codepen.io/MatheusAvellar/pen/vKXwjy
-    </small>
-  </aside>
+  <!-- <h3>Grazie ❤️!</h3> -->
 </section>
 
-  <section data-transition="convex">
-  <figure pixu="">
-    <picture>
-      <source srcset="/pixu.8dc4bcd7.webp" type="image/webp">
-      <img src="/pixu.8cd71433.jpg" alt="Pixu">
-    </picture>
+  <!-- <include src="./slides/outro/_thanks.html"></include> -->
+</section>
+
+
+      </div>
+      <a brand="" href="https://www.devdojo.it" target="_blank" rel="noopener noreferrer">
+  <figure>
+    <img src="/dev-dojo.2f055838.png" alt="Dev Dojo IT Logo">
   </figure>
-  <h2>Grazie ❤️!</h2>
-</section>
+</a>
 
-</section>
-
-  </div>
-</div>
-
+    </main>
     <script src="/talk-template.c6396971.js" type="module"></script>
   </body>
 </html>
