@@ -143,7 +143,7 @@
 @layer pixu-talk.iconography.draft-ui-icons {
   @font-face {
     font-family: draft-ui-icons;
-    src: url("draft-ui-icons.eff85508.ttf") format("truetype"), url("draft-ui-icons.b26759dc.woff") format("woff"), url("draft-ui-icons.3b5a54ae.svg#draft-ui-icons") format("svg");
+    src: url("draft-ui-icons.ff8db591.ttf") format("truetype"), url("draft-ui-icons.e8de5bf7.woff") format("woff"), url("draft-ui-icons.22023be0.svg#draft-ui-icons") format("svg");
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -479,6 +479,10 @@
 
   .draft-ui-icon-zoom-out:before {
     content: "";
+  }
+
+  .draft-ui-icon-moon:before {
+    content: "";
   }
 }
 
@@ -13949,7 +13953,6 @@
   @layer lists {
     ol, dl, ul {
       text-align: left;
-      color: var(--color-gray-400);
       margin: 0 0 0 1em;
       display: inline-block;
     }
@@ -13975,11 +13978,7 @@
       display: block;
     }
 
-    ul li small {
-      color: var(--color-gray-400);
-    }
-
-    dt {
+    å dt {
       font-weight: bold;
     }
 
@@ -14021,7 +14020,7 @@
         display: inline-flex;
 
         &:hover {
-          color: #fff;
+          color: light-dark(#191919, #f0f0f0);
         }
       }
 
@@ -14200,15 +14199,17 @@
       --font-family--code--monospace-full: "Fira Code Monospace Full", "Museo Sans", sans-serif;
       --font-family--variable--rec-vf: "RecVF", sans-serif;
       --font-ratio: 1.067;
-      --font-root: 10px;
+      --font-root: .625em;
       --font-base: 1.6rem;
       --gutter-base: 1.5rem;
       --r-main-font-size: 4.5rem;
-      --r-heading-color: #f0f0f0;
+      --r-background-color: light-dark(#f0f0f0, #191919);
+      --r-main-color: light-dark(#191919, #f0f0f0);
+      --r-heading-color: light-dark(#191919, #f0f0f0);
       --r-heading-margin: 0;
       --r-heading-text-transform: none;
-      --r-link-color: #ad85d6;
-      --r-highlight-color: #ad85d6;
+      --r-link-color: light-dark(#639, #ad85d6);
+      --r-highlight-color: light-dark(#639, #ad85d6);
     }
   }
 
@@ -14257,7 +14258,7 @@
 
   @layer typography {
     html {
-      font-size: 10px;
+      font-size: .625em;
     }
 
     body {
@@ -14489,7 +14490,6 @@
           border: .2rem dashed var(--color-white-200);
           padding: calc(var(--gutter-base) / 2);
           text-align: center;
-          color: var(--color-gray-400);
           justify-content: center;
 
           & p {
@@ -14659,6 +14659,16 @@
           & img {
             border-radius: 0;
             inline-size: 4rem;
+
+            :has(meta[name="color-scheme"][content="light"]) & {
+              filter: invert();
+            }
+
+            @media (prefers-color-scheme: light) {
+              & {
+                filter: invert();
+              }
+            }
           }
         }
       }
@@ -15014,7 +15024,6 @@
           &:after {
             background-color: var(--color-yellow-400);
             border-color: var(--color-gray-400);
-            color: var(--color-gray-400);
             left: 1.6rem;
           }
 
@@ -15025,8 +15034,6 @@
         }
 
         &[disabled] {
-          color: var(--color-gray-400);
-
           &:before {
             border-color: var(--color-gray-700);
             background-color: #0000;
@@ -15037,8 +15044,6 @@
           }
 
           &:hover {
-            color: var(--color-gray-400);
-
             &:before {
               box-shadow: none;
             }
