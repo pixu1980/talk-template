@@ -6,30 +6,28 @@
   "scripts": {
     "clear:cache": "rm -rf .parcel-cache",
     "clear:dist": "rm -rf dist",
-    "clear": "yarn clear:dist && yarn clear:cache",
-    "prestart": "yarn clear",
+    "clear": "pnpm run clear:dist && pnpm run clear:cache",
+    "prestart": "pnpm run clear",
     "start": "parcel src/index.html -p 6001",
-    "prebuild": "yarn clear",
+    "prebuild": "pnpm run clear",
     "build": "parcel build src/index.html --no-optimize --public-url ./ && git add . && git commit --amend --no-edit && git push -f",
     "rel:push": "git push && git push --tags",
-    "rel:major": "yarn build && yarn version --major && yarn rel:push",
-    "rel:minor": "yarn build && yarn version --minor && yarn rel:push",
-    "rel:patch": "yarn build && yarn version --patch && yarn rel:push"
+    "rel:major": "pnpm run build && pnpm version --major && pnpm run rel:push",
+    "rel:minor": "pnpm run build && pnpm version --minor && pnpm run rel:push",
+    "rel:patch": "pnpm run build && pnpm version --patch && pnpm run rel:push"
   },
-  "workspaces": [
-    "../talks-libraries/packages/*"
-  ],
   "dependencies": {
-    "@pixu-talks/core": "0.1.5",
-    "@pixu-talks/fonts": "0.1.5",
-    "@pixu-talks/theme": "0.1.5",
+    "@pixu-talks/core": "0.2.0",
+    "@pixu-talks/fonts": "0.2.0",
+    "@pixu-talks/theme": "0.2.0",
     "reveal.js": "5.2.1"
   },
   "devDependencies": {
-    "@parcel/transformer-inline-string": "2.14.4",
-    "@parcel/transformer-sass": "2.14.4",
-    "lightningcss": "1.29.3",
-    "parcel": "2.14.4",
+    "@parcel/transformer-inline-string": "2.16.0",
+    "@parcel/transformer-sass": "2.16.0",
+    "lightningcss": "1.30.2",
+    "parcel": "2.16.0",
+    "posthtml": "^0.16.6",
     "posthtml-include": "2.0.1",
     "sharp": "0.33.5",
     "svgo": "3.3.2"
