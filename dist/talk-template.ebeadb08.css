@@ -1,7 +1,7 @@
 @layer pixu-talk.typography.fira-code {
   @font-face {
     font-family: Fira Code;
-    src: local(Fira Code Light), local(FiraCode-Light), url("FiraCode-200.0979ba40.woff2") format("woff2"), url("FiraCode-200.40a6c1d2.woff") format("woff");
+    src: local(Fira Code Light), local(FiraCode-Light), url("FiraCode-200.544bf41a.woff2") format("woff2"), url("FiraCode-200.296e8fe0.woff") format("woff");
     font-weight: 200;
     font-style: normal;
     font-display: block;
@@ -9,7 +9,7 @@
 
   @font-face {
     font-family: Fira Code;
-    src: local(Fira Code Regular), local(FiraCode-Regular), url("FiraCode-400.c07636ac.woff2") format("woff2"), url("FiraCode-400.136276ba.woff") format("woff");
+    src: local(Fira Code Regular), local(FiraCode-Regular), url("FiraCode-400.f5684fc6.woff2") format("woff2"), url("FiraCode-400.08144f6c.woff") format("woff");
     font-weight: 400;
     font-style: normal;
     font-display: block;
@@ -17,7 +17,7 @@
 
   @font-face {
     font-family: Fira Code;
-    src: local(Fira Code Medium), local(FiraCode-Medium), url("FiraCode-500.b02cecef.woff2") format("woff2"), url("FiraCode-500.1de1ab0b.woff") format("woff");
+    src: local(Fira Code Medium), local(FiraCode-Medium), url("FiraCode-500.3d729e79.woff2") format("woff2"), url("FiraCode-500.0d4b1731.woff") format("woff");
     font-weight: 500;
     font-style: normal;
     font-display: block;
@@ -25,7 +25,7 @@
 
   @font-face {
     font-family: Fira Code;
-    src: local(Fira Code Bold), local(FiraCode-Bold), url("FiraCode-700.ee62a364.woff2") format("woff2"), url("FiraCode-700.a9e61bdf.woff") format("woff");
+    src: local(Fira Code Bold), local(FiraCode-Bold), url("FiraCode-700.c97f9e39.woff2") format("woff2"), url("FiraCode-700.7de3e2c0.woff") format("woff");
     font-weight: 700;
     font-style: normal;
     font-display: block;
@@ -33,7 +33,7 @@
 
   @font-face {
     font-family: Fira Code Retina;
-    src: local(Fira Code Retina), local(FiraCode-Retina), url("FiraCode-Retina.2be35569.woff2") format("woff2"), url("FiraCode-Retina.c766790a.woff") format("woff");
+    src: local(Fira Code Retina), local(FiraCode-Retina), url("FiraCode-Retina.4871d4ed.woff2") format("woff2"), url("FiraCode-Retina.f51743ed.woff") format("woff");
     font-weight: 900;
     font-style: normal;
     font-display: block;
@@ -41,7 +41,7 @@
 
   @font-face {
     font-family: Fira Code Monospace;
-    src: local(Fira Code Retina), local(FiraCode-Retina), url("FiraCode-Retina.2be35569.woff2") format("woff2"), url("FiraCode-Retina.c766790a.woff") format("woff");
+    src: local(Fira Code Retina), local(FiraCode-Retina), url("FiraCode-Retina.4871d4ed.woff2") format("woff2"), url("FiraCode-Retina.f51743ed.woff") format("woff");
     font-weight: normal;
     font-style: normal;
     unicode-range: U+30-39, U+20A3-20A7, U+2C, U+2E;
@@ -49,7 +49,7 @@
 
   @font-face {
     font-family: Fira Code Monospace Full;
-    src: local(Fira Code Retina), local(FiraCode-Retina), url("FiraCode-Retina.2be35569.woff2") format("woff2"), url("FiraCode-Retina.c766790a.woff") format("woff");
+    src: local(Fira Code Retina), local(FiraCode-Retina), url("FiraCode-Retina.4871d4ed.woff2") format("woff2"), url("FiraCode-Retina.f51743ed.woff") format("woff");
     font-weight: normal;
     font-style: normal;
   }
@@ -58,7 +58,7 @@
 @layer pixu-talk.typography.rec-vf {
   @font-face {
     font-family: RecVF;
-    src: url("RecVF.e71349f6.woff2") format("woff2 supports variations"), url("RecVF.e71349f6.woff2") format("woff2-variations");
+    src: url("RecVF.831771d3.woff2") format("woff2 supports variations"), url("RecVF.831771d3.woff2") format("woff2-variations");
     font-weight: 300 1000;
     font-style: oblique 0deg 14deg;
     font-display: block;
@@ -143,7 +143,7 @@
 @layer pixu-talk.iconography.draft-ui-icons {
   @font-face {
     font-family: draft-ui-icons;
-    src: url("draft-ui-icons.171ad3c7.ttf") format("truetype"), url("draft-ui-icons.f35d360b.woff") format("woff"), url("draft-ui-icons.a2bd967c.svg#draft-ui-icons") format("svg");
+    src: url("draft-ui-icons.3de4e95d.ttf") format("truetype"), url("draft-ui-icons.f59d97a2.woff") format("woff"), url("draft-ui-icons.c67b9177.svg#draft-ui-icons") format("svg");
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -489,7 +489,7 @@
 @layer pixu-talk.iconography.space-icons {
   @font-face {
     font-family: space-icons;
-    src: url("space-icons.9578aaab.ttf") format("truetype"), url("space-icons.e5497c7a.woff") format("woff"), url("space-icons.f9432e71.svg#space-icons") format("svg");
+    src: url("space-icons.05c588e5.ttf") format("truetype"), url("space-icons.772cb0df.woff") format("woff"), url("space-icons.b353f157.svg#space-icons") format("svg");
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -11101,7 +11101,7 @@
 @layer pixu-talk.iconography.anicons {
   @font-face {
     font-family: anicons;
-    src: url("anicons.44b7a8d8.woff2") format("woff2 supports variations"), url("anicons.44b7a8d8.woff2") format("woff2-variations");
+    src: url("anicons.6312b8c3.woff2") format("woff2 supports variations"), url("anicons.6312b8c3.woff2") format("woff2-variations");
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -11109,7 +11109,7 @@
 
   @font-face {
     font-family: anicons-color;
-    src: url("anicons-color.7eebbc7e.woff2") format("woff2 supports variations"), url("anicons-color.7eebbc7e.woff2") format("woff2-variations");
+    src: url("anicons-color.59c6f23c.woff2") format("woff2 supports variations"), url("anicons-color.59c6f23c.woff2") format("woff2-variations");
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -13548,32 +13548,32 @@
 
   @font-face {
     font-family: Source Sans Pro;
-    src: url("source-sans-pro-regular.f807c4bc.eot");
-    src: url("source-sans-pro-regular.f807c4bc.eot#iefix") format("embedded-opentype"), url("source-sans-pro-regular.2a33e8ee.woff") format("woff"), url("source-sans-pro-regular.eb1661d5.ttf") format("truetype");
+    src: url("source-sans-pro-regular.f09df2e4.eot");
+    src: url("source-sans-pro-regular.f09df2e4.eot#iefix") format("embedded-opentype"), url("source-sans-pro-regular.4d4039a4.woff") format("woff"), url("source-sans-pro-regular.5c3f07d3.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
   }
 
   @font-face {
     font-family: Source Sans Pro;
-    src: url("source-sans-pro-italic.c2b11051.eot");
-    src: url("source-sans-pro-italic.c2b11051.eot#iefix") format("embedded-opentype"), url("source-sans-pro-italic.216ff6af.woff") format("woff"), url("source-sans-pro-italic.afc37291.ttf") format("truetype");
+    src: url("source-sans-pro-italic.5ad8beb8.eot");
+    src: url("source-sans-pro-italic.5ad8beb8.eot#iefix") format("embedded-opentype"), url("source-sans-pro-italic.0669b0f6.woff") format("woff"), url("source-sans-pro-italic.c56faa80.ttf") format("truetype");
     font-weight: normal;
     font-style: italic;
   }
 
   @font-face {
     font-family: Source Sans Pro;
-    src: url("source-sans-pro-semibold.785790c9.eot");
-    src: url("source-sans-pro-semibold.785790c9.eot#iefix") format("embedded-opentype"), url("source-sans-pro-semibold.0321aef0.woff") format("woff"), url("source-sans-pro-semibold.dc40d109.ttf") format("truetype");
+    src: url("source-sans-pro-semibold.8487c82c.eot");
+    src: url("source-sans-pro-semibold.8487c82c.eot#iefix") format("embedded-opentype"), url("source-sans-pro-semibold.bf60eda2.woff") format("woff"), url("source-sans-pro-semibold.ee4934fb.ttf") format("truetype");
     font-weight: 600;
     font-style: normal;
   }
 
   @font-face {
     font-family: Source Sans Pro;
-    src: url("source-sans-pro-semibolditalic.a1c84ec2.eot");
-    src: url("source-sans-pro-semibolditalic.a1c84ec2.eot#iefix") format("embedded-opentype"), url("source-sans-pro-semibolditalic.697490d2.woff") format("woff"), url("source-sans-pro-semibolditalic.a7834247.ttf") format("truetype");
+    src: url("source-sans-pro-semibolditalic.11cebf76.eot");
+    src: url("source-sans-pro-semibolditalic.11cebf76.eot#iefix") format("embedded-opentype"), url("source-sans-pro-semibolditalic.429fffb5.woff") format("woff"), url("source-sans-pro-semibolditalic.95aeed3b.ttf") format("truetype");
     font-weight: 600;
     font-style: italic;
   }
@@ -14414,6 +14414,7 @@
 
   @layer brand {
     [brand] {
+      z-index: 10;
       position: fixed;
       inset: auto auto 3rem 3rem;
 
@@ -15237,4 +15238,4 @@
     }
   }
 }
-/*# sourceMappingURL=talk-template.513cdf26.css.map */
+/*# sourceMappingURL=talk-template.ebeadb08.css.map */
