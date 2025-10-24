@@ -17,13 +17,13 @@
     "rel:patch": "pnpm run build && pnpm version --patch && pnpm run rel:push"
   },
   "dependencies": {
-    "@pixu-talks/core": "0.2.1",
+    "@pixu-talks/core": "0.3.1",
     "@pixu-talks/fonts": "0.2.1",
-    "@pixu-talks/theme": "0.2.1",
+    "@pixu-talks/theme": "0.3.1",
     "reveal.js": "5.2.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.2.6",
+    "@biomejs/biome": "2.2.7",
     "@parcel/transformer-inline-string": "2.16.0",
     "@parcel/transformer-sass": "2.16.0",
     "lightningcss": "1.30.2",
