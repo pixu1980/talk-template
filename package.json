@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@pixu-talks/core": "0.3.1",
-    "@pixu-talks/fonts": "0.2.1",
+    "@pixu-talks/fonts": "0.3.1",
     "@pixu-talks/theme": "0.3.1",
     "reveal.js": "5.2.1"
   },

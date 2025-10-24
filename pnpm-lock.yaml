@@ -12,8 +12,8 @@ importers:
         specifier: 0.3.1
         version: 0.3.1
       '@pixu-talks/fonts':
-        specifier: 0.2.1
-        version: 0.2.1
+        specifier: 0.3.1
+        version: 0.3.1
       '@pixu-talks/theme':
         specifier: 0.3.1
         version: 0.3.1
@@ -665,8 +665,8 @@ packages:
   '@pixu-talks/core@0.3.1':
     resolution: {integrity: sha512-8BodBE6Yy0yMZmIIBy7E0zPx3kXMCLTncW/OCGkgX0SCBt3DaqTxFy1W5TKntehreluEOT/F3EEqumMVtpPmfA==}
 
-  '@pixu-talks/fonts@0.2.1':
-    resolution: {integrity: sha512-vg5O6+5WPzj6EiQZgnWRYtUE1cbVWEVbsq+MRhJzwRnPSc7JGEkh7wofZy4/cAmmdccKpx++USC9fLti7zTFGQ==}
+  '@pixu-talks/fonts@0.3.1':
+    resolution: {integrity: sha512-v1EPk3llgthOchR7hLm/fC6OhT9b8FS9t1MyGt8WZ/Mq2NXEfi0Oa76PqZ06360AY/jTA042gaMZ24f+rLHocw==}
 
   '@pixu-talks/theme@0.3.1':
     resolution: {integrity: sha512-gVSJzwTb9ImMU3t37577q49I+ccbaX64iDgIZC3PdhThrEmmbVzB/Kf8uvmcOEGrLI8IenWtNWRg6UHyGR8iow==}
@@ -2017,7 +2017,7 @@ snapshots:
       highlight.js: 11.11.1
       reveal.js: 5.2.1
 
-  '@pixu-talks/fonts@0.2.1': {}
+  '@pixu-talks/fonts@0.3.1': {}
 
   '@pixu-talks/theme@0.3.1':
     dependencies:

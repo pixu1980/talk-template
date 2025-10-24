@@ -716,9 +716,9 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 },{}],"8JWvp":[function(require,module,exports,__globalThis) {
 var _core = require("@pixu-talks/core");
 
-},{"@pixu-talks/core":"8Wd7g"}],"8Wd7g":[function(require,module,exports,__globalThis) {
+},{"@pixu-talks/core":"532RV"}],"532RV":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-var _polyfills = require("./polyfills");
+var _indexJs = require("./polyfills/index.js");
 var _revealJs = require("reveal.js");
 var _revealJsDefault = parcelHelpers.interopDefault(_revealJs);
 var _highlightJs = require("reveal.js/plugin/highlight/highlight.js");
@@ -896,7 +896,308 @@ addEventListener('DOMContentLoaded', ()=>{
     window.Reveal = deck;
 });
 
-},{"./polyfills":"lew6N","reveal.js":"5TOrn","reveal.js/plugin/highlight/highlight.js":"aOigT","reveal.js/plugin/markdown/markdown.js":"ivDFJ","reveal.js/plugin/zoom/zoom.js":"c3HUO","reveal.js/plugin/notes/notes.js":"aEJLN","./plugins":"eURqW","./components":"8vxmj","./utils":"lO6kI","@parcel/transformer-js/src/esmodule-helpers.js":"kttee"}],"lew6N":[function(require,module,exports,__globalThis) {
+},{"./polyfills/index.js":"iKlut","reveal.js":"5TOrn","reveal.js/plugin/highlight/highlight.js":"aOigT","reveal.js/plugin/markdown/markdown.js":"ivDFJ","reveal.js/plugin/zoom/zoom.js":"c3HUO","reveal.js/plugin/notes/notes.js":"aEJLN","./plugins":"2bb3w","./components":"cNZuu","./utils":"f4PxM","@parcel/transformer-js/src/esmodule-helpers.js":"kttee"}],"iKlut":[function(require,module,exports,__globalThis) {
+var _customElementsJs = require("./_customElements.js");
+var _stringsJs = require("./_strings.js");
+
+},{"./_customElements.js":"Eokbb","./_strings.js":"fugam"}],"Eokbb":[function(require,module,exports,__globalThis) {
+(function() {
+    'use strict';
+    var attributesObserver = (whenDefined, MutationObserver1)=>{
+        const attributeChanged = (records)=>{
+            for(let i = 0, { length } = records; i < length; i++)dispatch(records[i]);
+        };
+        const dispatch = ({ target, attributeName, oldValue })=>{
+            target.attributeChangedCallback(attributeName, oldValue, target.getAttribute(attributeName));
+        };
+        return (target, is)=>{
+            const { observedAttributes: attributeFilter } = target.constructor;
+            if (attributeFilter) whenDefined(is).then(()=>{
+                new MutationObserver1(attributeChanged).observe(target, {
+                    attributes: true,
+                    attributeOldValue: true,
+                    attributeFilter
+                });
+                for(let i = 0, { length } = attributeFilter; i < length; i++)if (target.hasAttribute(attributeFilter[i])) dispatch({
+                    target,
+                    attributeName: attributeFilter[i],
+                    oldValue: null
+                });
+            });
+            return target;
+        };
+    };
+    const { keys } = Object;
+    const expando = (element)=>{
+        const key = keys(element);
+        const value = [];
+        const ignore = new Set();
+        const { length } = key;
+        for(let i = 0; i < length; i++){
+            value[i] = element[key[i]];
+            try {
+                delete element[key[i]];
+            } catch (SafariTP) {
+                ignore.add(i);
+            }
+        }
+        return ()=>{
+            for(let i = 0; i < length; i++)ignore.has(i) || (element[key[i]] = value[i]);
+        };
+    };
+    /*! (c) Andrea Giammarchi - ISC */ const TRUE = true, FALSE = false, QSA$1 = 'querySelectorAll';
+    /**
+   * Start observing a generic document or root element.
+   * @param {(node:Element, connected:boolean) => void} callback triggered per each dis/connected element
+   * @param {Document|Element} [root=document] by default, the global document to observe
+   * @param {Function} [MO=MutationObserver] by default, the global MutationObserver
+   * @param {string[]} [query=['*']] the selectors to use within nodes
+   * @returns {MutationObserver}
+   */ const notify = (callback, root = document, MO = MutationObserver, query = [
+        '*'
+    ])=>{
+        const loop = (nodes, selectors, added, removed, connected, pass)=>{
+            for (const node of nodes)if (pass || QSA$1 in node) {
+                if (connected) {
+                    if (!added.has(node)) {
+                        added.add(node);
+                        removed.delete(node);
+                        callback(node, connected);
+                    }
+                } else if (!removed.has(node)) {
+                    removed.add(node);
+                    added.delete(node);
+                    callback(node, connected);
+                }
+                if (!pass) loop(node[QSA$1](selectors), selectors, added, removed, connected, TRUE);
+            }
+        };
+        const mo = new MO((records)=>{
+            if (query.length) {
+                const selectors = query.join(',');
+                const added = new Set(), removed = new Set();
+                for (const { addedNodes, removedNodes } of records){
+                    loop(removedNodes, selectors, added, removed, FALSE, FALSE);
+                    loop(addedNodes, selectors, added, removed, TRUE, FALSE);
+                }
+            }
+        });
+        const { observe } = mo;
+        (mo.observe = (node)=>observe.call(mo, node, {
+                subtree: TRUE,
+                childList: TRUE
+            }))(root);
+        return mo;
+    };
+    const QSA = 'querySelectorAll';
+    const { document: document$2, Element: Element$1, MutationObserver: MutationObserver$2, Set: Set$2, WeakMap: WeakMap$1 } = self;
+    const elements = (element)=>QSA in element;
+    const { filter } = [];
+    var qsaObserver = (options)=>{
+        const live = new WeakMap$1();
+        const drop = (elements)=>{
+            for(let i = 0, { length } = elements; i < length; i++)live.delete(elements[i]);
+        };
+        const flush = ()=>{
+            const records = observer.takeRecords();
+            for(let i = 0, { length } = records; i < length; i++){
+                parse(filter.call(records[i].removedNodes, elements), false);
+                parse(filter.call(records[i].addedNodes, elements), true);
+            }
+        };
+        const matches = (element)=>element.matches || element.webkitMatchesSelector || element.msMatchesSelector;
+        const notifier = (element, connected)=>{
+            let selectors;
+            if (connected) {
+                for(let q, m = matches(element), i = 0, { length } = query; i < length; i++)if (m.call(element, q = query[i])) {
+                    if (!live.has(element)) live.set(element, new Set$2());
+                    selectors = live.get(element);
+                    if (!selectors.has(q)) {
+                        selectors.add(q);
+                        options.handle(element, connected, q);
+                    }
+                }
+            } else if (live.has(element)) {
+                selectors = live.get(element);
+                live.delete(element);
+                selectors.forEach((q)=>{
+                    options.handle(element, connected, q);
+                });
+            }
+        };
+        const parse = (elements, connected = true)=>{
+            for(let i = 0, { length } = elements; i < length; i++)notifier(elements[i], connected);
+        };
+        const { query } = options;
+        const root = options.root || document$2;
+        const observer = notify(notifier, root, MutationObserver$2, query);
+        const { attachShadow } = Element$1.prototype;
+        if (attachShadow) Element$1.prototype.attachShadow = function(init) {
+            const shadowRoot = attachShadow.call(this, init);
+            observer.observe(shadowRoot);
+            return shadowRoot;
+        };
+        if (query.length) parse(root[QSA](query));
+        return {
+            drop,
+            flush,
+            observer,
+            parse
+        };
+    };
+    const { customElements, document: document$1, Element, MutationObserver: MutationObserver$1, Object: Object$1, Promise: Promise$1, Map, Set: Set$1, WeakMap, Reflect } = self;
+    const { createElement } = document$1;
+    const { define, get, upgrade } = customElements;
+    const { construct } = Reflect || {
+        construct (HTMLElement) {
+            return HTMLElement.call(this);
+        }
+    };
+    const { defineProperty, getOwnPropertyNames, setPrototypeOf } = Object$1;
+    const shadowRoots = new WeakMap();
+    const shadows = new Set$1();
+    const classes = new Map();
+    const defined = new Map();
+    const prototypes = new Map();
+    const registry = new Map();
+    const shadowed = [];
+    const query = [];
+    const getCE = (is)=>registry.get(is) || get.call(customElements, is);
+    const handle = (element, connected, selector)=>{
+        const proto = prototypes.get(selector);
+        if (connected && !proto.isPrototypeOf(element)) {
+            const redefine = expando(element);
+            override = setPrototypeOf(element, proto);
+            try {
+                new proto.constructor();
+            } finally{
+                override = null;
+                redefine();
+            }
+        }
+        const method = `${connected ? '' : 'dis'}connectedCallback`;
+        if (method in proto) element[method]();
+    };
+    const { parse } = qsaObserver({
+        query,
+        handle
+    });
+    const { parse: parseShadowed } = qsaObserver({
+        query: shadowed,
+        handle (element, connected) {
+            if (shadowRoots.has(element)) {
+                if (connected) shadows.add(element);
+                else shadows.delete(element);
+                if (query.length) parseShadow.call(query, element);
+            }
+        }
+    });
+    // qsaObserver also patches attachShadow
+    // be sure this runs *after* that
+    const { attachShadow } = Element.prototype;
+    if (attachShadow) Element.prototype.attachShadow = function(init) {
+        const root = attachShadow.call(this, init);
+        shadowRoots.set(this, root);
+        return root;
+    };
+    const whenDefined = (name)=>{
+        if (!defined.has(name)) {
+            let _, $ = new Promise$1(($)=>{
+                _ = $;
+            });
+            defined.set(name, {
+                $,
+                _
+            });
+        }
+        return defined.get(name).$;
+    };
+    const augment = attributesObserver(whenDefined, MutationObserver$1);
+    let override = null;
+    getOwnPropertyNames(self).filter((k)=>/^HTML.*Element$/.test(k)).forEach((k)=>{
+        const HTMLElement = self[k];
+        function HTMLBuiltIn() {
+            const { constructor } = this;
+            if (!classes.has(constructor)) throw new TypeError('Illegal constructor');
+            const { is, tag } = classes.get(constructor);
+            if (is) {
+                if (override) return augment(override, is);
+                const element = createElement.call(document$1, tag);
+                element.setAttribute('is', is);
+                return augment(setPrototypeOf(element, constructor.prototype), is);
+            } else return construct.call(this, HTMLElement, [], constructor);
+        }
+        setPrototypeOf(HTMLBuiltIn, HTMLElement);
+        defineProperty(HTMLBuiltIn.prototype = HTMLElement.prototype, 'constructor', {
+            value: HTMLElement
+        });
+        defineProperty(self, k, {
+            value: HTMLBuiltIn
+        });
+    });
+    document$1.createElement = function(name, options) {
+        const is = options && options.is;
+        if (is) {
+            const Class = registry.get(is);
+            if (Class && classes.get(Class).tag === name) return new Class();
+        }
+        const element = createElement.call(document$1, name);
+        if (is) element.setAttribute('is', is);
+        return element;
+    };
+    customElements.get = getCE;
+    customElements.whenDefined = whenDefined;
+    customElements.upgrade = function(element) {
+        const is = element.getAttribute('is');
+        if (is) {
+            const constructor = registry.get(is);
+            if (constructor) {
+                augment(setPrototypeOf(element, constructor.prototype), is);
+                // apparently unnecessary because this is handled by qsa observer
+                // if (element.isConnected && element.connectedCallback)
+                //   element.connectedCallback();
+                return;
+            }
+        }
+        upgrade.call(customElements, element);
+    };
+    customElements.define = function(is, Class, options) {
+        if (getCE(is)) throw new Error(`'${is}' has already been defined as a custom element`);
+        let selector;
+        const tag = options && options.extends;
+        classes.set(Class, tag ? {
+            is,
+            tag
+        } : {
+            is: '',
+            tag: is
+        });
+        if (tag) {
+            selector = `${tag}[is="${is}"]`;
+            prototypes.set(selector, Class.prototype);
+            registry.set(is, Class);
+            query.push(selector);
+        } else {
+            define.apply(customElements, arguments);
+            shadowed.push(selector = is);
+        }
+        whenDefined(is).then(()=>{
+            if (tag) {
+                parse(document$1.querySelectorAll(selector));
+                shadows.forEach(parseShadow, [
+                    selector
+                ]);
+            } else parseShadowed(document$1.querySelectorAll(selector));
+        });
+        defined.get(is)._(Class);
+    };
+    function parseShadow(element) {
+        const root = shadowRoots.get(element);
+        parse(root.querySelectorAll(this), element.isConnected);
+    }
+})();
+
+},{}],"fugam":[function(require,module,exports,__globalThis) {
 !String.prototype.startsWith && (String.prototype.startsWith = function(searchString, position) {
     return this.substr(position || 0, searchString.length) === searchString;
 });
@@ -51867,7 +52168,7 @@ exports.export = function(dest, destName, get) {
     };
 });
 
-},{}],"eURqW":[function(require,module,exports,__globalThis) {
+},{}],"2bb3w":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Header", ()=>(0, _headerDefault.default));
@@ -51880,7 +52181,7 @@ var _menuDefault = parcelHelpers.interopDefault(_menu);
 var _toolbar = require("./_toolbar");
 var _toolbarDefault = parcelHelpers.interopDefault(_toolbar);
 
-},{"./_header":"4ZXdI","./_menu":"4wQRJ","./_toolbar":"gdA4W","@parcel/transformer-js/src/esmodule-helpers.js":"kttee"}],"4ZXdI":[function(require,module,exports,__globalThis) {
+},{"./_header":"hLyd4","./_menu":"ilKNO","./_toolbar":"aofCF","@parcel/transformer-js/src/esmodule-helpers.js":"kttee"}],"hLyd4":[function(require,module,exports,__globalThis) {
 /**
  * Handles opening of and synchronization with the reveal.js
  * notes window.
@@ -51937,7 +52238,7 @@ const HeaderPlugin = ()=>{
 };
 exports.default = HeaderPlugin;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"kttee"}],"4wQRJ":[function(require,module,exports,__globalThis) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"kttee"}],"ilKNO":[function(require,module,exports,__globalThis) {
 /*
  * Reveal.js menu plugin
  * MIT licensed
@@ -52669,7 +52970,7 @@ const Plugin = ()=>{
 };
 exports.default = Plugin;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"kttee"}],"gdA4W":[function(require,module,exports,__globalThis) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"kttee"}],"aofCF":[function(require,module,exports,__globalThis) {
 /*
  * Reveal.js toolbar plugin
  * MIT licensed
@@ -52818,12 +53119,12 @@ const Plugin = ()=>{
 };
 exports.default = Plugin;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"kttee"}],"8vxmj":[function(require,module,exports,__globalThis) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"kttee"}],"cNZuu":[function(require,module,exports,__globalThis) {
 var _diveIn = require("./_dive-in");
 var _stagger = require("./_stagger");
 var _tabs = require("./_tabs");
 
-},{"./_dive-in":"iCcQS","./_stagger":"dpm4G","./_tabs":"5xJOw"}],"iCcQS":[function(require,module,exports,__globalThis) {
+},{"./_dive-in":"7xgLL","./_stagger":"outSm","./_tabs":"gnbB1"}],"7xgLL":[function(require,module,exports,__globalThis) {
 // DiveIn stacked container component
 addEventListener('DOMContentLoaded', ()=>{
     const diveIn = document.querySelector('dive-in');
@@ -52852,7 +53153,7 @@ addEventListener('DOMContentLoaded', ()=>{
     }
 });
 
-},{}],"dpm4G":[function(require,module,exports,__globalThis) {
+},{}],"outSm":[function(require,module,exports,__globalThis) {
 // Stagger animation components
 addEventListener('DOMContentLoaded', ()=>{
     const staggers = [
@@ -52866,7 +53167,7 @@ addEventListener('DOMContentLoaded', ()=>{
     }
 });
 
-},{}],"5xJOw":[function(require,module,exports,__globalThis) {
+},{}],"gnbB1":[function(require,module,exports,__globalThis) {
 // Tabs component
 addEventListener('DOMContentLoaded', ()=>{
     const tabsComponents = document.querySelectorAll('tabs');
@@ -52939,7 +53240,7 @@ addEventListener('DOMContentLoaded', ()=>{
     }
 });
 
-},{}],"lO6kI":[function(require,module,exports,__globalThis) {
+},{}],"f4PxM":[function(require,module,exports,__globalThis) {
 window.pixuTalks = {
     /**
    * Pass in an element and its CSS Custom Property that you want the value of.
