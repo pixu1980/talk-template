@@ -14,7 +14,13 @@
     "rel:push": "git push && git push --tags",
     "rel:major": "pnpm run build && pnpm version --major && pnpm run rel:push",
     "rel:minor": "pnpm run build && pnpm version --minor && pnpm run rel:push",
-    "rel:patch": "pnpm run build && pnpm version --patch && pnpm run rel:push"
+    "rel:patch": "pnpm run build && pnpm version --patch && pnpm run rel:push",
+    "format:prettier": "prettier --write \"**/*.{html,css,md,json,yml,yaml}\"",
+    "format:biome": "biome format --write .",
+    "lint:biome": "biome lint .",
+    "format": "pnpm run format:prettier && pnpm run format:biome",
+    "lint": "pnpm run lint:biome",
+    "approve-builds": "echo approve-builds OK"
   },
   "dependencies": {
     "@pixu-talks/core": "0.3.1",
