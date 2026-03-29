@@ -1,6 +1,6 @@
 {
   "name": "talk-template",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -28,9 +28,10 @@
     "reveal.js": "6.0.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.9",
+    "@biomejs/biome": "2.4.10",
     "@parcel/transformer-inline-string": "2.16.4",
     "@parcel/transformer-sass": "2.16.4",
+    "baseline-browser-mapping": "2.10.13",
     "lightningcss": "1.32.0",
     "parcel": "2.16.4",
     "posthtml": "0.16.7",
