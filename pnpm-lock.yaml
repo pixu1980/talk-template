@@ -9,14 +9,14 @@ importers:
   .:
     dependencies:
       '@pixu-talks/core':
-        specifier: 0.4.0
-        version: 0.4.0
+        specifier: 0.4.1
+        version: 0.4.1
       '@pixu-talks/fonts':
-        specifier: 0.4.0
-        version: 0.4.0
+        specifier: 0.4.1
+        version: 0.4.1
       '@pixu-talks/theme':
-        specifier: 0.4.0
-        version: 0.4.0
+        specifier: 0.4.1
+        version: 0.4.1
       reveal.js:
         specifier: 6.0.0
         version: 6.0.0
@@ -711,14 +711,14 @@ packages:
     peerDependencies:
       '@parcel/core': ^2.16.4
 
-  '@pixu-talks/core@0.4.0':
-    resolution: {integrity: sha512-I3zA5gg/Qbzn68I28HqdJ0zBmf2/uHDVe7PQNE3sJaKFdOt/YSGUXXUkmQhpV+t/wVGYGLrF64tBVq8O5ElzoA==}
+  '@pixu-talks/core@0.4.1':
+    resolution: {integrity: sha512-plkrDCas/PBYc0I8F4lrV41Y5ufK5B7cH8d+WkkYuWHoLOqIRLWx0IAMhbJjndFUTJ+RcHQt+seoGaHSDd0qqg==}
 
-  '@pixu-talks/fonts@0.4.0':
-    resolution: {integrity: sha512-AURAiY3PTsm+t4xg/jNfrHJTUlOJ1NhqEYPTJ3U3KS+zoSzVIODwv7FjgYLN0oEjGpZFZztWMK0p/sYUQBRPYw==}
+  '@pixu-talks/fonts@0.4.1':
+    resolution: {integrity: sha512-Lzn5U3Ym2N2mgnsnHGbHE/T2ipOCKo8/Ao9JZJt9tX/WoYUWDEOfUHkXvemMXHyr1JihYl6WAi6MQemgNuQj3A==}
 
-  '@pixu-talks/theme@0.4.0':
-    resolution: {integrity: sha512-nQ/71TR/SX9eWhNdw+qK6TaXUcfMaaFUUSoXtt+Ama9Hc8UP114Y9sc1cUTjYAJy5BDTN7fjfQFJ5kjtr6cmnw==}
+  '@pixu-talks/theme@0.4.1':
+    resolution: {integrity: sha512-CrCLLmwpnRNum4Rq7rOoegan5GjwxMa+OahmyiH1C2GO6Q8FsQdEoMuQOXI6w3D1y69vzDiNQ13+vVJ7rRHuug==}
 
   '@swc/core-darwin-arm64@1.15.0':
     resolution: {integrity: sha512-TBKWkbnShnEjlIbO4/gfsrIgAqHBVqgPWLbWmPdZ80bF393yJcLgkrb7bZEnJs6FCbSSuGwZv2rx1jDR2zo6YA==}
@@ -2073,14 +2073,14 @@ snapshots:
     transitivePeerDependencies:
       - napi-wasm
 
-  '@pixu-talks/core@0.4.0':
+  '@pixu-talks/core@0.4.1':
     dependencies:
       highlight.js: 11.11.1
       reveal.js: 6.0.0
 
-  '@pixu-talks/fonts@0.4.0': {}
+  '@pixu-talks/fonts@0.4.1': {}
 
-  '@pixu-talks/theme@0.4.0':
+  '@pixu-talks/theme@0.4.1':
     dependencies:
       highlight.js: 11.11.1
       reveal.js: 6.0.0

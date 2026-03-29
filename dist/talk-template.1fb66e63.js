@@ -57588,7 +57588,7 @@ Please report this to https://github.com/markedjs/marked.`, r) {
  * Copyright (c) 2025 Emiliano "pixu1980" Pisu
 
 * @returns {{ id: string, init: function, update: function }} A Reveal plugin definition.
- */ const $d244982b41ae8ea2$var$HeaderPlugin = ()=>{
+ */ const $b0d5d55c714803c8$var$HeaderPlugin = ()=>{
     let deck;
     const headerPlugin = {
         id: "header",
@@ -57637,7 +57637,7 @@ Please report this to https://github.com/markedjs/marked.`, r) {
     };
     return headerPlugin;
 };
-var $d244982b41ae8ea2$export$2e2bcd8739ae039 = $d244982b41ae8ea2$var$HeaderPlugin;
+var $b0d5d55c714803c8$export$2e2bcd8739ae039 = $b0d5d55c714803c8$var$HeaderPlugin;
 
 
 /**
@@ -57662,7 +57662,7 @@ var $d244982b41ae8ea2$export$2e2bcd8739ae039 = $d244982b41ae8ea2$var$HeaderPlugi
  * - For very long slide decks, consider debouncing UI updates.
 
  * Copyright (c) 2025 Emiliano "pixu1980" Pisu
-*/ const $737e038413ca20c7$var$defaults = {
+*/ const $a36875fb73663867$var$defaults = {
     side: 'right',
     numbers: false,
     titleSelector: 'h1, h2, h3, h4, h5',
@@ -57685,7 +57685,7 @@ var $d244982b41ae8ea2$export$2e2bcd8739ae039 = $d244982b41ae8ea2$var$HeaderPlugi
     delayInit: false,
     openOnInit: false
 };
-class $737e038413ca20c7$var$Menu {
+class $a36875fb73663867$var$Menu {
     deck;
     dom = {
         reveal: null,
@@ -58366,25 +58366,25 @@ class $737e038413ca20c7$var$Menu {
     constructor(deck){
         this.deck = deck;
         this.settings = {
-            ...$737e038413ca20c7$var$defaults,
+            ...$a36875fb73663867$var$defaults,
             ...deck.getConfig()?.menu
         };
         this.init();
     }
 }
-const $737e038413ca20c7$var$Plugin = ()=>{
+const $a36875fb73663867$var$Plugin = ()=>{
     let instance;
     return {
         id: 'menu',
         init: (deck)=>{
-            instance = new $737e038413ca20c7$var$Menu(deck);
+            instance = new $a36875fb73663867$var$Menu(deck);
         },
         toggleMenu: ()=>{
             instance.toggle();
         }
     };
 };
-var $737e038413ca20c7$export$2e2bcd8739ae039 = $737e038413ca20c7$var$Plugin;
+var $a36875fb73663867$export$2e2bcd8739ae039 = $a36875fb73663867$var$Plugin;
 
 
 /**
@@ -58406,7 +58406,7 @@ var $737e038413ca20c7$export$2e2bcd8739ae039 = $737e038413ca20c7$var$Plugin;
  * - Notes ?
  * - PDF export ?
  * - tooltips
- */ const $6198441aca6b36c7$var$defaults = {
+ */ const $b83afb9d4de6065d$var$defaults = {
     position: "top",
     fullscreen: true,
     colorScheme: true,
@@ -58416,7 +58416,7 @@ var $737e038413ca20c7$export$2e2bcd8739ae039 = $737e038413ca20c7$var$Plugin;
     help: true,
     menu: true
 };
-class $6198441aca6b36c7$var$Toolbar {
+class $b83afb9d4de6065d$var$Toolbar {
     deck;
     dom = {
         reveal: null,
@@ -58543,7 +58543,7 @@ class $6198441aca6b36c7$var$Toolbar {
 	 */ constructor(deck){
         this.deck = deck;
         this.settings = {
-            ...$6198441aca6b36c7$var$defaults,
+            ...$b83afb9d4de6065d$var$defaults,
             ...deck.getConfig()?.toolbar
         };
         this.init();
@@ -58553,15 +58553,15 @@ class $6198441aca6b36c7$var$Toolbar {
 /**
  * Toolbar plugin factory for Reveal.js.
  * @returns {{ id: string, init: (deck:any)=>void }} Plugin definition
- */ const $6198441aca6b36c7$var$Plugin = ()=>{
+ */ const $b83afb9d4de6065d$var$Plugin = ()=>{
     return {
         id: "toolbar",
         init: (deck)=>{
-            new $6198441aca6b36c7$var$Toolbar(deck);
+            new $b83afb9d4de6065d$var$Toolbar(deck);
         }
     };
 };
-var $6198441aca6b36c7$export$2e2bcd8739ae039 = $6198441aca6b36c7$var$Plugin;
+var $b83afb9d4de6065d$export$2e2bcd8739ae039 = $b83afb9d4de6065d$var$Plugin;
 
 
 
@@ -58588,7 +58588,7 @@ var $6198441aca6b36c7$export$2e2bcd8739ae039 = $6198441aca6b36c7$var$Plugin;
  * Performance notes:
  * - The `mousemove` handler writes CSS variables on every event. For complex
  *   scenes consider throttling with requestAnimationFrame.
- */ class $c94d97793e9d53e4$var$DiveInElement extends HTMLElement {
+ */ class $073ecf3bdee2b7c9$var$DiveInElement extends HTMLElement {
     constructor(){
         super();
         this.handleMouseMove = this.handleMouseMove.bind(this);
@@ -58619,7 +58619,7 @@ var $6198441aca6b36c7$export$2e2bcd8739ae039 = $6198441aca6b36c7$var$Plugin;
         stackContainer.style.setProperty('--mouse-y', `${offsetY}px`);
     }
 }
-if (!customElements.get('dive-in')) customElements.define('dive-in', $c94d97793e9d53e4$var$DiveInElement);
+if (!customElements.get('pix-dive-in')) customElements.define('pix-dive-in', $073ecf3bdee2b7c9$var$DiveInElement);
 
 
 /**
@@ -58641,7 +58641,7 @@ if (!customElements.get('dive-in')) customElements.define('dive-in', $c94d97793e
  * Lifecycle:
  * - Registered as the `stagger` custom element.
  * - Recomputes child indexes when the element is connected.
- */ class $5cbe1ad252b9f6e0$var$StaggerElement extends HTMLElement {
+ */ class $9a1b779f45043108$var$StaggerElement extends HTMLElement {
     connectedCallback() {
         this.refreshItems();
     }
@@ -58654,7 +58654,7 @@ if (!customElements.get('dive-in')) customElements.define('dive-in', $c94d97793e
         });
     }
 }
-if (!customElements.get('stagger')) customElements.define('stagger', $5cbe1ad252b9f6e0$var$StaggerElement);
+if (!customElements.get('pix-stagger')) customElements.define('pix-stagger', $9a1b779f45043108$var$StaggerElement);
 
 
 /**
@@ -58691,7 +58691,7 @@ if (!customElements.get('stagger')) customElements.define('stagger', $5cbe1ad252
 
  * Notes:
  * - This component assumes a mostly static DOM structure after initialization.
- */ class $01cb137d5c6e00aa$var$TabsElement extends HTMLElement {
+ */ class $6cd398e673baf594$var$TabsElement extends HTMLElement {
     constructor(){
         super();
         this.currentTabIndex = 0;
@@ -58760,7 +58760,7 @@ if (!customElements.get('stagger')) customElements.define('stagger', $5cbe1ad252
         event.stopPropagation();
     }
 }
-if (!customElements.get('tabs')) customElements.define('tabs', $01cb137d5c6e00aa$var$TabsElement);
+if (!customElements.get('pix-tabs')) customElements.define('pix-tabs', $6cd398e673baf594$var$TabsElement);
 
 
 
@@ -58888,7 +58888,7 @@ addEventListener("DOMContentLoaded", ()=>{
             (0, (/*@__PURE__*/$parcel$interopDefault($023fde5757747297$exports))),
             (0, (/*@__PURE__*/$parcel$interopDefault($f572b6130a42035d$exports))),
             (0, (/*@__PURE__*/$parcel$interopDefault($fe40afafddb6cf68$exports))),
-            (0, $6198441aca6b36c7$export$2e2bcd8739ae039)
+            (0, $b83afb9d4de6065d$export$2e2bcd8739ae039)
         ],
         navigationMode: "linear",
         menu: {
@@ -59041,4 +59041,4 @@ addEventListener("DOMContentLoaded", ()=>{
 
 
 
-//# sourceMappingURL=talk-template.a8e19f45.js.map
+//# sourceMappingURL=talk-template.1fb66e63.js.map
