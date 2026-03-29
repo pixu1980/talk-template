@@ -9,14 +9,14 @@ importers:
   .:
     dependencies:
       '@pixu-talks/core':
-        specifier: 0.3.5
-        version: 0.3.5
+        specifier: 0.3.8
+        version: 0.3.8
       '@pixu-talks/fonts':
-        specifier: 0.3.5
-        version: 0.3.5
+        specifier: 0.3.8
+        version: 0.3.8
       '@pixu-talks/theme':
-        specifier: 0.3.5
-        version: 0.3.5
+        specifier: 0.3.8
+        version: 0.3.8
       reveal.js:
         specifier: 6.0.0
         version: 6.0.0
@@ -711,14 +711,14 @@ packages:
     peerDependencies:
       '@parcel/core': ^2.16.4
 
-  '@pixu-talks/core@0.3.5':
-    resolution: {integrity: sha512-oTTDWN3jndD912PAiXhNKamLuSAezUUxU2jnuUfQwtjYcGalGC7WTdKzp/a9qQXPwNKNzR9K2vsU1gTENRhi2w==}
+  '@pixu-talks/core@0.3.8':
+    resolution: {integrity: sha512-HjIDhPOlSEW0kp4yL/zwHIbHHonGzWSqDZFDo3L/AAR82Z7mgJ8Ko+Zex0VNdiOK6IZT4PpUVOfWQbEkgfOI+A==}
 
-  '@pixu-talks/fonts@0.3.5':
-    resolution: {integrity: sha512-SKu1QluQkL80/cWzxkquO1Ajy+Qc3aEyIzs5+ancEqkAHib2BHqOC6pAUHlRRFJb4t0lfLWhrHpmoGb+GP6N4w==}
+  '@pixu-talks/fonts@0.3.8':
+    resolution: {integrity: sha512-eSXWx6Ch1sZnKIBfzF9R5dv4cwoHwUztpJSNs5vbiSh+jI/Uee02Hlq64rYUL6+839B6Tz7fbQOJ54Ulwwh/Bg==}
 
-  '@pixu-talks/theme@0.3.5':
-    resolution: {integrity: sha512-wvkFgUraM0mEJVZHa7qWjLtpTqbyUdEPg//oJ5Mj6jR3c1zktVFZPOS4rFt8VI/USH0UBX+CAQ4WMfCdp3v5jA==}
+  '@pixu-talks/theme@0.3.8':
+    resolution: {integrity: sha512-HNw9Aeh6EJpZjC3KOYqVfyr2sqMwDyM7r5b3M5Y1vjhsRwUr1y/taYM/9Sv06ijX69hHe/BLwDtQnarPK9P3WQ==}
 
   '@swc/core-darwin-arm64@1.15.0':
     resolution: {integrity: sha512-TBKWkbnShnEjlIbO4/gfsrIgAqHBVqgPWLbWmPdZ80bF393yJcLgkrb7bZEnJs6FCbSSuGwZv2rx1jDR2zo6YA==}
@@ -1175,10 +1175,6 @@ packages:
 
   regenerator-runtime@0.14.1:
     resolution: {integrity: sha512-dYnhHh0nJoMfnkZs6GmmhFknAGRrLznOu5nc9ML+EJxGvrx6H7teuevqVqCuPcPK//3eDrrjQhehXVx9cnkGdw==}
-
-  reveal.js@5.2.1:
-    resolution: {integrity: sha512-r7//6mIM5p34hFiDMvYfXgyjXqGRta+/psd9YtytsgRlrpRzFv4RbH76TXd2qD+7ZPZEbpBDhdRhJaFgfQ7zNQ==}
-    engines: {node: '>=18.0.0'}
 
   reveal.js@6.0.0:
     resolution: {integrity: sha512-RayDr1FL3Jglnf6p9xHGJ0U18va96PiuLs/JHnd1cdDOXvC+3lsXKe6ujl7PX0pvnhNW2Tpqnr6PEKpJVO2exw==}
@@ -2077,17 +2073,17 @@ snapshots:
     transitivePeerDependencies:
       - napi-wasm
 
-  '@pixu-talks/core@0.3.5':
+  '@pixu-talks/core@0.3.8':
     dependencies:
       highlight.js: 11.11.1
-      reveal.js: 5.2.1
+      reveal.js: 6.0.0
 
-  '@pixu-talks/fonts@0.3.5': {}
+  '@pixu-talks/fonts@0.3.8': {}
 
-  '@pixu-talks/theme@0.3.5':
+  '@pixu-talks/theme@0.3.8':
     dependencies:
       highlight.js: 11.11.1
-      reveal.js: 5.2.1
+      reveal.js: 6.0.0
 
   '@swc/core-darwin-arm64@1.15.0':
     optional: true
@@ -2503,8 +2499,6 @@ snapshots:
   readdirp@4.1.2: {}
 
   regenerator-runtime@0.14.1: {}
-
-  reveal.js@5.2.1: {}
 
   reveal.js@6.0.0: {}
 
