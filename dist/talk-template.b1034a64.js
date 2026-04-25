@@ -1,913 +1,14 @@
-// modules are defined as an array
-// [ module function, map of requires ]
-//
-// map of requires is short require name -> numeric require
-//
-// anything defined in a previous bundle is accessed via the
-// orig method which is the require for previous bundles
 
-(function (
-  modules,
-  entry,
-  mainEntry,
-  parcelRequireName,
-  externals,
-  distDir,
-  publicUrl,
-  devServer
-) {
-  /* eslint-disable no-undef */
-  var globalObject =
-    typeof globalThis !== 'undefined'
-      ? globalThis
-      : typeof self !== 'undefined'
-      ? self
-      : typeof window !== 'undefined'
-      ? window
-      : typeof global !== 'undefined'
-      ? global
-      : {};
-  /* eslint-enable no-undef */
-
-  // Save the require from previous bundle to this closure if any
-  var previousRequire =
-    typeof globalObject[parcelRequireName] === 'function' &&
-    globalObject[parcelRequireName];
-
-  var importMap = previousRequire.i || {};
-  var cache = previousRequire.cache || {};
-  // Do not use `require` to prevent Webpack from trying to bundle this call
-  var nodeRequire =
-    typeof module !== 'undefined' &&
-    typeof module.require === 'function' &&
-    module.require.bind(module);
-
-  function newRequire(name, jumped) {
-    if (!cache[name]) {
-      if (!modules[name]) {
-        if (externals[name]) {
-          return externals[name];
-        }
-        // if we cannot find the module within our internal map or
-        // cache jump to the current global require ie. the last bundle
-        // that was added to the page.
-        var currentRequire =
-          typeof globalObject[parcelRequireName] === 'function' &&
-          globalObject[parcelRequireName];
-        if (!jumped && currentRequire) {
-          return currentRequire(name, true);
-        }
-
-        // If there are other bundles on this page the require from the
-        // previous one is saved to 'previousRequire'. Repeat this as
-        // many times as there are bundles until the module is found or
-        // we exhaust the require chain.
-        if (previousRequire) {
-          return previousRequire(name, true);
-        }
-
-        // Try the node require function if it exists.
-        if (nodeRequire && typeof name === 'string') {
-          return nodeRequire(name);
-        }
-
-        var err = new Error("Cannot find module '" + name + "'");
-        err.code = 'MODULE_NOT_FOUND';
-        throw err;
-      }
-
-      localRequire.resolve = resolve;
-      localRequire.cache = {};
-
-      var module = (cache[name] = new newRequire.Module(name));
-
-      modules[name][0].call(
-        module.exports,
-        localRequire,
-        module,
-        module.exports,
-        globalObject
-      );
-    }
-
-    return cache[name].exports;
-
-    function localRequire(x) {
-      var res = localRequire.resolve(x);
-      if (res === false) {
-        return {};
-      }
-      // Synthesize a module to follow re-exports.
-      if (Array.isArray(res)) {
-        var m = {__esModule: true};
-        res.forEach(function (v) {
-          var key = v[0];
-          var id = v[1];
-          var exp = v[2] || v[0];
-          var x = newRequire(id);
-          if (key === '*') {
-            Object.keys(x).forEach(function (key) {
-              if (
-                key === 'default' ||
-                key === '__esModule' ||
-                Object.prototype.hasOwnProperty.call(m, key)
-              ) {
-                return;
-              }
-
-              Object.defineProperty(m, key, {
-                enumerable: true,
-                get: function () {
-                  return x[key];
-                },
-              });
-            });
-          } else if (exp === '*') {
-            Object.defineProperty(m, key, {
-              enumerable: true,
-              value: x,
-            });
-          } else {
-            Object.defineProperty(m, key, {
-              enumerable: true,
-              get: function () {
-                if (exp === 'default') {
-                  return x.__esModule ? x.default : x;
-                }
-                return x[exp];
-              },
-            });
-          }
-        });
-        return m;
-      }
-      return newRequire(res);
-    }
-
-    function resolve(x) {
-      var id = modules[name][1][x];
-      return id != null ? id : x;
-    }
-  }
-
-  function Module(moduleName) {
-    this.id = moduleName;
-    this.bundle = newRequire;
-    this.require = nodeRequire;
-    this.exports = {};
-  }
-
-  newRequire.isParcelRequire = true;
-  newRequire.Module = Module;
-  newRequire.modules = modules;
-  newRequire.cache = cache;
-  newRequire.parent = previousRequire;
-  newRequire.distDir = distDir;
-  newRequire.publicUrl = publicUrl;
-  newRequire.devServer = devServer;
-  newRequire.i = importMap;
-  newRequire.register = function (id, exports) {
-    modules[id] = [
-      function (require, module) {
-        module.exports = exports;
-      },
-      {},
-    ];
-  };
-
-  // Only insert newRequire.load when it is actually used.
-  // The code in this file is linted against ES5, so dynamic import is not allowed.
-  // INSERT_LOAD_HERE
-
-  Object.defineProperty(newRequire, 'root', {
-    get: function () {
-      return globalObject[parcelRequireName];
-    },
-  });
-
-  globalObject[parcelRequireName] = newRequire;
-
-  for (var i = 0; i < entry.length; i++) {
-    newRequire(entry[i]);
-  }
-
-  if (mainEntry) {
-    // Expose entry point to Node, AMD or browser globals
-    // Based on https://github.com/ForbesLindesay/umd/blob/master/template.js
-    var mainExports = newRequire(mainEntry);
-
-    // CommonJS
-    if (typeof exports === 'object' && typeof module !== 'undefined') {
-      module.exports = mainExports;
-
-      // RequireJS
-    } else if (typeof define === 'function' && define.amd) {
-      define(function () {
-        return mainExports;
-      });
-    }
-  }
-})({"kfVDd":[function(require,module,exports,__globalThis) {
-var global = arguments[3];
-var HMR_HOST = null;
-var HMR_PORT = null;
-var HMR_SERVER_PORT = 6001;
-var HMR_SECURE = false;
-var HMR_ENV_HASH = "439701173a9199ea";
-var HMR_USE_SSE = false;
-module.bundle.HMR_BUNDLE_ID = "17677af8c6396971";
-"use strict";
-/* global HMR_HOST, HMR_PORT, HMR_SERVER_PORT, HMR_ENV_HASH, HMR_SECURE, HMR_USE_SSE, chrome, browser, __parcel__import__, __parcel__importScripts__, ServiceWorkerGlobalScope */ /*::
-import type {
-  HMRAsset,
-  HMRMessage,
-} from '@parcel/reporter-dev-server/src/HMRServer.js';
-interface ParcelRequire {
-  (string): mixed;
-  cache: {|[string]: ParcelModule|};
-  hotData: {|[string]: mixed|};
-  Module: any;
-  parent: ?ParcelRequire;
-  isParcelRequire: true;
-  modules: {|[string]: [Function, {|[string]: string|}]|};
-  HMR_BUNDLE_ID: string;
-  root: ParcelRequire;
+function $parcel$interopDefault(a) {
+  return a && a.__esModule ? a.default : a;
 }
-interface ParcelModule {
-  hot: {|
-    data: mixed,
-    accept(cb: (Function) => void): void,
-    dispose(cb: (mixed) => void): void,
-    // accept(deps: Array<string> | string, cb: (Function) => void): void,
-    // decline(): void,
-    _acceptCallbacks: Array<(Function) => void>,
-    _disposeCallbacks: Array<(mixed) => void>,
-  |};
-}
-interface ExtensionContext {
-  runtime: {|
-    reload(): void,
-    getURL(url: string): string;
-    getManifest(): {manifest_version: number, ...};
-  |};
-}
-declare var module: {bundle: ParcelRequire, ...};
-declare var HMR_HOST: string;
-declare var HMR_PORT: string;
-declare var HMR_SERVER_PORT: string;
-declare var HMR_ENV_HASH: string;
-declare var HMR_SECURE: boolean;
-declare var HMR_USE_SSE: boolean;
-declare var chrome: ExtensionContext;
-declare var browser: ExtensionContext;
-declare var __parcel__import__: (string) => Promise<void>;
-declare var __parcel__importScripts__: (string) => Promise<void>;
-declare var globalThis: typeof self;
-declare var ServiceWorkerGlobalScope: Object;
-*/ var OVERLAY_ID = '__parcel__error__overlay__';
-var OldModule = module.bundle.Module;
-function Module(moduleName) {
-    OldModule.call(this, moduleName);
-    this.hot = {
-        data: module.bundle.hotData[moduleName],
-        _acceptCallbacks: [],
-        _disposeCallbacks: [],
-        accept: function(fn) {
-            this._acceptCallbacks.push(fn || function() {});
-        },
-        dispose: function(fn) {
-            this._disposeCallbacks.push(fn);
-        }
-    };
-    module.bundle.hotData[moduleName] = undefined;
-}
-module.bundle.Module = Module;
-module.bundle.hotData = {};
-var checkedAssets /*: {|[string]: boolean|} */ , disposedAssets /*: {|[string]: boolean|} */ , assetsToDispose /*: Array<[ParcelRequire, string]> */ , assetsToAccept /*: Array<[ParcelRequire, string]> */ , bundleNotFound = false;
-function getHostname() {
-    return HMR_HOST || (typeof location !== 'undefined' && location.protocol.indexOf('http') === 0 ? location.hostname : 'localhost');
-}
-function getPort() {
-    return HMR_PORT || (typeof location !== 'undefined' ? location.port : HMR_SERVER_PORT);
-}
-// eslint-disable-next-line no-redeclare
-let WebSocket = globalThis.WebSocket;
-if (!WebSocket && typeof module.bundle.root === 'function') try {
-    // eslint-disable-next-line no-global-assign
-    WebSocket = module.bundle.root('ws');
-} catch  {
-// ignore.
-}
-var hostname = getHostname();
-var port = getPort();
-var protocol = HMR_SECURE || typeof location !== 'undefined' && location.protocol === 'https:' && ![
-    'localhost',
-    '127.0.0.1',
-    '0.0.0.0'
-].includes(hostname) ? 'wss' : 'ws';
-// eslint-disable-next-line no-redeclare
-var parent = module.bundle.parent;
-if (!parent || !parent.isParcelRequire) {
-    // Web extension context
-    var extCtx = typeof browser === 'undefined' ? typeof chrome === 'undefined' ? null : chrome : browser;
-    // Safari doesn't support sourceURL in error stacks.
-    // eval may also be disabled via CSP, so do a quick check.
-    var supportsSourceURL = false;
-    try {
-        (0, eval)('throw new Error("test"); //# sourceURL=test.js');
-    } catch (err) {
-        supportsSourceURL = err.stack.includes('test.js');
-    }
-    var ws;
-    if (HMR_USE_SSE) ws = new EventSource('/__parcel_hmr');
-    else try {
-        // If we're running in the dev server's node runner, listen for messages on the parent port.
-        let { workerData, parentPort } = module.bundle.root('node:worker_threads') /*: any*/ ;
-        if (workerData !== null && workerData !== void 0 && workerData.__parcel) {
-            parentPort.on('message', async (message)=>{
-                try {
-                    await handleMessage(message);
-                    parentPort.postMessage('updated');
-                } catch  {
-                    parentPort.postMessage('restart');
-                }
-            });
-            // After the bundle has finished running, notify the dev server that the HMR update is complete.
-            queueMicrotask(()=>parentPort.postMessage('ready'));
-        }
-    } catch  {
-        if (typeof WebSocket !== 'undefined') try {
-            ws = new WebSocket(protocol + '://' + hostname + (port ? ':' + port : '') + '/');
-        } catch (err) {
-            // Ignore cloudflare workers error.
-            if (err.message && !err.message.includes('Disallowed operation called within global scope')) console.error(err.message);
-        }
-    }
-    if (ws) {
-        // $FlowFixMe
-        ws.onmessage = async function(event /*: {data: string, ...} */ ) {
-            var data /*: HMRMessage */  = JSON.parse(event.data);
-            await handleMessage(data);
-        };
-        if (ws instanceof WebSocket) {
-            ws.onerror = function(e) {
-                if (e.message) console.error(e.message);
-            };
-            ws.onclose = function() {
-                console.warn("[parcel] \uD83D\uDEA8 Connection to the HMR server was lost");
-            };
-        }
-    }
-}
-async function handleMessage(data /*: HMRMessage */ ) {
-    checkedAssets = {} /*: {|[string]: boolean|} */ ;
-    disposedAssets = {} /*: {|[string]: boolean|} */ ;
-    assetsToAccept = [];
-    assetsToDispose = [];
-    bundleNotFound = false;
-    if (data.type === 'reload') fullReload();
-    else if (data.type === 'update') {
-        // Remove error overlay if there is one
-        if (typeof document !== 'undefined') removeErrorOverlay();
-        let assets = data.assets;
-        // Handle HMR Update
-        let handled = assets.every((asset)=>{
-            return asset.type === 'css' || asset.type === 'js' && hmrAcceptCheck(module.bundle.root, asset.id, asset.depsByBundle);
-        });
-        // Dispatch a custom event in case a bundle was not found. This might mean
-        // an asset on the server changed and we should reload the page. This event
-        // gives the client an opportunity to refresh without losing state
-        // (e.g. via React Server Components). If e.preventDefault() is not called,
-        // we will trigger a full page reload.
-        if (handled && bundleNotFound && assets.some((a)=>a.envHash !== HMR_ENV_HASH) && typeof window !== 'undefined' && typeof CustomEvent !== 'undefined') handled = !window.dispatchEvent(new CustomEvent('parcelhmrreload', {
-            cancelable: true
-        }));
-        if (handled) {
-            console.clear();
-            // Dispatch custom event so other runtimes (e.g React Refresh) are aware.
-            if (typeof window !== 'undefined' && typeof CustomEvent !== 'undefined') window.dispatchEvent(new CustomEvent('parcelhmraccept'));
-            await hmrApplyUpdates(assets);
-            hmrDisposeQueue();
-            // Run accept callbacks. This will also re-execute other disposed assets in topological order.
-            let processedAssets = {};
-            for(let i = 0; i < assetsToAccept.length; i++){
-                let id = assetsToAccept[i][1];
-                if (!processedAssets[id]) {
-                    hmrAccept(assetsToAccept[i][0], id);
-                    processedAssets[id] = true;
-                }
-            }
-        } else fullReload();
-    }
-    if (data.type === 'error') {
-        // Log parcel errors to console
-        for (let ansiDiagnostic of data.diagnostics.ansi){
-            let stack = ansiDiagnostic.codeframe ? ansiDiagnostic.codeframe : ansiDiagnostic.stack;
-            console.error("\uD83D\uDEA8 [parcel]: " + ansiDiagnostic.message + '\n' + stack + '\n\n' + ansiDiagnostic.hints.join('\n'));
-        }
-        if (typeof document !== 'undefined') {
-            // Render the fancy html overlay
-            removeErrorOverlay();
-            var overlay = createErrorOverlay(data.diagnostics.html);
-            // $FlowFixMe
-            document.body.appendChild(overlay);
-        }
-    }
-}
-function removeErrorOverlay() {
-    var overlay = document.getElementById(OVERLAY_ID);
-    if (overlay) {
-        overlay.remove();
-        console.log("[parcel] \u2728 Error resolved");
-    }
-}
-function createErrorOverlay(diagnostics) {
-    var overlay = document.createElement('div');
-    overlay.id = OVERLAY_ID;
-    let errorHTML = '<div style="background: black; opacity: 0.85; font-size: 16px; color: white; position: fixed; height: 100%; width: 100%; top: 0px; left: 0px; padding: 30px; font-family: Menlo, Consolas, monospace; z-index: 9999;">';
-    for (let diagnostic of diagnostics){
-        let stack = diagnostic.frames.length ? diagnostic.frames.reduce((p, frame)=>{
-            return `${p}
-<a href="${protocol === 'wss' ? 'https' : 'http'}://${hostname}:${port}/__parcel_launch_editor?file=${encodeURIComponent(frame.location)}" style="text-decoration: underline; color: #888" onclick="fetch(this.href); return false">${frame.location}</a>
-${frame.code}`;
-        }, '') : diagnostic.stack;
-        errorHTML += `
-      <div>
-        <div style="font-size: 18px; font-weight: bold; margin-top: 20px;">
-          \u{1F6A8} ${diagnostic.message}
-        </div>
-        <pre>${stack}</pre>
-        <div>
-          ${diagnostic.hints.map((hint)=>"<div>\uD83D\uDCA1 " + hint + '</div>').join('')}
-        </div>
-        ${diagnostic.documentation ? `<div>\u{1F4DD} <a style="color: violet" href="${diagnostic.documentation}" target="_blank">Learn more</a></div>` : ''}
-      </div>
-    `;
-    }
-    errorHTML += '</div>';
-    overlay.innerHTML = errorHTML;
-    return overlay;
-}
-function fullReload() {
-    if (typeof location !== 'undefined' && 'reload' in location) location.reload();
-    else if (typeof extCtx !== 'undefined' && extCtx && extCtx.runtime && extCtx.runtime.reload) extCtx.runtime.reload();
-    else try {
-        let { workerData, parentPort } = module.bundle.root('node:worker_threads') /*: any*/ ;
-        if (workerData !== null && workerData !== void 0 && workerData.__parcel) parentPort.postMessage('restart');
-    } catch (err) {
-        console.error("[parcel] \u26A0\uFE0F An HMR update was not accepted. Please restart the process.");
-    }
-}
-function getParents(bundle, id) /*: Array<[ParcelRequire, string]> */ {
-    var modules = bundle.modules;
-    if (!modules) return [];
-    var parents = [];
-    var k, d, dep;
-    for(k in modules)for(d in modules[k][1]){
-        dep = modules[k][1][d];
-        if (dep === id || Array.isArray(dep) && dep[dep.length - 1] === id) parents.push([
-            bundle,
-            k
-        ]);
-    }
-    if (bundle.parent) parents = parents.concat(getParents(bundle.parent, id));
-    return parents;
-}
-function updateLink(link) {
-    var href = link.getAttribute('href');
-    if (!href) return;
-    var newLink = link.cloneNode();
-    newLink.onload = function() {
-        if (link.parentNode !== null) // $FlowFixMe
-        link.parentNode.removeChild(link);
-    };
-    newLink.setAttribute('href', // $FlowFixMe
-    href.split('?')[0] + '?' + Date.now());
-    // $FlowFixMe
-    link.parentNode.insertBefore(newLink, link.nextSibling);
-}
-var cssTimeout = null;
-function reloadCSS() {
-    if (cssTimeout || typeof document === 'undefined') return;
-    cssTimeout = setTimeout(function() {
-        var links = document.querySelectorAll('link[rel="stylesheet"]');
-        for(var i = 0; i < links.length; i++){
-            // $FlowFixMe[incompatible-type]
-            var href /*: string */  = links[i].getAttribute('href');
-            var hostname = getHostname();
-            var servedFromHMRServer = hostname === 'localhost' ? new RegExp('^(https?:\\/\\/(0.0.0.0|127.0.0.1)|localhost):' + getPort()).test(href) : href.indexOf(hostname + ':' + getPort());
-            var absolute = /^https?:\/\//i.test(href) && href.indexOf(location.origin) !== 0 && !servedFromHMRServer;
-            if (!absolute) updateLink(links[i]);
-        }
-        cssTimeout = null;
-    }, 50);
-}
-function hmrDownload(asset) {
-    if (asset.type === 'js') {
-        if (typeof document !== 'undefined') {
-            let script = document.createElement('script');
-            script.src = asset.url + '?t=' + Date.now();
-            if (asset.outputFormat === 'esmodule') script.type = 'module';
-            return new Promise((resolve, reject)=>{
-                var _document$head;
-                script.onload = ()=>resolve(script);
-                script.onerror = reject;
-                (_document$head = document.head) === null || _document$head === void 0 || _document$head.appendChild(script);
-            });
-        } else if (typeof importScripts === 'function') {
-            // Worker scripts
-            if (asset.outputFormat === 'esmodule') return import(asset.url + '?t=' + Date.now());
-            else return new Promise((resolve, reject)=>{
-                try {
-                    importScripts(asset.url + '?t=' + Date.now());
-                    resolve();
-                } catch (err) {
-                    reject(err);
-                }
-            });
-        }
-    }
-}
-async function hmrApplyUpdates(assets) {
-    global.parcelHotUpdate = Object.create(null);
-    let scriptsToRemove;
-    try {
-        // If sourceURL comments aren't supported in eval, we need to load
-        // the update from the dev server over HTTP so that stack traces
-        // are correct in errors/logs. This is much slower than eval, so
-        // we only do it if needed (currently just Safari).
-        // https://bugs.webkit.org/show_bug.cgi?id=137297
-        // This path is also taken if a CSP disallows eval.
-        if (!supportsSourceURL) {
-            let promises = assets.map((asset)=>{
-                var _hmrDownload;
-                return (_hmrDownload = hmrDownload(asset)) === null || _hmrDownload === void 0 ? void 0 : _hmrDownload.catch((err)=>{
-                    // Web extension fix
-                    if (extCtx && extCtx.runtime && extCtx.runtime.getManifest().manifest_version == 3 && typeof ServiceWorkerGlobalScope != 'undefined' && global instanceof ServiceWorkerGlobalScope) {
-                        extCtx.runtime.reload();
-                        return;
-                    }
-                    throw err;
-                });
-            });
-            scriptsToRemove = await Promise.all(promises);
-        }
-        assets.forEach(function(asset) {
-            hmrApply(module.bundle.root, asset);
-        });
-    } finally{
-        delete global.parcelHotUpdate;
-        if (scriptsToRemove) scriptsToRemove.forEach((script)=>{
-            if (script) {
-                var _document$head2;
-                (_document$head2 = document.head) === null || _document$head2 === void 0 || _document$head2.removeChild(script);
-            }
-        });
-    }
-}
-function hmrApply(bundle /*: ParcelRequire */ , asset /*:  HMRAsset */ ) {
-    var modules = bundle.modules;
-    if (!modules) return;
-    if (asset.type === 'css') reloadCSS();
-    else if (asset.type === 'js') {
-        let deps = asset.depsByBundle[bundle.HMR_BUNDLE_ID];
-        if (deps) {
-            if (modules[asset.id]) {
-                // Remove dependencies that are removed and will become orphaned.
-                // This is necessary so that if the asset is added back again, the cache is gone, and we prevent a full page reload.
-                let oldDeps = modules[asset.id][1];
-                for(let dep in oldDeps)if (!deps[dep] || deps[dep] !== oldDeps[dep]) {
-                    let id = oldDeps[dep];
-                    let parents = getParents(module.bundle.root, id);
-                    if (parents.length === 1) hmrDelete(module.bundle.root, id);
-                }
-            }
-            if (supportsSourceURL) // Global eval. We would use `new Function` here but browser
-            // support for source maps is better with eval.
-            (0, eval)(asset.output);
-            // $FlowFixMe
-            let fn = global.parcelHotUpdate[asset.id];
-            modules[asset.id] = [
-                fn,
-                deps
-            ];
-        }
-        // Always traverse to the parent bundle, even if we already replaced the asset in this bundle.
-        // This is required in case modules are duplicated. We need to ensure all instances have the updated code.
-        if (bundle.parent) hmrApply(bundle.parent, asset);
-    }
-}
-function hmrDelete(bundle, id) {
-    let modules = bundle.modules;
-    if (!modules) return;
-    if (modules[id]) {
-        // Collect dependencies that will become orphaned when this module is deleted.
-        let deps = modules[id][1];
-        let orphans = [];
-        for(let dep in deps){
-            let parents = getParents(module.bundle.root, deps[dep]);
-            if (parents.length === 1) orphans.push(deps[dep]);
-        }
-        // Delete the module. This must be done before deleting dependencies in case of circular dependencies.
-        delete modules[id];
-        delete bundle.cache[id];
-        // Now delete the orphans.
-        orphans.forEach((id)=>{
-            hmrDelete(module.bundle.root, id);
-        });
-    } else if (bundle.parent) hmrDelete(bundle.parent, id);
-}
-function hmrAcceptCheck(bundle /*: ParcelRequire */ , id /*: string */ , depsByBundle /*: ?{ [string]: { [string]: string } }*/ ) {
-    checkedAssets = {};
-    if (hmrAcceptCheckOne(bundle, id, depsByBundle)) return true;
-    // Traverse parents breadth first. All possible ancestries must accept the HMR update, or we'll reload.
-    let parents = getParents(module.bundle.root, id);
-    let accepted = false;
-    while(parents.length > 0){
-        let v = parents.shift();
-        let a = hmrAcceptCheckOne(v[0], v[1], null);
-        if (a) // If this parent accepts, stop traversing upward, but still consider siblings.
-        accepted = true;
-        else if (a !== null) {
-            // Otherwise, queue the parents in the next level upward.
-            let p = getParents(module.bundle.root, v[1]);
-            if (p.length === 0) {
-                // If there are no parents, then we've reached an entry without accepting. Reload.
-                accepted = false;
-                break;
-            }
-            parents.push(...p);
-        }
-    }
-    return accepted;
-}
-function hmrAcceptCheckOne(bundle /*: ParcelRequire */ , id /*: string */ , depsByBundle /*: ?{ [string]: { [string]: string } }*/ ) {
-    var modules = bundle.modules;
-    if (!modules) return;
-    if (depsByBundle && !depsByBundle[bundle.HMR_BUNDLE_ID]) {
-        // If we reached the root bundle without finding where the asset should go,
-        // there's nothing to do. Mark as "accepted" so we don't reload the page.
-        if (!bundle.parent) {
-            bundleNotFound = true;
-            return true;
-        }
-        return hmrAcceptCheckOne(bundle.parent, id, depsByBundle);
-    }
-    if (checkedAssets[id]) return null;
-    checkedAssets[id] = true;
-    var cached = bundle.cache[id];
-    if (!cached) return true;
-    assetsToDispose.push([
-        bundle,
-        id
-    ]);
-    if (cached && cached.hot && cached.hot._acceptCallbacks.length) {
-        assetsToAccept.push([
-            bundle,
-            id
-        ]);
-        return true;
-    }
-    return false;
-}
-function hmrDisposeQueue() {
-    // Dispose all old assets.
-    for(let i = 0; i < assetsToDispose.length; i++){
-        let id = assetsToDispose[i][1];
-        if (!disposedAssets[id]) {
-            hmrDispose(assetsToDispose[i][0], id);
-            disposedAssets[id] = true;
-        }
-    }
-    assetsToDispose = [];
-}
-function hmrDispose(bundle /*: ParcelRequire */ , id /*: string */ ) {
-    var cached = bundle.cache[id];
-    bundle.hotData[id] = {};
-    if (cached && cached.hot) cached.hot.data = bundle.hotData[id];
-    if (cached && cached.hot && cached.hot._disposeCallbacks.length) cached.hot._disposeCallbacks.forEach(function(cb) {
-        cb(bundle.hotData[id]);
-    });
-    delete bundle.cache[id];
-}
-function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
-    // Execute the module.
-    bundle(id);
-    // Run the accept callbacks in the new version of the module.
-    var cached = bundle.cache[id];
-    if (cached && cached.hot && cached.hot._acceptCallbacks.length) {
-        let assetsToAlsoAccept = [];
-        cached.hot._acceptCallbacks.forEach(function(cb) {
-            let additionalAssets = cb(function() {
-                return getParents(module.bundle.root, id);
-            });
-            if (Array.isArray(additionalAssets) && additionalAssets.length) assetsToAlsoAccept.push(...additionalAssets);
-        });
-        if (assetsToAlsoAccept.length) {
-            let handled = assetsToAlsoAccept.every(function(a) {
-                return hmrAcceptCheck(a[0], a[1]);
-            });
-            if (!handled) return fullReload();
-            hmrDisposeQueue();
-        }
-    }
-}
-
-},{}],"8JWvp":[function(require,module,exports,__globalThis) {
-var _core = require("@pixu-talks/core");
-
-},{"@pixu-talks/core":"iP4Wg"}],"iP4Wg":[function(require,module,exports,__globalThis) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-var _indexJs = require("./polyfills/index.js");
-var _revealJs = require("reveal.js");
-var _revealJsDefault = parcelHelpers.interopDefault(_revealJs);
-var _highlightJs = require("reveal.js/dist/plugin/highlight.js");
-var _highlightJsDefault = parcelHelpers.interopDefault(_highlightJs);
-var _markdownJs = require("reveal.js/dist/plugin/markdown.js");
-var _markdownJsDefault = parcelHelpers.interopDefault(_markdownJs);
-var _zoomJs = require("reveal.js/dist/plugin/zoom.js");
-var _zoomJsDefault = parcelHelpers.interopDefault(_zoomJs);
-var _notesJs = require("reveal.js/dist/plugin/notes.js");
-var _notesJsDefault = parcelHelpers.interopDefault(_notesJs);
-// import { Header, Menu , Toolbar } from './plugins';
-var _plugins = require("./plugins");
-var _components = require("./components");
-var _utils = require("./utils");
-addEventListener("DOMContentLoaded", ()=>{
-    let deck = new (0, _revealJsDefault.default)(document.querySelector(".reveal"), {
-        ...window.location.href.includes("?print-pdf") && {
-            pdfSeparateFragments: false
-        },
-        hash: true,
-        // plugins: [Markdown, Highlight, Zoom, Notes, Menu, Toolbar, Header],
-        // plugins: [Markdown, Highlight, Zoom, Notes, Toolbar, Menu],
-        plugins: [
-            (0, _markdownJsDefault.default),
-            (0, _highlightJsDefault.default),
-            (0, _zoomJsDefault.default),
-            (0, _notesJsDefault.default),
-            (0, _plugins.Toolbar)
-        ],
-        navigationMode: "linear",
-        menu: {
-            // Specifies which side of the presentation the menu will
-            // be shown. Use 'left' or 'right'.
-            side: "left",
-            // Specifies the width of the menu.
-            // Can be one of the following:
-            // 'normal', 'wide', 'third', 'half', 'full', or
-            // any valid css length value
-            width: "normal",
-            // Add slide numbers to the titles in the slide list.
-            // Use 'true' or format string (same as reveal.js slide numbers)
-            numbers: true,
-            // Specifies which slide elements will be used for generating
-            // the slide titles in the menu. The default selects the first
-            // heading element found in the slide, but you can specify any
-            // valid css selector and the text from the first matching
-            // element will be used.
-            // Note: that a section data-menu-title attribute or an element
-            // with a menu-title class will take precedence over this option
-            titleSelector: "h1, h2, h3, h4, h5, h6",
-            // If slides do not have a matching title, attempt to use the
-            // start of the text content as the title instead
-            useTextContentForMissingTitles: false,
-            // Hide slides from the menu that do not have a title.
-            // Set to 'true' to only list slides with titles.
-            hideMissingTitles: true,
-            // Adds markers to the slide titles to indicate the
-            // progress through the presentation. Set to 'false'
-            // to hide the markers.
-            markers: true,
-            // Specify custom panels to be included in the menu, by
-            // providing an array of objects with 'title', 'icon'
-            // properties, and either a 'src' or 'content' property.
-            custom: false,
-            // // Specifies the themes that will be available in the themes
-            // // menu panel. Set to 'true' to show the themes menu panel
-            // // with the default themes list. Alternatively, provide an
-            // // array to specify the themes to make available in the
-            // // themes menu panel, for example...
-            // //
-            // // [
-            // //     { name: 'Black', theme: 'dist/theme/black.css' },
-            // //     { name: 'White', theme: 'dist/theme/white.css' },
-            // //     { name: 'League', theme: 'dist/theme/league.css' },
-            // //     {
-            // //       name: 'Dark',
-            // //       theme: 'lib/reveal.js/dist/theme/black.css',
-            // //       highlightTheme: 'lib/reveal.js/plugin/highlight/monokai.css'
-            // //     },
-            // //     {
-            // //       name: 'Code: Zenburn',
-            // //       highlightTheme: 'lib/reveal.js/plugin/highlight/zenburn.css'
-            // //     }
-            // // ]
-            // //
-            // // Note: specifying highlightTheme without a theme will
-            // // change the code highlight theme while leaving the
-            // // presentation theme unchanged.
-            // themes: false,
-            // // Specifies the path to the default theme files. If your
-            // // presentation uses a different path to the standard reveal
-            // // layout then you need to provide this option, but only
-            // // when 'themes' is set to 'true'. If you provide your own
-            // // list of themes or 'themes' is set to 'false' the
-            // // 'themesPath' option is ignored.
-            // themesPath: 'dist/theme/',
-            // Specifies if the transitions menu panel will be shown.
-            // Set to 'true' to show the transitions menu panel with
-            // the default transitions list. Alternatively, provide an
-            // array to specify the transitions to make available in
-            // the transitions panel, for example...
-            // ['None', 'Fade', 'Slide']
-            transitions: false,
-            // Adds a menu button to the slides to open the menu panel.
-            // Set to 'false' to hide the button.
-            openButton: false,
-            // If 'true' allows the slide number in the presentation to
-            // open the menu panel. The reveal.js slideNumber option must
-            // be displayed for this to take effect
-            openSlideNumber: false,
-            // If true allows the user to open and navigate the menu using
-            // the keyboard. Standard keyboard interaction with reveal
-            // will be disabled while the menu is open.
-            keyboard: true,
-            // Normally the menu will close on user actions such as
-            // selecting a menu item, or clicking the presentation area.
-            // If 'true', the sticky option will leave the menu open
-            // until it is explicitly closed, that is, using the close
-            // button or pressing the ESC or m key (when the keyboard
-            // interaction option is enabled).
-            sticky: false,
-            // If 'true' standard menu items will be automatically opened
-            // when navigating using the keyboard. Note: this only takes
-            // effect when both the 'keyboard' and 'sticky' options are enabled.
-            autoOpen: true,
-            // If 'true' the menu will not be created until it is explicitly
-            // requested by calling RevealMenu.init(). Note this will delay
-            // the creation of all menu panels, including custom panels, and
-            // the menu button.
-            delayInit: false,
-            // If 'true' the menu will be shown when the menu is initialised.
-            openOnInit: false
-        },
-        toolbar: {
-            // Specifies where the toolbar will be shown: 'top' or 'bottom'
-            position: "top",
-            // // If true, the reveal.js-menu will be moved into the toolbar.
-            // // Set to false to leave the menu on its own.
-            // menu: {
-            //   content: '<icon class="draft-ui-icon-hamburger"></icon>',
-            // },
-            menu: false,
-            // Add button to show the help overlay
-            help: {
-                content: '<icon class="draft-ui-icon-circle-info"></icon>'
-            },
-            // Add button to toggle the overview mode on and off
-            colorScheme: {
-                content: '<icon class="draft-ui-icon-computer"></icon>'
-            },
-            // Add button to toggle the overview mode on and off
-            overview: {
-                content: '<icon class="draft-ui-icon-apps"></icon>'
-            },
-            // Add button to toggle fullscreen mode for the presentation
-            fullscreen: {
-                content: '<icon class="draft-ui-icon-zoom-in"></icon>'
-            },
-            // Add button to pause (hide) the presentation display
-            pause: false,
-            // Add button to show the speaker notes
-            notes: false
-        }
-    });
-    // keyboard nav configuration
-    deck.configure({
-        keyboard: {
-            8: "prev",
-            // 27: null,
-            78: null
-        }
-    });
-    deck.initialize();
-    // Make the Reveal object globally available on the /demo page
-    window.Reveal = deck;
-});
-
-},{"./polyfills/index.js":"h2NWw","reveal.js":"swMIW","reveal.js/dist/plugin/highlight.js":"9rbGe","reveal.js/dist/plugin/markdown.js":"9VHNm","reveal.js/dist/plugin/zoom.js":"b2uMh","reveal.js/dist/plugin/notes.js":"juOEH","./plugins":"g7vIF","./components":"lABBs","./utils":"9HSHT","@parcel/transformer-js/src/esmodule-helpers.js":"1egVF"}],"h2NWw":[function(require,module,exports,__globalThis) {
-var _customElementsJs = require("./_customElements.js");
-var _stringsJs = require("./_strings.js");
-
-},{"./_customElements.js":"1BA3e","./_strings.js":"kLyDb"}],"1BA3e":[function(require,module,exports,__globalThis) {
 (function() {
     "use strict";
     var attributesObserver = (whenDefined, MutationObserver1)=>{
         const attributeChanged = (records)=>{
-            for(let i = 0, { length } = records; i < length; i++)dispatch(records[i]);
+            for(let i = 0, { length: length } = records; i < length; i++)dispatch(records[i]);
         };
-        const dispatch = ({ target, attributeName, oldValue })=>{
+        const dispatch = ({ target: target, attributeName: attributeName, oldValue: oldValue })=>{
             target.attributeChangedCallback(attributeName, oldValue, target.getAttribute(attributeName));
         };
         return (target, is)=>{
@@ -916,10 +17,10 @@ var _stringsJs = require("./_strings.js");
                 new MutationObserver1(attributeChanged).observe(target, {
                     attributes: true,
                     attributeOldValue: true,
-                    attributeFilter
+                    attributeFilter: attributeFilter
                 });
-                for(let i = 0, { length } = attributeFilter; i < length; i++)if (target.hasAttribute(attributeFilter[i])) dispatch({
-                    target,
+                for(let i = 0, { length: length } = attributeFilter; i < length; i++)if (target.hasAttribute(attributeFilter[i])) dispatch({
+                    target: target,
                     attributeName: attributeFilter[i],
                     oldValue: null
                 });
@@ -927,12 +28,12 @@ var _stringsJs = require("./_strings.js");
             return target;
         };
     };
-    const { keys } = Object;
+    const { keys: keys } = Object;
     const expando = (element)=>{
         const key = keys(element);
         const value = [];
         const ignore = new Set();
-        const { length } = key;
+        const { length: length } = key;
         for(let i = 0; i < length; i++){
             value[i] = element[key[i]];
             try {
@@ -976,13 +77,13 @@ var _stringsJs = require("./_strings.js");
             if (query.length) {
                 const selectors = query.join(",");
                 const added = new Set(), removed = new Set();
-                for (const { addedNodes, removedNodes } of records){
+                for (const { addedNodes: addedNodes, removedNodes: removedNodes } of records){
                     loop(removedNodes, selectors, added, removed, FALSE, FALSE);
                     loop(addedNodes, selectors, added, removed, TRUE, FALSE);
                 }
             }
         });
-        const { observe } = mo;
+        const { observe: observe } = mo;
         (mo.observe = (node)=>observe.call(mo, node, {
                 subtree: TRUE,
                 childList: TRUE
@@ -992,15 +93,15 @@ var _stringsJs = require("./_strings.js");
     const QSA = "querySelectorAll";
     const { document: document$2, Element: Element$1, MutationObserver: MutationObserver$2, Set: Set$2, WeakMap: WeakMap$1 } = self;
     const elements = (element)=>QSA in element;
-    const { filter } = [];
+    const { filter: filter } = [];
     var qsaObserver = (options)=>{
         const live = new WeakMap$1();
         const drop = (elements)=>{
-            for(let i = 0, { length } = elements; i < length; i++)live.delete(elements[i]);
+            for(let i = 0, { length: length } = elements; i < length; i++)live.delete(elements[i]);
         };
         const flush = ()=>{
             const records = observer.takeRecords();
-            for(let i = 0, { length } = records; i < length; i++){
+            for(let i = 0, { length: length } = records; i < length; i++){
                 parse(filter.call(records[i].removedNodes, elements), false);
                 parse(filter.call(records[i].addedNodes, elements), true);
             }
@@ -1009,7 +110,7 @@ var _stringsJs = require("./_strings.js");
         const notifier = (element, connected)=>{
             let selectors;
             if (connected) {
-                for(let q, m = matches(element), i = 0, { length } = query; i < length; i++)if (m.call(element, q = query[i])) {
+                for(let q, m = matches(element), i = 0, { length: length } = query; i < length; i++)if (m.call(element, q = query[i])) {
                     if (!live.has(element)) live.set(element, new Set$2());
                     selectors = live.get(element);
                     if (!selectors.has(q)) {
@@ -1026,12 +127,12 @@ var _stringsJs = require("./_strings.js");
             }
         };
         const parse = (elements, connected = true)=>{
-            for(let i = 0, { length } = elements; i < length; i++)notifier(elements[i], connected);
+            for(let i = 0, { length: length } = elements; i < length; i++)notifier(elements[i], connected);
         };
-        const { query } = options;
+        const { query: query } = options;
         const root = options.root || document$2;
         const observer = notify(notifier, root, MutationObserver$2, query);
-        const { attachShadow } = Element$1.prototype;
+        const { attachShadow: attachShadow } = Element$1.prototype;
         if (attachShadow) Element$1.prototype.attachShadow = function(init) {
             const shadowRoot = attachShadow.call(this, init);
             observer.observe(shadowRoot);
@@ -1039,21 +140,21 @@ var _stringsJs = require("./_strings.js");
         };
         if (query.length) parse(root[QSA](query));
         return {
-            drop,
-            flush,
-            observer,
-            parse
+            drop: drop,
+            flush: flush,
+            observer: observer,
+            parse: parse
         };
     };
-    const { customElements, document: document$1, Element, MutationObserver: MutationObserver$1, Object: Object$1, Promise: Promise$1, Map, Set: Set$1, WeakMap, Reflect } = self;
-    const { createElement } = document$1;
-    const { define, get, upgrade } = customElements;
-    const { construct } = Reflect || {
+    const { customElements: customElements, document: document$1, Element: Element, MutationObserver: MutationObserver$1, Object: Object$1, Promise: Promise$1, Map: Map, Set: Set$1, WeakMap: WeakMap, Reflect: Reflect } = self;
+    const { createElement: createElement } = document$1;
+    const { define: define, get: get, upgrade: upgrade } = customElements;
+    const { construct: construct } = Reflect || {
         construct (HTMLElement) {
             return HTMLElement.call(this);
         }
     };
-    const { defineProperty, getOwnPropertyNames, setPrototypeOf } = Object$1;
+    const { defineProperty: defineProperty, getOwnPropertyNames: getOwnPropertyNames, setPrototypeOf: setPrototypeOf } = Object$1;
     const shadowRoots = new WeakMap();
     const shadows = new Set$1();
     const classes = new Map();
@@ -1078,9 +179,9 @@ var _stringsJs = require("./_strings.js");
         const method = `${connected ? "" : "dis"}connectedCallback`;
         if (method in proto) element[method]();
     };
-    const { parse } = qsaObserver({
-        query,
-        handle
+    const { parse: parse } = qsaObserver({
+        query: query,
+        handle: handle
     });
     const { parse: parseShadowed } = qsaObserver({
         query: shadowed,
@@ -1094,7 +195,7 @@ var _stringsJs = require("./_strings.js");
     });
     // qsaObserver also patches attachShadow
     // be sure this runs *after* that
-    const { attachShadow } = Element.prototype;
+    const { attachShadow: attachShadow } = Element.prototype;
     if (attachShadow) Element.prototype.attachShadow = function(init) {
         const root = attachShadow.call(this, init);
         shadowRoots.set(this, root);
@@ -1106,8 +207,8 @@ var _stringsJs = require("./_strings.js");
                 _ = $;
             });
             defined.set(name, {
-                $,
-                _
+                $: $,
+                _: _
             });
         }
         return defined.get(name).$;
@@ -1117,9 +218,9 @@ var _stringsJs = require("./_strings.js");
     getOwnPropertyNames(self).filter((k)=>/^HTML.*Element$/.test(k)).forEach((k)=>{
         const HTMLElement = self[k];
         function HTMLBuiltIn() {
-            const { constructor } = this;
+            const { constructor: constructor } = this;
             if (!classes.has(constructor)) throw new TypeError("Illegal constructor");
-            const { is, tag } = classes.get(constructor);
+            const { is: is, tag: tag } = classes.get(constructor);
             if (is) {
                 if (override) return augment(override, is);
                 const element = createElement.call(document$1, tag);
@@ -1166,8 +267,8 @@ var _stringsJs = require("./_strings.js");
         let selector;
         const tag = options && options.extends;
         classes.set(Class, tag ? {
-            is,
-            tag
+            is: is,
+            tag: tag
         } : {
             is: "",
             tag: is
@@ -1197,7 +298,7 @@ var _stringsJs = require("./_strings.js");
     }
 })();
 
-},{}],"kLyDb":[function(require,module,exports,__globalThis) {
+
 /**
  * String prototype polyfills: startsWith and endsWith
  *
@@ -1234,18 +335,16 @@ var _stringsJs = require("./_strings.js");
     return this.substring(length - searchString.length, length) === searchString;
 });
 
-},{}],"swMIW":[function(require,module,exports,__globalThis) {
+
+
+
 //#region js/utils/util.ts
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-//#endregion
-parcelHelpers.export(exports, "default", ()=>B);
-var e = (e, t)=>{
+var $4aa888c367b643f0$var$e = (e, t)=>{
     for(let n in t)e[n] = t[n];
     return e;
-}, t = (e, t)=>Array.from(e.querySelectorAll(t)), n = (e, t, n)=>{
+}, $4aa888c367b643f0$var$t = (e, t)=>Array.from(e.querySelectorAll(t)), $4aa888c367b643f0$var$n = (e, t, n)=>{
     n ? e.classList.add(t) : e.classList.remove(t);
-}, r = (e)=>{
+}, $4aa888c367b643f0$var$r = (e)=>{
     if (typeof e == "string") {
         if (e === "null") return null;
         if (e === "true") return !0;
@@ -1253,23 +352,23 @@ var e = (e, t)=>{
         if (e.match(/^-?[\d\.]+$/)) return parseFloat(e);
     }
     return e;
-}, i = (e, t)=>{
+}, $4aa888c367b643f0$var$i = (e, t)=>{
     e.style.transform = t;
-}, a = (e, t)=>{
+}, $4aa888c367b643f0$var$a = (e, t)=>{
     let n = e.matches || e.matchesSelector || e.msMatchesSelector;
     return !!(n && n.call(e, t));
-}, o = (e, t)=>{
+}, $4aa888c367b643f0$var$o = (e, t)=>{
     if (e && typeof e.closest == "function") return e.closest(t);
     for(; e;){
-        if (a(e, t)) return e;
+        if ($4aa888c367b643f0$var$a(e, t)) return e;
         e = e.parentElement;
     }
     return null;
-}, s = (e)=>{
+}, $4aa888c367b643f0$var$s = (e)=>{
     e = e || document.documentElement;
     let t = e.requestFullscreen || e.webkitRequestFullscreen || e.webkitRequestFullScreen || e.mozRequestFullScreen || e.msRequestFullscreen;
     t && t.apply(e);
-}, c = (e, t, n, r = "")=>{
+}, $4aa888c367b643f0$var$c = (e, t, n, r = "")=>{
     let i = e.querySelectorAll("." + n);
     for(let t = 0; t < i.length; t++){
         let n = i[t];
@@ -1277,10 +376,10 @@ var e = (e, t)=>{
     }
     let a = document.createElement(t);
     return a.className = n, a.innerHTML = r, e.appendChild(a), a;
-}, l = (e)=>{
+}, $4aa888c367b643f0$var$l = (e)=>{
     let t = document.createElement("style");
     return e && e.length > 0 && t.appendChild(document.createTextNode(e)), document.head.appendChild(t), t;
-}, u = ()=>{
+}, $4aa888c367b643f0$var$u = ()=>{
     let e = {};
     location.search.replace(/[A-Z0-9]+?=([\w\.%-]*)/gi, (t)=>{
         let n = t.split("=").shift(), r = t.split("=").pop();
@@ -1288,28 +387,28 @@ var e = (e, t)=>{
     });
     for(let t in e){
         let n = e[t];
-        e[t] = r(unescape(n));
+        e[t] = $4aa888c367b643f0$var$r(unescape(n));
     }
     return e.dependencies !== void 0 && delete e.dependencies, e;
-}, d = (e, t = 0)=>{
+}, $4aa888c367b643f0$var$d = (e, t = 0)=>{
     if (e) {
         var n;
         let r, i = e.style.height;
         return e.style.height = "0px", e.parentElement && (e.parentElement.style.height = "auto"), r = t - (((n = e.parentElement) == null ? void 0 : n.offsetHeight) || 0), e.style.height = i + "px", e.parentElement && e.parentElement.style.removeProperty("height"), r;
     }
     return t;
-}, f = {
+}, $4aa888c367b643f0$var$f = {
     mp4: "video/mp4",
     m4a: "video/mp4",
     ogv: "video/ogg",
     mpeg: "video/mpeg",
     webm: "video/webm"
-}, p = (e = "")=>{
+}, $4aa888c367b643f0$var$p = (e = "")=>{
     let t = e.split(".").pop();
-    return t ? f[t] : void 0;
-}, m = (e = "")=>encodeURI(e).replace(/%5B/g, "[").replace(/%5D/g, "]").replace(/[!'()*]/g, (e)=>`%${e.charCodeAt(0).toString(16).toUpperCase()}`), h = navigator.userAgent, g = /(iphone|ipod|ipad|android)/gi.test(h) || navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1;
-/chrome/i.test(h) && /edge/i.test(h);
-var _ = /android/gi.test(h), v = function(e) {
+    return t ? $4aa888c367b643f0$var$f[t] : void 0;
+}, $4aa888c367b643f0$var$m = (e = "")=>encodeURI(e).replace(/%5B/g, "[").replace(/%5D/g, "]").replace(/[!'()*]/g, (e)=>`%${e.charCodeAt(0).toString(16).toUpperCase()}`), $4aa888c367b643f0$var$h = navigator.userAgent, $4aa888c367b643f0$var$g = /(iphone|ipod|ipad|android)/gi.test($4aa888c367b643f0$var$h) || navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1;
+/chrome/i.test($4aa888c367b643f0$var$h) && /edge/i.test($4aa888c367b643f0$var$h);
+var $4aa888c367b643f0$var$_ = /android/gi.test($4aa888c367b643f0$var$h), $4aa888c367b643f0$var$v = function(e) {
     if (e) {
         var t = function(e) {
             return [].slice.call(e);
@@ -1438,36 +537,36 @@ var _ = /android/gi.test(h), v = function(e) {
 }(typeof window > "u" ? null : window);
 //#endregion
 //#region \0@oxc-project+runtime@0.124.0/helpers/typeof.js
-function y(e) {
+function $4aa888c367b643f0$var$y(e) {
     "@babel/helpers - typeof";
-    return y = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(e) {
+    return $4aa888c367b643f0$var$y = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(e) {
         return typeof e;
     } : function(e) {
         return e && typeof Symbol == "function" && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e;
-    }, y(e);
+    }, $4aa888c367b643f0$var$y(e);
 }
 //#endregion
 //#region \0@oxc-project+runtime@0.124.0/helpers/toPrimitive.js
-function b(e, t) {
-    if (y(e) != "object" || !e) return e;
+function $4aa888c367b643f0$var$b(e, t) {
+    if ($4aa888c367b643f0$var$y(e) != "object" || !e) return e;
     var n = e[Symbol.toPrimitive];
     if (n !== void 0) {
         var r = n.call(e, t || "default");
-        if (y(r) != "object") return r;
+        if ($4aa888c367b643f0$var$y(r) != "object") return r;
         throw TypeError("@@toPrimitive must return a primitive value.");
     }
     return (t === "string" ? String : Number)(e);
 }
 //#endregion
 //#region \0@oxc-project+runtime@0.124.0/helpers/toPropertyKey.js
-function x(e) {
-    var t = b(e, "string");
-    return y(t) == "symbol" ? t : t + "";
+function $4aa888c367b643f0$var$x(e) {
+    var t = $4aa888c367b643f0$var$b(e, "string");
+    return $4aa888c367b643f0$var$y(t) == "symbol" ? t : t + "";
 }
 //#endregion
 //#region \0@oxc-project+runtime@0.124.0/helpers/defineProperty.js
-function S(e, t, n) {
-    return (t = x(t)) in e ? Object.defineProperty(e, t, {
+function $4aa888c367b643f0$var$S(e, t, n) {
+    return (t = $4aa888c367b643f0$var$x(t)) in e ? Object.defineProperty(e, t, {
         value: n,
         enumerable: !0,
         configurable: !0,
@@ -1476,9 +575,9 @@ function S(e, t, n) {
 }
 //#endregion
 //#region js/controllers/slidecontent.js
-var ee = class {
+var $4aa888c367b643f0$var$ee = class {
     constructor(e){
-        S(this, "allowedToPlayAudio", null), this.Reveal = e, this.startEmbeddedMedia = this.startEmbeddedMedia.bind(this), this.startEmbeddedIframe = this.startEmbeddedIframe.bind(this), this.preventIframeAutoFocus = this.preventIframeAutoFocus.bind(this), this.ensureMobileMediaPlaying = this.ensureMobileMediaPlaying.bind(this), this.failedAudioPlaybackTargets = /* @__PURE__ */ new Set(), this.failedVideoPlaybackTargets = /* @__PURE__ */ new Set(), this.failedMutedVideoPlaybackTargets = /* @__PURE__ */ new Set(), this.renderMediaPlayButton();
+        $4aa888c367b643f0$var$S(this, "allowedToPlayAudio", null), this.Reveal = e, this.startEmbeddedMedia = this.startEmbeddedMedia.bind(this), this.startEmbeddedIframe = this.startEmbeddedIframe.bind(this), this.preventIframeAutoFocus = this.preventIframeAutoFocus.bind(this), this.ensureMobileMediaPlaying = this.ensureMobileMediaPlaying.bind(this), this.failedAudioPlaybackTargets = /* @__PURE__ */ new Set(), this.failedVideoPlaybackTargets = /* @__PURE__ */ new Set(), this.failedMutedVideoPlaybackTargets = /* @__PURE__ */ new Set(), this.renderMediaPlayButton();
     }
     renderMediaPlayButton() {
         this.mediaPlayButton = document.createElement("button"), this.mediaPlayButton.className = "r-overlay-button r-media-play-button", this.mediaPlayButton.addEventListener("click", ()=>{
@@ -1504,14 +603,14 @@ var ee = class {
             let t = r.replace(/\s*!important\s*$/, "").trim();
             e.style.setProperty("display", t, "important");
         } else e.style.display = r;
-        t(e, "img[data-src], video[data-src], audio[data-src], iframe[data-src]").forEach((e)=>{
+        $4aa888c367b643f0$var$t(e, "img[data-src], video[data-src], audio[data-src], iframe[data-src]").forEach((e)=>{
             let t = e.tagName === "IFRAME";
             (!t || this.shouldPreload(e)) && (e.setAttribute("src", e.getAttribute("data-src")), e.setAttribute("data-lazy-loaded", ""), e.removeAttribute("data-src"), t && e.addEventListener("load", this.preventIframeAutoFocus));
-        }), t(e, "video, audio").forEach((e)=>{
+        }), $4aa888c367b643f0$var$t(e, "video, audio").forEach((e)=>{
             let n = 0;
-            t(e, "source[data-src]").forEach((e)=>{
+            $4aa888c367b643f0$var$t(e, "source[data-src]").forEach((e)=>{
                 e.setAttribute("src", e.getAttribute("data-src")), e.removeAttribute("data-src"), e.setAttribute("data-lazy-loaded", ""), n += 1;
-            }), g && e.tagName === "VIDEO" && e.setAttribute("playsinline", ""), n > 0 && e.load();
+            }), $4aa888c367b643f0$var$g && e.tagName === "VIDEO" && e.setAttribute("playsinline", ""), n > 0 && e.load();
         });
         let i = e.slideBackgroundElement;
         if (i) {
@@ -1520,13 +619,13 @@ var ee = class {
             if (i.hasAttribute("data-loaded") === !1) {
                 i.setAttribute("data-loaded", "true");
                 let a = e.getAttribute("data-background-image"), o = e.getAttribute("data-background-video"), s = e.hasAttribute("data-background-video-loop"), c = e.hasAttribute("data-background-video-muted");
-                if (a) /^data:/.test(a.trim()) ? t.style.backgroundImage = `url(${a.trim()})` : t.style.backgroundImage = a.split(",").map((e)=>`url(${m(decodeURI(e.trim()))})`).join(",");
+                if (a) /^data:/.test(a.trim()) ? t.style.backgroundImage = `url(${a.trim()})` : t.style.backgroundImage = a.split(",").map((e)=>`url(${$4aa888c367b643f0$var$m(decodeURI(e.trim()))})`).join(",");
                 else if (o) {
                     let e = document.createElement("video");
-                    s && e.setAttribute("loop", ""), (c || this.Reveal.isSpeakerNotes()) && (e.muted = !0), g && e.setAttribute("playsinline", ""), o.split(",").forEach((t)=>{
+                    s && e.setAttribute("loop", ""), (c || this.Reveal.isSpeakerNotes()) && (e.muted = !0), $4aa888c367b643f0$var$g && e.setAttribute("playsinline", ""), o.split(",").forEach((t)=>{
                         let n = document.createElement("source");
                         n.setAttribute("src", t);
-                        let r = p(t);
+                        let r = $4aa888c367b643f0$var$p(t);
                         r && n.setAttribute("type", r), e.appendChild(n);
                     }), t.appendChild(e);
                 } else if (r && n.excludeIframes !== !0) {
@@ -1541,7 +640,7 @@ var ee = class {
     }
     layout(e) {
         Array.from(e.querySelectorAll(".r-fit-text")).forEach((e)=>{
-            v(e, {
+            $4aa888c367b643f0$var$v(e, {
                 minSize: 24,
                 maxSize: this.Reveal.getConfig().height * .8,
                 observeMutations: !1,
@@ -1552,17 +651,17 @@ var ee = class {
     unload(e) {
         e.style.display = "none";
         let n = this.Reveal.getSlideBackground(e);
-        n && (n.style.display = "none", t(n, "iframe[src]").forEach((e)=>{
+        n && (n.style.display = "none", $4aa888c367b643f0$var$t(n, "iframe[src]").forEach((e)=>{
             e.removeAttribute("src");
-        })), t(e, "video[data-lazy-loaded][src], audio[data-lazy-loaded][src], iframe[data-lazy-loaded][src]").forEach((e)=>{
+        })), $4aa888c367b643f0$var$t(e, "video[data-lazy-loaded][src], audio[data-lazy-loaded][src], iframe[data-lazy-loaded][src]").forEach((e)=>{
             e.setAttribute("data-src", e.getAttribute("src")), e.removeAttribute("src");
-        }), t(e, "video[data-lazy-loaded] source[src], audio source[src]").forEach((e)=>{
+        }), $4aa888c367b643f0$var$t(e, "video[data-lazy-loaded] source[src], audio source[src]").forEach((e)=>{
             e.setAttribute("data-src", e.getAttribute("src")), e.removeAttribute("src");
         });
     }
     formatEmbeddedContent() {
         let e = (e, n, r)=>{
-            t(this.Reveal.getSlidesElement(), "iframe[" + e + "*=\"" + n + "\"]").forEach((t)=>{
+            $4aa888c367b643f0$var$t(this.Reveal.getSlidesElement(), "iframe[" + e + "*=\"" + n + "\"]").forEach((t)=>{
                 let n = t.getAttribute(e);
                 n && n.indexOf(r) === -1 && t.setAttribute(e, n + (/\?/.test(n) ? "&" : "?") + r);
             });
@@ -1572,23 +671,23 @@ var ee = class {
     startEmbeddedContent(e) {
         if (e) {
             let n = this.Reveal.isSpeakerNotes();
-            t(e, "img[src$=\".gif\"]").forEach((e)=>{
+            $4aa888c367b643f0$var$t(e, "img[src$=\".gif\"]").forEach((e)=>{
                 e.setAttribute("src", e.getAttribute("src"));
-            }), t(e, "video, audio").forEach((e)=>{
-                if (o(e, ".fragment") && !o(e, ".fragment.visible")) return;
+            }), $4aa888c367b643f0$var$t(e, "video, audio").forEach((e)=>{
+                if ($4aa888c367b643f0$var$o(e, ".fragment") && !$4aa888c367b643f0$var$o(e, ".fragment.visible")) return;
                 let t = this.Reveal.getConfig().autoPlayMedia;
-                if (typeof t != "boolean" && (t = e.hasAttribute("data-autoplay") || !!o(e, ".slide-background")), t && typeof e.play == "function") {
+                if (typeof t != "boolean" && (t = e.hasAttribute("data-autoplay") || !!$4aa888c367b643f0$var$o(e, ".slide-background")), t && typeof e.play == "function") {
                     if (n && !e.muted) return;
                     e.readyState > 1 ? this.startEmbeddedMedia({
                         target: e
-                    }) : g ? (e.addEventListener("canplay", this.ensureMobileMediaPlaying), this.playMediaElement(e)) : (e.removeEventListener("loadeddata", this.startEmbeddedMedia), e.addEventListener("loadeddata", this.startEmbeddedMedia));
+                    }) : $4aa888c367b643f0$var$g ? (e.addEventListener("canplay", this.ensureMobileMediaPlaying), this.playMediaElement(e)) : (e.removeEventListener("loadeddata", this.startEmbeddedMedia), e.addEventListener("loadeddata", this.startEmbeddedMedia));
                 }
-            }), n || (t(e, "iframe[src]").forEach((e)=>{
-                o(e, ".fragment") && !o(e, ".fragment.visible") || this.startEmbeddedIframe({
+            }), n || ($4aa888c367b643f0$var$t(e, "iframe[src]").forEach((e)=>{
+                $4aa888c367b643f0$var$o(e, ".fragment") && !$4aa888c367b643f0$var$o(e, ".fragment.visible") || this.startEmbeddedIframe({
                     target: e
                 });
-            }), t(e, "iframe[data-src]").forEach((e)=>{
-                o(e, ".fragment") && !o(e, ".fragment.visible") || e.getAttribute("src") !== e.getAttribute("data-src") && (e.removeEventListener("load", this.startEmbeddedIframe), e.addEventListener("load", this.startEmbeddedIframe), e.setAttribute("src", e.getAttribute("data-src")));
+            }), $4aa888c367b643f0$var$t(e, "iframe[data-src]").forEach((e)=>{
+                $4aa888c367b643f0$var$o(e, ".fragment") && !$4aa888c367b643f0$var$o(e, ".fragment.visible") || e.getAttribute("src") !== e.getAttribute("data-src") && (e.removeEventListener("load", this.startEmbeddedIframe), e.addEventListener("load", this.startEmbeddedIframe), e.setAttribute("src", e.getAttribute("data-src")));
             }));
         }
     }
@@ -1600,7 +699,7 @@ var ee = class {
         }, 1e3);
     }
     startEmbeddedMedia(e) {
-        let t = !!o(e.target, "html"), n = !!o(e.target, ".present");
+        let t = !!$4aa888c367b643f0$var$o(e.target, "html"), n = !!$4aa888c367b643f0$var$o(e.target, ".present");
         t && n && (e.target.paused || e.target.ended) && (e.target.currentTime = 0, this.playMediaElement(e.target)), e.target.removeEventListener("loadeddata", this.startEmbeddedMedia);
     }
     playMediaElement(e) {
@@ -1611,7 +710,7 @@ var ee = class {
             if (t.name === "NotAllowedError") {
                 if (this.allowedToPlayAudio = !1, e.tagName === "VIDEO") {
                     this.onVideoPlaybackNotAllowed(e);
-                    let t = !!o(e, "html"), n = !!o(e, ".present"), r = e.muted;
+                    let t = !!$4aa888c367b643f0$var$o(e, "html"), n = !!$4aa888c367b643f0$var$o(e, ".present"), r = e.muted;
                     t && n && !r && (e.setAttribute("data-muted-by-reveal", "true"), e.muted = !0, e.play().catch(()=>{
                         this.onMutedVideoPlaybackNotAllowed(e);
                     }));
@@ -1622,25 +721,25 @@ var ee = class {
     startEmbeddedIframe(e) {
         let t = e.target;
         if (this.preventIframeAutoFocus(e), t && t.contentWindow) {
-            let n = !!o(e.target, "html"), r = !!o(e.target, ".present");
+            let n = !!$4aa888c367b643f0$var$o(e.target, "html"), r = !!$4aa888c367b643f0$var$o(e.target, ".present");
             if (n && r) {
                 let e = this.Reveal.getConfig().autoPlayMedia;
-                typeof e != "boolean" && (e = t.hasAttribute("data-autoplay") || !!o(t, ".slide-background")), /youtube\.com\/embed\//.test(t.getAttribute("src")) && e ? t.contentWindow.postMessage("{\"event\":\"command\",\"func\":\"playVideo\",\"args\":\"\"}", "*") : /player\.vimeo\.com\//.test(t.getAttribute("src")) && e ? t.contentWindow.postMessage("{\"method\":\"play\"}", "*") : t.contentWindow.postMessage("slide:start", "*");
+                typeof e != "boolean" && (e = t.hasAttribute("data-autoplay") || !!$4aa888c367b643f0$var$o(t, ".slide-background")), /youtube\.com\/embed\//.test(t.getAttribute("src")) && e ? t.contentWindow.postMessage("{\"event\":\"command\",\"func\":\"playVideo\",\"args\":\"\"}", "*") : /player\.vimeo\.com\//.test(t.getAttribute("src")) && e ? t.contentWindow.postMessage("{\"method\":\"play\"}", "*") : t.contentWindow.postMessage("slide:start", "*");
             }
         }
     }
     stopEmbeddedContent(n, r = {}) {
-        r = e({
+        r = $4aa888c367b643f0$var$e({
             unloadIframes: !0
-        }, r), n && n.parentNode && (t(n, "video, audio").forEach((e)=>{
-            !e.hasAttribute("data-ignore") && typeof e.pause == "function" && (e.setAttribute("data-paused-by-reveal", ""), e.pause(), g && e.removeEventListener("canplay", this.ensureMobileMediaPlaying));
-        }), t(n, "iframe").forEach((e)=>{
+        }, r), n && n.parentNode && ($4aa888c367b643f0$var$t(n, "video, audio").forEach((e)=>{
+            !e.hasAttribute("data-ignore") && typeof e.pause == "function" && (e.setAttribute("data-paused-by-reveal", ""), e.pause(), $4aa888c367b643f0$var$g && e.removeEventListener("canplay", this.ensureMobileMediaPlaying));
+        }), $4aa888c367b643f0$var$t(n, "iframe").forEach((e)=>{
             e.contentWindow && e.contentWindow.postMessage("slide:stop", "*"), e.removeEventListener("load", this.preventIframeAutoFocus), e.removeEventListener("load", this.startEmbeddedIframe);
-        }), t(n, "iframe[src*=\"youtube.com/embed/\"]").forEach((e)=>{
+        }), $4aa888c367b643f0$var$t(n, "iframe[src*=\"youtube.com/embed/\"]").forEach((e)=>{
             !e.hasAttribute("data-ignore") && e.contentWindow && typeof e.contentWindow.postMessage == "function" && e.contentWindow.postMessage("{\"event\":\"command\",\"func\":\"pauseVideo\",\"args\":\"\"}", "*");
-        }), t(n, "iframe[src*=\"player.vimeo.com/\"]").forEach((e)=>{
+        }), $4aa888c367b643f0$var$t(n, "iframe[src*=\"player.vimeo.com/\"]").forEach((e)=>{
             !e.hasAttribute("data-ignore") && e.contentWindow && typeof e.contentWindow.postMessage == "function" && e.contentWindow.postMessage("{\"method\":\"pause\"}", "*");
-        }), r.unloadIframes === !0 && t(n, "iframe[data-src]").forEach((e)=>{
+        }), r.unloadIframes === !0 && $4aa888c367b643f0$var$t(n, "iframe[data-src]").forEach((e)=>{
             e.setAttribute("src", "about:blank"), e.removeAttribute("src");
         }));
     }
@@ -1684,7 +783,7 @@ var ee = class {
     afterSlideChanged() {
         this.clearMediaPlaybackErrors();
     }
-}, C = ".slides section", w = ".slides>section", te = ".slides>section.present>section", T = ".backgrounds>.slide-background", E = /registerPlugin|registerKeyboardShortcut|addKeyBinding|addEventListener|showPreview|previewIframe/, ne = class {
+}, $4aa888c367b643f0$var$C = ".slides section", $4aa888c367b643f0$var$w = ".slides>section", $4aa888c367b643f0$var$te = ".slides>section.present>section", $4aa888c367b643f0$var$T = ".backgrounds>.slide-background", $4aa888c367b643f0$var$E = /registerPlugin|registerKeyboardShortcut|addKeyBinding|addEventListener|showPreview|previewIframe/, $4aa888c367b643f0$var$ne = class {
     constructor(e){
         this.Reveal = e;
     }
@@ -1733,7 +832,7 @@ var ee = class {
     destroy() {
         this.element.remove();
     }
-}, re = class {
+}, $4aa888c367b643f0$var$re = class {
     constructor(e){
         this.Reveal = e, this.onInput = this.onInput.bind(this), this.onBlur = this.onBlur.bind(this), this.onKeyDown = this.onKeyDown.bind(this);
     }
@@ -1788,7 +887,7 @@ var ee = class {
     onBlur() {
         setTimeout(()=>this.hide(), 1);
     }
-}, D = (e)=>{
+}, $4aa888c367b643f0$var$D = (e)=>{
     let t = e.match(/^#([0-9a-f]{3})$/i);
     if (t && t[1]) {
         let e = t[1];
@@ -1820,7 +919,7 @@ var ee = class {
         b: parseInt(i[3], 10),
         a: parseFloat(i[4])
     } : null;
-}, ie = (e)=>(typeof e == "string" && (e = D(e)), e ? (e.r * 299 + e.g * 587 + e.b * 114) / 1e3 : null), ae = class {
+}, $4aa888c367b643f0$var$ie = (e)=>(typeof e == "string" && (e = $4aa888c367b643f0$var$D(e)), e ? (e.r * 299 + e.g * 587 + e.b * 114) / 1e3 : null), $4aa888c367b643f0$var$ae = class {
     constructor(e){
         this.Reveal = e;
     }
@@ -1830,7 +929,7 @@ var ee = class {
     create() {
         this.element.innerHTML = "", this.element.classList.add("no-transition"), this.Reveal.getHorizontalSlides().forEach((e)=>{
             let n = this.createBackground(e, this.element);
-            t(e, "section").forEach((e)=>{
+            $4aa888c367b643f0$var$t(e, "section").forEach((e)=>{
                 this.createBackground(e, n), n.classList.add("stack");
             });
         }), this.Reveal.getConfig().parallaxBackgroundImage ? (this.element.style.backgroundImage = "url(\"" + this.Reveal.getConfig().parallaxBackgroundImage + "\")", this.element.style.backgroundSize = this.Reveal.getConfig().parallaxBackgroundSize, this.element.style.backgroundRepeat = this.Reveal.getConfig().parallaxBackgroundRepeat, this.element.style.backgroundPosition = this.Reveal.getConfig().parallaxBackgroundPosition, setTimeout(()=>{
@@ -1863,13 +962,13 @@ var ee = class {
     }
     getContrastClass(e) {
         let t = e.slideBackgroundElement, n = e.getAttribute("data-background-color");
-        if (!n || !D(n)) {
+        if (!n || !$4aa888c367b643f0$var$D(n)) {
             let e = window.getComputedStyle(t);
             e && e.backgroundColor && (n = e.backgroundColor);
         }
         if (n) {
-            let e = D(n);
-            if (e && e.a !== 0) return ie(n) < 128 ? "has-dark-background" : "has-light-background";
+            let e = $4aa888c367b643f0$var$D(n);
+            if (e && e.a !== 0) return $4aa888c367b643f0$var$ie(n) < 128 ? "has-dark-background" : "has-light-background";
         }
         return null;
     }
@@ -1884,7 +983,7 @@ var ee = class {
     update(e = !1) {
         let n = this.Reveal.getConfig(), r = this.Reveal.getCurrentSlide(), i = this.Reveal.getIndices(), a = null, o = n.rtl ? "future" : "past", s = n.rtl ? "past" : "future";
         if (Array.from(this.element.childNodes).forEach((n, r)=>{
-            n.classList.remove("past", "present", "future"), r < i.h ? n.classList.add(o) : r > i.h ? n.classList.add(s) : (n.classList.add("present"), a = n), (e || r === i.h) && t(n, ".slide-background").forEach((e, t)=>{
+            n.classList.remove("past", "present", "future"), r < i.h ? n.classList.add(o) : r > i.h ? n.classList.add(s) : (n.classList.add("present"), a = n), (e || r === i.h) && $4aa888c367b643f0$var$t(n, ".slide-background").forEach((e, t)=>{
                 e.classList.remove("past", "present", "future");
                 let n = typeof i.v == "number" ? i.v : 0;
                 t < n ? e.classList.add("past") : t > n ? e.classList.add("future") : (e.classList.add("present"), r === i.h && (a = e));
@@ -1930,7 +1029,7 @@ var ee = class {
     destroy() {
         this.element.remove();
     }
-}, O = 0, oe = class {
+}, $4aa888c367b643f0$var$O = 0, $4aa888c367b643f0$var$oe = class {
     constructor(e){
         this.Reveal = e;
     }
@@ -1938,17 +1037,17 @@ var ee = class {
         this.reset();
         let n = this.Reveal.getSlides(), r = n.indexOf(t), i = n.indexOf(e);
         if (e && t && e.hasAttribute("data-auto-animate") && t.hasAttribute("data-auto-animate") && e.getAttribute("data-auto-animate-id") === t.getAttribute("data-auto-animate-id") && !(r > i ? t : e).hasAttribute("data-auto-animate-restart")) {
-            this.autoAnimateStyleSheet = this.autoAnimateStyleSheet || l();
+            this.autoAnimateStyleSheet = this.autoAnimateStyleSheet || $4aa888c367b643f0$var$l();
             let n = this.getAutoAnimateOptions(t);
             e.dataset.autoAnimate = "pending", t.dataset.autoAnimate = "pending", n.slideDirection = r > i ? "forward" : "backward";
             let a = e.style.display === "none";
             a && (e.style.display = this.Reveal.getConfig().display);
-            let o = this.getAutoAnimatableElements(e, t).map((e)=>this.autoAnimateElements(e.from, e.to, e.options || {}, n, O++));
+            let o = this.getAutoAnimatableElements(e, t).map((e)=>this.autoAnimateElements(e.from, e.to, e.options || {}, n, $4aa888c367b643f0$var$O++));
             if (a && (e.style.display = "none"), t.dataset.autoAnimateUnmatched !== "false" && this.Reveal.getConfig().autoAnimateUnmatched === !0) {
                 let e = n.duration * .8, r = n.duration * .2;
                 this.getUnmatchedAutoAnimateElements(t).forEach((e)=>{
                     let t = this.getAutoAnimateOptions(e, n), r = "unmatched";
-                    (t.duration !== n.duration || t.delay !== n.delay) && (r = "unmatched-" + O++, o.push(`[data-auto-animate="running"] [data-auto-animate-target="${r}"] { transition: opacity ${t.duration}s ease ${t.delay}s; }`)), e.dataset.autoAnimateTarget = r;
+                    (t.duration !== n.duration || t.delay !== n.delay) && (r = "unmatched-" + $4aa888c367b643f0$var$O++, o.push(`[data-auto-animate="running"] [data-auto-animate-target="${r}"] { transition: opacity ${t.duration}s ease ${t.delay}s; }`)), e.dataset.autoAnimateTarget = r;
                 }, this), o.push(`[data-auto-animate="running"] [data-auto-animate-target="unmatched"] { transition: opacity ${e}s ease ${r}s; }`);
             }
             this.autoAnimateStyleSheet.innerHTML = o.join(""), requestAnimationFrame(()=>{
@@ -1964,9 +1063,9 @@ var ee = class {
         }
     }
     reset() {
-        t(this.Reveal.getRevealElement(), "[data-auto-animate]:not([data-auto-animate=\"\"])").forEach((e)=>{
+        $4aa888c367b643f0$var$t(this.Reveal.getRevealElement(), "[data-auto-animate]:not([data-auto-animate=\"\"])").forEach((e)=>{
             e.dataset.autoAnimate = "";
-        }), t(this.Reveal.getRevealElement(), "[data-auto-animate-target]").forEach((e)=>{
+        }), $4aa888c367b643f0$var$t(this.Reveal.getRevealElement(), "[data-auto-animate-target]").forEach((e)=>{
             delete e.dataset.autoAnimateTarget;
         }), this.autoAnimateStyleSheet && this.autoAnimateStyleSheet.parentNode && (this.autoAnimateStyleSheet.parentNode.removeChild(this.autoAnimateStyleSheet), this.autoAnimateStyleSheet = null);
     }
@@ -2007,8 +1106,8 @@ var ee = class {
             duration: this.Reveal.getConfig().autoAnimateDuration,
             delay: 0
         };
-        if (r = e(r, n), t.parentNode) {
-            let e = o(t.parentNode, "[data-auto-animate-target]");
+        if (r = $4aa888c367b643f0$var$e(r, n), t.parentNode) {
+            let e = $4aa888c367b643f0$var$o(t.parentNode, "[data-auto-animate-target]");
             e && (r = this.getAutoAnimateOptions(e, r));
         }
         return t.dataset.autoAnimateEasing && (r.easing = t.dataset.autoAnimateEasing), t.dataset.autoAnimateDuration && (r.duration = parseFloat(t.dataset.autoAnimateDuration)), t.dataset.autoAnimateDelay && (r.delay = parseFloat(t.dataset.autoAnimateDelay)), r;
@@ -2055,9 +1154,9 @@ var ee = class {
     getAutoAnimatePairs(e, t) {
         let n = [], r = "h1, h2, h3, h4, h5, h6, p, li";
         return this.findAutoAnimateMatches(n, e, t, "[data-id]", (e)=>e.nodeName + ":::" + e.getAttribute("data-id")), this.findAutoAnimateMatches(n, e, t, r, (e)=>e.nodeName + ":::" + e.textContent.trim()), this.findAutoAnimateMatches(n, e, t, "img, video, iframe", (e)=>e.nodeName + ":::" + (e.getAttribute("src") || e.getAttribute("data-src"))), this.findAutoAnimateMatches(n, e, t, "pre", (e)=>e.nodeName + ":::" + e.textContent.trim()), n.forEach((e)=>{
-            a(e.from, r) ? e.options = {
+            $4aa888c367b643f0$var$a(e.from, r) ? e.options = {
                 scale: !1
-            } : a(e.from, "pre") && (e.options = {
+            } : $4aa888c367b643f0$var$a(e.from, "pre") && (e.options = {
                 scale: !1,
                 styles: [
                     "width",
@@ -2111,7 +1210,7 @@ var ee = class {
             return !t.hasAttribute("data-auto-animate-target") && !n && e.push(t), t.querySelector("[data-auto-animate-target]") && (e = e.concat(this.getUnmatchedAutoAnimateElements(t))), e;
         }, []);
     }
-}, k = 500, A = 4, se = 6, j = 8, ce = class {
+}, $4aa888c367b643f0$var$k = 500, $4aa888c367b643f0$var$A = 4, $4aa888c367b643f0$var$se = 6, $4aa888c367b643f0$var$j = 8, $4aa888c367b643f0$var$ce = class {
     constructor(e){
         this.Reveal = e, this.active = !1, this.activatedCallbacks = [], this.onScroll = this.onScroll.bind(this);
     }
@@ -2119,7 +1218,7 @@ var ee = class {
         if (this.active) return;
         let e = this.Reveal.getState();
         this.active = !0, this.slideHTMLBeforeActivation = this.Reveal.getSlidesElement().innerHTML;
-        let n = t(this.Reveal.getRevealElement(), w), r = t(this.Reveal.getRevealElement(), T);
+        let n = $4aa888c367b643f0$var$t(this.Reveal.getRevealElement(), $4aa888c367b643f0$var$w), r = $4aa888c367b643f0$var$t(this.Reveal.getRevealElement(), $4aa888c367b643f0$var$T);
         this.viewportElement.classList.add("loading-scroll-mode", "reveal-scroll");
         let i, a = window.getComputedStyle(this.viewportElement);
         a && a.background && (i = a.background);
@@ -2141,7 +1240,7 @@ var ee = class {
             this.Reveal.isVerticalStack(e) ? e.querySelectorAll("section").forEach((e, n)=>{
                 l(e, t, n, !0);
             }) : l(e, t, 0);
-        }, this), this.createProgressBar(), t(this.Reveal.getRevealElement(), ".stack").forEach((e)=>e.remove()), o.forEach((e)=>s.appendChild(e)), this.Reveal.slideContent.layout(this.Reveal.getSlidesElement()), this.Reveal.layout(), this.Reveal.setState(e), this.activatedCallbacks.forEach((e)=>e()), this.activatedCallbacks = [], this.restoreScrollPosition(), this.viewportElement.classList.remove("loading-scroll-mode"), this.viewportElement.addEventListener("scroll", this.onScroll, {
+        }, this), this.createProgressBar(), $4aa888c367b643f0$var$t(this.Reveal.getRevealElement(), ".stack").forEach((e)=>e.remove()), o.forEach((e)=>s.appendChild(e)), this.Reveal.slideContent.layout(this.Reveal.getSlidesElement()), this.Reveal.layout(), this.Reveal.setState(e), this.activatedCallbacks.forEach((e)=>e()), this.activatedCallbacks = [], this.restoreScrollPosition(), this.viewportElement.classList.remove("loading-scroll-mode"), this.viewportElement.addEventListener("scroll", this.onScroll, {
             passive: !0
         });
     }
@@ -2252,9 +1351,9 @@ var ee = class {
     syncProgressBar() {
         this.progressBarInner.querySelectorAll(".scrollbar-slide").forEach((e)=>e.remove());
         let e = this.viewportElement.scrollHeight, t = this.viewportElement.offsetHeight, n = t / e;
-        this.progressBarHeight = this.progressBarInner.offsetHeight, this.playheadHeight = Math.max(n * this.progressBarHeight, j), this.progressBarScrollableHeight = this.progressBarHeight - this.playheadHeight;
-        let r = t / e * this.progressBarHeight, i = Math.min(r / 8, A);
-        this.progressBarPlayhead.style.height = this.playheadHeight - i + "px", r > se ? this.slideTriggers.forEach((e)=>{
+        this.progressBarHeight = this.progressBarInner.offsetHeight, this.playheadHeight = Math.max(n * this.progressBarHeight, $4aa888c367b643f0$var$j), this.progressBarScrollableHeight = this.progressBarHeight - this.playheadHeight;
+        let r = t / e * this.progressBarHeight, i = Math.min(r / 8, $4aa888c367b643f0$var$A);
+        this.progressBarPlayhead.style.height = this.playheadHeight - i + "px", r > $4aa888c367b643f0$var$se ? this.slideTriggers.forEach((e)=>{
             let { page: t } = e;
             t.progressBarSlide = document.createElement("div"), t.progressBarSlide.className = "scrollbar-slide", t.progressBarSlide.style.top = e.range[0] * this.progressBarHeight + "px", t.progressBarSlide.style.height = (e.range[1] - e.range[0]) * this.progressBarHeight - i + "px", t.progressBarSlide.classList.toggle("has-triggers", t.scrollTriggers.length > 0), this.progressBarInner.appendChild(t.progressBarSlide), t.scrollTriggerElements = t.scrollTriggers.map((n, r)=>{
                 let a = document.createElement("div");
@@ -2281,7 +1380,7 @@ var ee = class {
     showProgressBar() {
         this.progressBar.classList.add("visible"), clearTimeout(this.hideProgressBarTimeout), this.Reveal.getConfig().scrollProgress === "auto" && !this.draggingProgressBar && (this.hideProgressBarTimeout = setTimeout(()=>{
             this.progressBar && this.progressBar.classList.remove("visible");
-        }, k));
+        }, $4aa888c367b643f0$var$k));
     }
     prev() {
         this.viewportElement.scrollTop -= this.scrollTriggerHeight;
@@ -2345,7 +1444,7 @@ var ee = class {
 };
 //#endregion
 //#region \0@oxc-project+runtime@0.124.0/helpers/asyncToGenerator.js
-function M(e, t, n, r, i, a, o) {
+function $4aa888c367b643f0$var$M(e, t, n, r, i, a, o) {
     try {
         var s = e[a](o), c = s.value;
     } catch (e) {
@@ -2354,16 +1453,16 @@ function M(e, t, n, r, i, a, o) {
     }
     s.done ? t(c) : Promise.resolve(c).then(r, i);
 }
-function N(e) {
+function $4aa888c367b643f0$var$N(e) {
     return function() {
         var t = this, n = arguments;
         return new Promise(function(r, i) {
             var a = e.apply(t, n);
             function o(e) {
-                M(a, r, i, o, s, "next", e);
+                $4aa888c367b643f0$var$M(a, r, i, o, s, "next", e);
             }
             function s(e) {
-                M(a, r, i, o, s, "throw", e);
+                $4aa888c367b643f0$var$M(a, r, i, o, s, "throw", e);
             }
             o(void 0);
         });
@@ -2371,15 +1470,15 @@ function N(e) {
 }
 //#endregion
 //#region js/controllers/printview.js
-var le = class {
+var $4aa888c367b643f0$var$le = class {
     constructor(e){
         this.Reveal = e;
     }
     activate() {
         var e = this;
-        return N(function*() {
-            let n = e.Reveal.getConfig(), r = t(e.Reveal.getRevealElement(), C), i = n.slideNumber && /all|print/i.test(n.showSlideNumber), a = e.Reveal.getComputedSlideSize(window.innerWidth, window.innerHeight), o = Math.floor(a.width * (1 + n.margin)), s = Math.floor(a.height * (1 + n.margin)), c = a.width, u = a.height;
-            yield new Promise(requestAnimationFrame), l("@page{size:" + o + "px " + s + "px; margin: 0px;}"), l(".reveal section>img, .reveal section>video, .reveal section>iframe{max-width: " + c + "px; max-height:" + u + "px}"), document.documentElement.classList.add("reveal-print", "print-pdf"), document.body.style.width = o + "px", document.body.style.height = s + "px";
+        return $4aa888c367b643f0$var$N(function*() {
+            let n = e.Reveal.getConfig(), r = $4aa888c367b643f0$var$t(e.Reveal.getRevealElement(), $4aa888c367b643f0$var$C), i = n.slideNumber && /all|print/i.test(n.showSlideNumber), a = e.Reveal.getComputedSlideSize(window.innerWidth, window.innerHeight), o = Math.floor(a.width * (1 + n.margin)), s = Math.floor(a.height * (1 + n.margin)), c = a.width, u = a.height;
+            yield new Promise(requestAnimationFrame), $4aa888c367b643f0$var$l("@page{size:" + o + "px " + s + "px; margin: 0px;}"), $4aa888c367b643f0$var$l(".reveal section>img, .reveal section>video, .reveal section>iframe{max-width: " + c + "px; max-height:" + u + "px}"), document.documentElement.classList.add("reveal-print", "print-pdf"), document.body.style.width = o + "px", document.body.style.height = s + "px";
             let d = e.Reveal.getViewportElement(), f;
             if (d) {
                 let e = window.getComputedStyle(d);
@@ -2422,7 +1521,7 @@ var le = class {
                                 e.classList.remove("visible", "current-fragment");
                             });
                         });
-                    } else t(_, ".fragment:not(.fade-out)").forEach(function(e) {
+                    } else $4aa888c367b643f0$var$t(_, ".fragment:not(.fade-out)").forEach(function(e) {
                         e.classList.add("visible");
                     });
                 }
@@ -2434,7 +1533,7 @@ var le = class {
     isActive() {
         return this.Reveal.getConfig().view === "print";
     }
-}, ue = class {
+}, $4aa888c367b643f0$var$ue = class {
     constructor(e){
         this.Reveal = e;
     }
@@ -2442,12 +1541,12 @@ var le = class {
         e.fragments === !1 ? this.disable() : t.fragments === !1 && this.enable();
     }
     disable() {
-        t(this.Reveal.getSlidesElement(), ".fragment").forEach((e)=>{
+        $4aa888c367b643f0$var$t(this.Reveal.getSlidesElement(), ".fragment").forEach((e)=>{
             e.classList.add("visible"), e.classList.remove("current-fragment");
         });
     }
     enable() {
-        t(this.Reveal.getSlidesElement(), ".fragment").forEach((e)=>{
+        $4aa888c367b643f0$var$t(this.Reveal.getSlidesElement(), ".fragment").forEach((e)=>{
             e.classList.remove("visible"), e.classList.remove("current-fragment");
         });
     }
@@ -2484,7 +1583,7 @@ var le = class {
     }
     sortAll() {
         this.Reveal.getHorizontalSlides().forEach((e)=>{
-            let n = t(e, "section");
+            let n = $4aa888c367b643f0$var$t(e, "section");
             n.forEach((e, t)=>{
                 this.sort(e.querySelectorAll(".fragment"));
             }, this), n.length === 0 && this.sort(e.querySelectorAll(".fragment"));
@@ -2558,13 +1657,13 @@ var le = class {
     prev() {
         return this.goto(null, -1);
     }
-}, de = class {
+}, $4aa888c367b643f0$var$de = class {
     constructor(e){
         this.Reveal = e, this.active = !1, this.onSlideClicked = this.onSlideClicked.bind(this);
     }
     activate() {
         if (this.Reveal.getConfig().overview && !this.Reveal.isScrollView() && !this.isActive()) {
-            this.active = !0, this.Reveal.getRevealElement().classList.add("overview"), this.Reveal.cancelAutoSlide(), this.Reveal.getSlidesElement().appendChild(this.Reveal.getBackgroundsElement()), t(this.Reveal.getRevealElement(), C).forEach((e)=>{
+            this.active = !0, this.Reveal.getRevealElement().classList.add("overview"), this.Reveal.cancelAutoSlide(), this.Reveal.getSlidesElement().appendChild(this.Reveal.getBackgroundsElement()), $4aa888c367b643f0$var$t(this.Reveal.getRevealElement(), $4aa888c367b643f0$var$C).forEach((e)=>{
                 e.classList.contains("stack") || e.addEventListener("click", this.onSlideClicked, !0);
             });
             let e = this.Reveal.getComputedSlideSize();
@@ -2582,12 +1681,12 @@ var le = class {
     }
     layout() {
         this.Reveal.getHorizontalSlides().forEach((e, n)=>{
-            e.setAttribute("data-index-h", n), i(e, "translate3d(" + n * this.overviewSlideWidth + "px, 0, 0)"), e.classList.contains("stack") && t(e, "section").forEach((e, t)=>{
-                e.setAttribute("data-index-h", n), e.setAttribute("data-index-v", t), i(e, "translate3d(0, " + t * this.overviewSlideHeight + "px, 0)");
+            e.setAttribute("data-index-h", n), $4aa888c367b643f0$var$i(e, "translate3d(" + n * this.overviewSlideWidth + "px, 0, 0)"), e.classList.contains("stack") && $4aa888c367b643f0$var$t(e, "section").forEach((e, t)=>{
+                e.setAttribute("data-index-h", n), e.setAttribute("data-index-v", t), $4aa888c367b643f0$var$i(e, "translate3d(0, " + t * this.overviewSlideHeight + "px, 0)");
             });
         }), Array.from(this.Reveal.getBackgroundsElement().childNodes).forEach((e, n)=>{
-            i(e, "translate3d(" + n * this.overviewSlideWidth + "px, 0, 0)"), t(e, ".slide-background").forEach((e, t)=>{
-                i(e, "translate3d(0, " + t * this.overviewSlideHeight + "px, 0)");
+            $4aa888c367b643f0$var$i(e, "translate3d(" + n * this.overviewSlideWidth + "px, 0, 0)"), $4aa888c367b643f0$var$t(e, ".slide-background").forEach((e, t)=>{
+                $4aa888c367b643f0$var$i(e, "translate3d(0, " + t * this.overviewSlideHeight + "px, 0)");
             });
         });
     }
@@ -2605,10 +1704,10 @@ var le = class {
         if (this.Reveal.getConfig().overview) {
             this.active = !1, this.Reveal.getRevealElement().classList.remove("overview"), this.Reveal.getRevealElement().classList.add("overview-deactivating"), setTimeout(()=>{
                 this.Reveal.getRevealElement().classList.remove("overview-deactivating");
-            }, 1), this.Reveal.getRevealElement().appendChild(this.Reveal.getBackgroundsElement()), t(this.Reveal.getRevealElement(), C).forEach((e)=>{
-                i(e, ""), e.removeEventListener("click", this.onSlideClicked, !0);
-            }), t(this.Reveal.getBackgroundsElement(), ".slide-background").forEach((e)=>{
-                i(e, "");
+            }, 1), this.Reveal.getRevealElement().appendChild(this.Reveal.getBackgroundsElement()), $4aa888c367b643f0$var$t(this.Reveal.getRevealElement(), $4aa888c367b643f0$var$C).forEach((e)=>{
+                $4aa888c367b643f0$var$i(e, ""), e.removeEventListener("click", this.onSlideClicked, !0);
+            }), $4aa888c367b643f0$var$t(this.Reveal.getBackgroundsElement(), ".slide-background").forEach((e)=>{
+                $4aa888c367b643f0$var$i(e, "");
             }), this.Reveal.transformSlides({
                 overview: ""
             });
@@ -2640,7 +1739,7 @@ var le = class {
             }
         }
     }
-}, fe = class {
+}, $4aa888c367b643f0$var$fe = class {
     constructor(e){
         this.Reveal = e, this.shortcuts = {}, this.bindings = {}, this.onDocumentKeyDown = this.onDocumentKeyDown.bind(this);
     }
@@ -2764,12 +1863,12 @@ var le = class {
             66,
             86,
             190
-        ].includes(n) || n === 191 && !e.shiftKey ? this.Reveal.togglePause() : n === 70 ? s(t.embedded ? this.Reveal.getViewportElement() : document.documentElement) : n === 65 ? t.autoSlideStoppable && this.Reveal.toggleAutoSlide(r) : n === 71 ? t.jumpToSlide && this.Reveal.toggleJumpToSlide() : n === 67 && this.Reveal.isOverlayOpen() ? this.Reveal.closeOverlay() : (n === 63 || n === 191) && e.shiftKey || n === 112 ? this.Reveal.toggleHelp() : f = !1), f ? e.preventDefault && e.preventDefault() : n === 27 || n === 79 ? (this.Reveal.closeOverlay() === !1 && this.Reveal.overview.toggle(), e.preventDefault && e.preventDefault()) : n === 13 && this.Reveal.overview.isActive() && (this.Reveal.overview.deactivate(), e.preventDefault && e.preventDefault()), this.Reveal.cueAutoSlide();
+        ].includes(n) || n === 191 && !e.shiftKey ? this.Reveal.togglePause() : n === 70 ? $4aa888c367b643f0$var$s(t.embedded ? this.Reveal.getViewportElement() : document.documentElement) : n === 65 ? t.autoSlideStoppable && this.Reveal.toggleAutoSlide(r) : n === 71 ? t.jumpToSlide && this.Reveal.toggleJumpToSlide() : n === 67 && this.Reveal.isOverlayOpen() ? this.Reveal.closeOverlay() : (n === 63 || n === 191) && e.shiftKey || n === 112 ? this.Reveal.toggleHelp() : f = !1), f ? e.preventDefault && e.preventDefault() : n === 27 || n === 79 ? (this.Reveal.closeOverlay() === !1 && this.Reveal.overview.toggle(), e.preventDefault && e.preventDefault()) : n === 13 && this.Reveal.overview.isActive() && (this.Reveal.overview.deactivate(), e.preventDefault && e.preventDefault()), this.Reveal.cueAutoSlide();
     }
 };
 //#endregion
 //#region \0@oxc-project+runtime@0.124.0/helpers/objectSpread2.js
-function P(e, t) {
+function $4aa888c367b643f0$var$P(e, t) {
     var n = Object.keys(e);
     if (Object.getOwnPropertySymbols) {
         var r = Object.getOwnPropertySymbols(e);
@@ -2779,12 +1878,12 @@ function P(e, t) {
     }
     return n;
 }
-function F(e) {
+function $4aa888c367b643f0$var$F(e) {
     for(var t = 1; t < arguments.length; t++){
         var n = arguments[t] == null ? {} : arguments[t];
-        t % 2 ? P(Object(n), !0).forEach(function(t) {
-            S(e, t, n[t]);
-        }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(n)) : P(Object(n)).forEach(function(t) {
+        t % 2 ? $4aa888c367b643f0$var$P(Object(n), !0).forEach(function(t) {
+            $4aa888c367b643f0$var$S(e, t, n[t]);
+        }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(n)) : $4aa888c367b643f0$var$P(Object(n)).forEach(function(t) {
             Object.defineProperty(e, t, Object.getOwnPropertyDescriptor(n, t));
         });
     }
@@ -2792,9 +1891,9 @@ function F(e) {
 }
 //#endregion
 //#region js/controllers/location.js
-var pe = class {
+var $4aa888c367b643f0$var$pe = class {
     constructor(e){
-        S(this, "MAX_REPLACE_STATE_FREQUENCY", 1e3), this.Reveal = e, this.writeURLTimeout = 0, this.replaceStateTimestamp = 0, this.onWindowHashChange = this.onWindowHashChange.bind(this);
+        $4aa888c367b643f0$var$S(this, "MAX_REPLACE_STATE_FREQUENCY", 1e3), this.Reveal = e, this.writeURLTimeout = 0, this.replaceStateTimestamp = 0, this.onWindowHashChange = this.onWindowHashChange.bind(this);
     }
     bind() {
         window.addEventListener("hashchange", this.onWindowHashChange, !1);
@@ -2811,7 +1910,7 @@ var pe = class {
                 let t = decodeURIComponent(n);
                 e = (document.getElementById(t) || document.querySelector(`[data-id="${t}"]`)).closest(".slides section");
             } catch (e) {}
-            if (e) return F(F({}, this.Reveal.getIndices(e)), {}, {
+            if (e) return $4aa888c367b643f0$var$F($4aa888c367b643f0$var$F({}, this.Reveal.getIndices(e)), {}, {
                 f: t
             });
         } else {
@@ -2856,7 +1955,7 @@ var pe = class {
     onWindowHashChange(e) {
         this.readURL();
     }
-}, me = class {
+}, $4aa888c367b643f0$var$me = class {
     constructor(e){
         this.Reveal = e, this.onNavigateLeftClicked = this.onNavigateLeftClicked.bind(this), this.onNavigateRightClicked = this.onNavigateRightClicked.bind(this), this.onNavigateUpClicked = this.onNavigateUpClicked.bind(this), this.onNavigateDownClicked = this.onNavigateDownClicked.bind(this), this.onNavigatePrevClicked = this.onNavigatePrevClicked.bind(this), this.onNavigateNextClicked = this.onNavigateNextClicked.bind(this), this.onEnterFullscreen = this.onEnterFullscreen.bind(this);
     }
@@ -2865,7 +1964,7 @@ var pe = class {
         this.element = document.createElement("aside"), this.element.className = "controls", this.element.innerHTML = `<button class="navigate-left" aria-label="${e ? "next slide" : "previous slide"}"><div class="controls-arrow"></div></button>
 			<button class="navigate-right" aria-label="${e ? "previous slide" : "next slide"}"><div class="controls-arrow"></div></button>
 			<button class="navigate-up" aria-label="above slide"><div class="controls-arrow"></div></button>
-			<button class="navigate-down" aria-label="below slide"><div class="controls-arrow"></div></button>`, this.Reveal.getRevealElement().appendChild(this.element), this.controlsLeft = t(n, ".navigate-left"), this.controlsRight = t(n, ".navigate-right"), this.controlsUp = t(n, ".navigate-up"), this.controlsDown = t(n, ".navigate-down"), this.controlsPrev = t(n, ".navigate-prev"), this.controlsNext = t(n, ".navigate-next"), this.controlsFullscreen = t(n, ".enter-fullscreen"), this.controlsRightArrow = this.element.querySelector(".navigate-right"), this.controlsLeftArrow = this.element.querySelector(".navigate-left"), this.controlsDownArrow = this.element.querySelector(".navigate-down");
+			<button class="navigate-down" aria-label="below slide"><div class="controls-arrow"></div></button>`, this.Reveal.getRevealElement().appendChild(this.element), this.controlsLeft = $4aa888c367b643f0$var$t(n, ".navigate-left"), this.controlsRight = $4aa888c367b643f0$var$t(n, ".navigate-right"), this.controlsUp = $4aa888c367b643f0$var$t(n, ".navigate-up"), this.controlsDown = $4aa888c367b643f0$var$t(n, ".navigate-down"), this.controlsPrev = $4aa888c367b643f0$var$t(n, ".navigate-prev"), this.controlsNext = $4aa888c367b643f0$var$t(n, ".navigate-next"), this.controlsFullscreen = $4aa888c367b643f0$var$t(n, ".enter-fullscreen"), this.controlsRightArrow = this.element.querySelector(".navigate-right"), this.controlsLeftArrow = this.element.querySelector(".navigate-left"), this.controlsDownArrow = this.element.querySelector(".navigate-down");
     }
     configure(e, t) {
         let n = e.controls === "speaker" || e.controls === "speaker-only";
@@ -2876,7 +1975,7 @@ var pe = class {
             "touchstart",
             "click"
         ];
-        _ && (e = [
+        $4aa888c367b643f0$var$_ && (e = [
             "touchend"
         ]), e.forEach((e)=>{
             this.controlsLeft.forEach((t)=>t.addEventListener(e, this.onNavigateLeftClicked, !1)), this.controlsRight.forEach((t)=>t.addEventListener(e, this.onNavigateRightClicked, !1)), this.controlsUp.forEach((t)=>t.addEventListener(e, this.onNavigateUpClicked, !1)), this.controlsDown.forEach((t)=>t.addEventListener(e, this.onNavigateDownClicked, !1)), this.controlsPrev.forEach((t)=>t.addEventListener(e, this.onNavigatePrevClicked, !1)), this.controlsNext.forEach((t)=>t.addEventListener(e, this.onNavigateNextClicked, !1)), this.controlsFullscreen.forEach((t)=>t.addEventListener(e, this.onEnterFullscreen, !1));
@@ -2962,9 +2061,9 @@ var pe = class {
     }
     onEnterFullscreen(e) {
         let t = this.Reveal.getConfig(), n = this.Reveal.getViewportElement();
-        s(t.embedded ? n : n.parentElement);
+        $4aa888c367b643f0$var$s(t.embedded ? n : n.parentElement);
     }
-}, he = class {
+}, $4aa888c367b643f0$var$he = class {
     constructor(e){
         this.Reveal = e, this.onProgressClicked = this.onProgressClicked.bind(this);
     }
@@ -2999,7 +2098,7 @@ var pe = class {
     destroy() {
         this.element.remove();
     }
-}, ge = class {
+}, $4aa888c367b643f0$var$ge = class {
     constructor(e){
         this.Reveal = e, this.lastMouseWheelStep = 0, this.cursorHidden = !1, this.cursorInactiveTimeout = 0, this.onDocumentCursorActive = this.onDocumentCursorActive.bind(this), this.onDocumentMouseScroll = this.onDocumentMouseScroll.bind(this);
     }
@@ -3025,7 +2124,7 @@ var pe = class {
             t > 0 ? this.Reveal.next() : t < 0 && this.Reveal.prev();
         }
     }
-}, _e = (e, t)=>{
+}, $4aa888c367b643f0$var$_e = (e, t)=>{
     let n = document.createElement("script");
     n.type = "text/javascript", n.async = !1, n.defer = !1, n.src = e, typeof t == "function" && (n.onload = (e)=>{
         e.type === "load" && (n.onload = n.onerror = null, t());
@@ -3034,7 +2133,7 @@ var pe = class {
     });
     let r = document.querySelector("head");
     r && r.insertBefore(n, r.lastChild);
-}, ve = class {
+}, $4aa888c367b643f0$var$ve = class {
     constructor(e){
         this.Reveal = e, this.state = "idle", this.registeredPlugins = {}, this.asyncDependencies = [];
     }
@@ -3049,7 +2148,7 @@ var pe = class {
                     t && typeof t.callback == "function" && t.callback(), --r === 0 && this.initPlugins().then(e);
                 };
                 n.forEach((e)=>{
-                    typeof e.id == "string" ? (this.registerPlugin(e), t(e)) : typeof e.src == "string" ? _e(e.src, ()=>t(e)) : (console.warn("Unrecognized plugin format", e), t());
+                    typeof e.id == "string" ? (this.registerPlugin(e), t(e)) : typeof e.src == "string" ? $4aa888c367b643f0$var$_e(e.src, ()=>t(e)) : (console.warn("Unrecognized plugin format", e), t());
                 });
             } else this.initPlugins().then(e);
         });
@@ -3074,7 +2173,7 @@ var pe = class {
     }
     loadAsync() {
         return this.state = "loaded", this.asyncDependencies.length && this.asyncDependencies.forEach((e)=>{
-            _e(e.src, e.callback);
+            $4aa888c367b643f0$var$_e(e.src, e.callback);
         }), Promise.resolve();
     }
     registerPlugin(e) {
@@ -3096,7 +2195,7 @@ var pe = class {
             typeof e.destroy == "function" && e.destroy();
         }), this.registeredPlugins = {}, this.asyncDependencies = [];
     }
-}, ye = class {
+}, $4aa888c367b643f0$var$ye = class {
     constructor(e){
         this.Reveal = e, this.onSlidesClicked = this.onSlidesClicked.bind(this), this.iframeTriggerSelector = null, this.mediaTriggerSelector = "[data-preview-image], [data-preview-video]", this.stateProps = [
             "previewIframe",
@@ -3252,7 +2351,7 @@ var pe = class {
     destroy() {
         this.close();
     }
-}, I = 40, be = class {
+}, $4aa888c367b643f0$var$I = 40, $4aa888c367b643f0$var$be = class {
     constructor(e){
         this.Reveal = e, this.touchStartX = 0, this.touchStartY = 0, this.touchStartCount = 0, this.touchCaptured = !1, this.onPointerDown = this.onPointerDown.bind(this), this.onPointerMove = this.onPointerMove.bind(this), this.onPointerUp = this.onPointerUp.bind(this), this.onTouchStart = this.onTouchStart.bind(this), this.onTouchMove = this.onTouchMove.bind(this), this.onTouchEnd = this.onTouchEnd.bind(this);
     }
@@ -3265,7 +2364,7 @@ var pe = class {
         e.removeEventListener("pointerdown", this.onPointerDown, !1), e.removeEventListener("pointermove", this.onPointerMove, !1), e.removeEventListener("pointerup", this.onPointerUp, !1), e.removeEventListener("MSPointerDown", this.onPointerDown, !1), e.removeEventListener("MSPointerMove", this.onPointerMove, !1), e.removeEventListener("MSPointerUp", this.onPointerUp, !1), e.removeEventListener("touchstart", this.onTouchStart, !1), e.removeEventListener("touchmove", this.onTouchMove, !1), e.removeEventListener("touchend", this.onTouchEnd, !1);
     }
     isSwipePrevented(e) {
-        if (a(e, "video[controls], audio[controls]")) return !0;
+        if ($4aa888c367b643f0$var$a(e, "video[controls], audio[controls]")) return !0;
         for(; e && typeof e.hasAttribute == "function";){
             if (e.hasAttribute("data-prevent-swipe")) return !0;
             e = e.parentNode;
@@ -3279,7 +2378,7 @@ var pe = class {
     onTouchMove(e) {
         if (this.isSwipePrevented(e.target)) return !0;
         let t = this.Reveal.getConfig();
-        if (this.touchCaptured) _ && e.preventDefault();
+        if (this.touchCaptured) $4aa888c367b643f0$var$_ && e.preventDefault();
         else {
             this.Reveal.onUserInput(e);
             let n = e.touches[0].clientX, r = e.touches[0].clientY;
@@ -3287,7 +2386,7 @@ var pe = class {
                 let i = this.Reveal.availableRoutes({
                     includeFragments: !0
                 }), a = n - this.touchStartX, o = r - this.touchStartY;
-                a > I && Math.abs(a) > Math.abs(o) ? (this.touchCaptured = !0, t.navigationMode === "linear" ? t.rtl ? this.Reveal.next() : this.Reveal.prev() : this.Reveal.left()) : a < -I && Math.abs(a) > Math.abs(o) ? (this.touchCaptured = !0, t.navigationMode === "linear" ? t.rtl ? this.Reveal.prev() : this.Reveal.next() : this.Reveal.right()) : o > I && i.up ? (this.touchCaptured = !0, t.navigationMode === "linear" ? this.Reveal.prev() : this.Reveal.up()) : o < -I && i.down && (this.touchCaptured = !0, t.navigationMode === "linear" ? this.Reveal.next() : this.Reveal.down()), t.embedded ? (this.touchCaptured || this.Reveal.isVerticalSlide()) && e.preventDefault() : e.preventDefault();
+                a > $4aa888c367b643f0$var$I && Math.abs(a) > Math.abs(o) ? (this.touchCaptured = !0, t.navigationMode === "linear" ? t.rtl ? this.Reveal.next() : this.Reveal.prev() : this.Reveal.left()) : a < -$4aa888c367b643f0$var$I && Math.abs(a) > Math.abs(o) ? (this.touchCaptured = !0, t.navigationMode === "linear" ? t.rtl ? this.Reveal.prev() : this.Reveal.next() : this.Reveal.right()) : o > $4aa888c367b643f0$var$I && i.up ? (this.touchCaptured = !0, t.navigationMode === "linear" ? this.Reveal.prev() : this.Reveal.up()) : o < -$4aa888c367b643f0$var$I && i.down && (this.touchCaptured = !0, t.navigationMode === "linear" ? this.Reveal.next() : this.Reveal.down()), t.embedded ? (this.touchCaptured || this.Reveal.isVerticalSlide()) && e.preventDefault() : e.preventDefault();
             }
         }
     }
@@ -3318,7 +2417,7 @@ var pe = class {
             }
         ], this.onTouchEnd(e));
     }
-}, L = "focus", R = "blur", xe = class {
+}, $4aa888c367b643f0$var$L = "focus", $4aa888c367b643f0$var$R = "blur", $4aa888c367b643f0$var$xe = class {
     constructor(e){
         this.Reveal = e, this.onRevealPointerDown = this.onRevealPointerDown.bind(this), this.onDocumentPointerDown = this.onDocumentPointerDown.bind(this);
     }
@@ -3332,13 +2431,13 @@ var pe = class {
         this.Reveal.getRevealElement().removeEventListener("pointerdown", this.onRevealPointerDown, !1), document.removeEventListener("pointerdown", this.onDocumentPointerDown, !1);
     }
     focus() {
-        this.state !== L && (this.Reveal.getRevealElement().classList.add("focused"), document.addEventListener("pointerdown", this.onDocumentPointerDown, !1)), this.state = L;
+        this.state !== $4aa888c367b643f0$var$L && (this.Reveal.getRevealElement().classList.add("focused"), document.addEventListener("pointerdown", this.onDocumentPointerDown, !1)), this.state = $4aa888c367b643f0$var$L;
     }
     blur() {
-        this.state !== R && (this.Reveal.getRevealElement().classList.remove("focused"), document.removeEventListener("pointerdown", this.onDocumentPointerDown, !1)), this.state = R;
+        this.state !== $4aa888c367b643f0$var$R && (this.Reveal.getRevealElement().classList.remove("focused"), document.removeEventListener("pointerdown", this.onDocumentPointerDown, !1)), this.state = $4aa888c367b643f0$var$R;
     }
     isFocused() {
-        return this.state === L;
+        return this.state === $4aa888c367b643f0$var$L;
     }
     destroy() {
         this.Reveal.getRevealElement().classList.remove("focused");
@@ -3347,10 +2446,10 @@ var pe = class {
         this.focus();
     }
     onDocumentPointerDown(e) {
-        let t = o(e.target, ".reveal");
+        let t = $4aa888c367b643f0$var$o(e.target, ".reveal");
         (!t || t !== this.Reveal.getRevealElement()) && this.blur();
     }
-}, Se = class {
+}, $4aa888c367b643f0$var$Se = class {
     constructor(e){
         this.Reveal = e;
     }
@@ -3380,7 +2479,7 @@ var pe = class {
     destroy() {
         this.element.remove();
     }
-}, Ce = class {
+}, $4aa888c367b643f0$var$Ce = class {
     constructor(e, t){
         this.diameter = 100, this.diameter2 = this.diameter / 2, this.thickness = 6, this.playing = !1, this.progress = 0, this.progressOffset = 1, this.container = e, this.progressCheck = t, this.canvas = document.createElement("canvas"), this.canvas.className = "playback", this.canvas.width = this.diameter, this.canvas.height = this.diameter, this.canvas.style.width = this.diameter2 + "px", this.canvas.style.height = this.diameter2 + "px", this.context = this.canvas.getContext("2d"), this.container.appendChild(this.canvas), this.render();
     }
@@ -3407,7 +2506,7 @@ var pe = class {
     destroy() {
         this.playing = !1, this.canvas.parentNode && this.container.removeChild(this.canvas);
     }
-}, we = {
+}, $4aa888c367b643f0$var$we = {
     width: 960,
     height: 700,
     margin: .04,
@@ -3497,10 +2596,10 @@ var pe = class {
     pdfPageHeightOffset: -1,
     dependencies: [],
     plugins: []
-}, Te = "6.0.1";
+}, $4aa888c367b643f0$var$Te = "6.0.1";
 //#endregion
 //#region js/reveal.js
-function z(a, s) {
+function $4aa888c367b643f0$var$z(a, s) {
     arguments.length < 2 && (s = arguments[0], a = document.querySelector(".reveal"));
     let l = {}, f = {}, p = !1, m = !1, h, _, v, y, b = {
         hasNavigatedHorizontally: !1,
@@ -3508,15 +2607,15 @@ function z(a, s) {
     }, x = [], S = 1, T = {
         layout: "",
         overview: ""
-    }, D = {}, ie = "idle", O = 0, k, A = 0, se = -1, j = !1, M = new ee(l), N = new ne(l), P = new re(l), _e = new oe(l), I = new ae(l), L = new ce(l), R = new le(l), z = new ue(l), B = new de(l), V = new fe(l), H = new pe(l), U = new me(l), W = new he(l), Ee = new ge(l), G = new ve(l), K = new ye(l), q = new xe(l), De = new be(l), J = new Se(l);
+    }, D = {}, ie = "idle", O = 0, k, A = 0, se = -1, j = !1, M = new $4aa888c367b643f0$var$ee(l), N = new $4aa888c367b643f0$var$ne(l), P = new $4aa888c367b643f0$var$re(l), _e = new $4aa888c367b643f0$var$oe(l), I = new $4aa888c367b643f0$var$ae(l), L = new $4aa888c367b643f0$var$ce(l), R = new $4aa888c367b643f0$var$le(l), z = new $4aa888c367b643f0$var$ue(l), B = new $4aa888c367b643f0$var$de(l), V = new $4aa888c367b643f0$var$fe(l), H = new $4aa888c367b643f0$var$pe(l), U = new $4aa888c367b643f0$var$me(l), W = new $4aa888c367b643f0$var$he(l), Ee = new $4aa888c367b643f0$var$ge(l), G = new $4aa888c367b643f0$var$ve(l), K = new $4aa888c367b643f0$var$ye(l), q = new $4aa888c367b643f0$var$xe(l), De = new $4aa888c367b643f0$var$be(l), J = new $4aa888c367b643f0$var$Se(l);
     function Oe(e) {
         if (!a) throw "Unable to find presentation root (<div class=\"reveal\">).";
         if (p) throw "Reveal.js has already been initialized.";
         if (p = !0, D.wrapper = a, D.slides = a.querySelector(".slides"), !D.slides) throw "Unable to find slides container (<div class=\"slides\">).";
-        return f = F(F(F(F(F({}, we), f), s), e), u()), /print-pdf/gi.test(window.location.search) && (f.view = "print"), ke(), window.addEventListener("load", X, !1), G.load(f.plugins, f.dependencies).then(Ae), new Promise((e)=>l.on("ready", e));
+        return f = $4aa888c367b643f0$var$F($4aa888c367b643f0$var$F($4aa888c367b643f0$var$F($4aa888c367b643f0$var$F($4aa888c367b643f0$var$F({}, $4aa888c367b643f0$var$we), f), s), e), $4aa888c367b643f0$var$u()), /print-pdf/gi.test(window.location.search) && (f.view = "print"), ke(), window.addEventListener("load", X, !1), G.load(f.plugins, f.dependencies).then(Ae), new Promise((e)=>l.on("ready", e));
     }
     function ke() {
-        f.embedded === !0 ? D.viewport = o(a, ".reveal-viewport") || a : (D.viewport = document.body, document.documentElement.classList.add("reveal-full-page")), D.viewport.classList.add("reveal-viewport");
+        f.embedded === !0 ? D.viewport = $4aa888c367b643f0$var$o(a, ".reveal-viewport") || a : (D.viewport = document.body, document.documentElement.classList.add("reveal-full-page")), D.viewport.classList.add("reveal-viewport");
     }
     function Ae() {
         p !== !1 && (m = !0, Me(), Ne(), Be(), Re(), ze(), _t(), Ve(), I.update(!0), je(), H.readURL(), setTimeout(()=>{
@@ -3535,13 +2634,13 @@ function z(a, s) {
         (e || t) && (e ? Ue() : De.unbind(), D.viewport.classList.add("loading-scroll-mode"), e ? document.readyState === "complete" ? R.activate() : window.addEventListener("load", ()=>R.activate()) : L.activate());
     }
     function Me() {
-        f.showHiddenSlides || t(D.wrapper, "section[data-visibility=\"hidden\"]").forEach((e)=>{
+        f.showHiddenSlides || $4aa888c367b643f0$var$t(D.wrapper, "section[data-visibility=\"hidden\"]").forEach((e)=>{
             let t = e.parentNode;
             t.childElementCount === 1 && /section/i.test(t.nodeName) ? t.remove() : e.remove();
         });
     }
     function Ne() {
-        D.slides.classList.add("no-transition"), g ? D.wrapper.classList.add("no-hover") : D.wrapper.classList.remove("no-hover"), I.render(), N.render(), P.render(), U.render(), W.render(), J.render(), D.pauseOverlay = c(D.wrapper, "div", "pause-overlay", f.controls ? "<button class=\"resume-button\">Resume presentation</button>" : null), D.statusElement = Pe(), D.wrapper.setAttribute("role", "application");
+        D.slides.classList.add("no-transition"), $4aa888c367b643f0$var$g ? D.wrapper.classList.add("no-hover") : D.wrapper.classList.remove("no-hover"), I.render(), N.render(), P.render(), U.render(), W.render(), J.render(), D.pauseOverlay = $4aa888c367b643f0$var$c(D.wrapper, "div", "pause-overlay", f.controls ? "<button class=\"resume-button\">Resume presentation</button>" : null), D.statusElement = Pe(), D.wrapper.setAttribute("role", "application");
     }
     function Pe() {
         let e = D.wrapper.querySelector(".aria-status");
@@ -3596,10 +2695,10 @@ function z(a, s) {
         f.postMessage && window.addEventListener("message", Jt, !1);
     }
     function Ve(t) {
-        let r = F({}, f);
-        if (typeof t == "object" && e(f, t), l.isReady() === !1) return;
-        let i = D.wrapper.querySelectorAll(C).length;
-        D.wrapper.classList.remove(r.transition), D.wrapper.classList.add(f.transition), D.wrapper.setAttribute("data-transition-speed", f.transitionSpeed), D.wrapper.setAttribute("data-background-transition", f.backgroundTransition), D.viewport.style.setProperty("--slide-width", typeof f.width == "string" ? f.width : f.width + "px"), D.viewport.style.setProperty("--slide-height", typeof f.height == "string" ? f.height : f.height + "px"), f.shuffle && vt(), n(D.wrapper, "embedded", f.embedded), n(D.wrapper, "rtl", f.rtl), n(D.wrapper, "center", f.center), f.pause === !1 && st(), _e.reset(), k && (k.destroy(), k = null), i > 1 && f.autoSlide && f.autoSlideStoppable && (k = new Ce(D.wrapper, ()=>Math.min(Math.max((Date.now() - se) / O, 0), 1)), k.on("click", en), j = !1), f.navigationMode === "default" ? D.wrapper.removeAttribute("data-navigation-mode") : D.wrapper.setAttribute("data-navigation-mode", f.navigationMode), J.configure(f, r), q.configure(f, r), Ee.configure(f, r), U.configure(f, r), W.configure(f, r), V.configure(f, r), z.configure(f, r), N.configure(f, r), ht();
+        let r = $4aa888c367b643f0$var$F({}, f);
+        if (typeof t == "object" && $4aa888c367b643f0$var$e(f, t), l.isReady() === !1) return;
+        let i = D.wrapper.querySelectorAll($4aa888c367b643f0$var$C).length;
+        D.wrapper.classList.remove(r.transition), D.wrapper.classList.add(f.transition), D.wrapper.setAttribute("data-transition-speed", f.transitionSpeed), D.wrapper.setAttribute("data-background-transition", f.backgroundTransition), D.viewport.style.setProperty("--slide-width", typeof f.width == "string" ? f.width : f.width + "px"), D.viewport.style.setProperty("--slide-height", typeof f.height == "string" ? f.height : f.height + "px"), f.shuffle && vt(), $4aa888c367b643f0$var$n(D.wrapper, "embedded", f.embedded), $4aa888c367b643f0$var$n(D.wrapper, "rtl", f.rtl), $4aa888c367b643f0$var$n(D.wrapper, "center", f.center), f.pause === !1 && st(), _e.reset(), k && (k.destroy(), k = null), i > 1 && f.autoSlide && f.autoSlideStoppable && (k = new $4aa888c367b643f0$var$Ce(D.wrapper, ()=>Math.min(Math.max((Date.now() - se) / O, 0), 1)), k.on("click", en), j = !1), f.navigationMode === "default" ? D.wrapper.removeAttribute("data-navigation-mode") : D.wrapper.setAttribute("data-navigation-mode", f.navigationMode), J.configure(f, r), q.configure(f, r), Ee.configure(f, r), U.configure(f, r), W.configure(f, r), V.configure(f, r), z.configure(f, r), N.configure(f, r), ht();
     }
     function He() {
         window.addEventListener("resize", Zt, !1), f.touch && De.bind(), f.keyboard && V.bind(), f.progress && W.bind(), f.respondToHashChanges && H.bind(), U.bind(), q.bind(), D.slides.addEventListener("click", Xt, !1), D.slides.addEventListener("transitionend", Yt, !1), D.pauseOverlay.addEventListener("click", st, !1), f.focusBodyOnPageVisibilityChange && document.addEventListener("visibilitychange", Qt, !1);
@@ -3608,7 +2707,7 @@ function z(a, s) {
         De.unbind(), q.unbind(), V.unbind(), U.unbind(), W.unbind(), H.unbind(), window.removeEventListener("resize", Zt, !1), D.slides.removeEventListener("click", Xt, !1), D.slides.removeEventListener("transitionend", Yt, !1), D.pauseOverlay.removeEventListener("click", st, !1);
     }
     function We() {
-        p = !1, m !== !1 && (Ue(), Rt(), J.destroy(), q.destroy(), K.destroy(), G.destroy(), Ee.destroy(), U.destroy(), W.destroy(), I.destroy(), N.destroy(), P.destroy(), document.removeEventListener("fullscreenchange", $t), document.removeEventListener("webkitfullscreenchange", $t), document.removeEventListener("visibilitychange", Qt, !1), window.removeEventListener("message", Jt, !1), window.removeEventListener("load", X, !1), D.pauseOverlay && D.pauseOverlay.remove(), D.statusElement && D.statusElement.remove(), document.documentElement.classList.remove("reveal-full-page"), D.wrapper.classList.remove("ready", "center", "has-horizontal-slides", "has-vertical-slides"), D.wrapper.removeAttribute("data-transition-speed"), D.wrapper.removeAttribute("data-background-transition"), D.viewport.classList.remove("reveal-viewport"), D.viewport.style.removeProperty("--slide-width"), D.viewport.style.removeProperty("--slide-height"), D.slides.style.removeProperty("width"), D.slides.style.removeProperty("height"), D.slides.style.removeProperty("zoom"), D.slides.style.removeProperty("left"), D.slides.style.removeProperty("top"), D.slides.style.removeProperty("bottom"), D.slides.style.removeProperty("right"), D.slides.style.removeProperty("transform"), Array.from(D.wrapper.querySelectorAll(C)).forEach((e)=>{
+        p = !1, m !== !1 && (Ue(), Rt(), J.destroy(), q.destroy(), K.destroy(), G.destroy(), Ee.destroy(), U.destroy(), W.destroy(), I.destroy(), N.destroy(), P.destroy(), document.removeEventListener("fullscreenchange", $t), document.removeEventListener("webkitfullscreenchange", $t), document.removeEventListener("visibilitychange", Qt, !1), window.removeEventListener("message", Jt, !1), window.removeEventListener("load", X, !1), D.pauseOverlay && D.pauseOverlay.remove(), D.statusElement && D.statusElement.remove(), document.documentElement.classList.remove("reveal-full-page"), D.wrapper.classList.remove("ready", "center", "has-horizontal-slides", "has-vertical-slides"), D.wrapper.removeAttribute("data-transition-speed"), D.wrapper.removeAttribute("data-background-transition"), D.viewport.classList.remove("reveal-viewport"), D.viewport.style.removeProperty("--slide-width"), D.viewport.style.removeProperty("--slide-height"), D.slides.style.removeProperty("width"), D.slides.style.removeProperty("height"), D.slides.style.removeProperty("zoom"), D.slides.style.removeProperty("left"), D.slides.style.removeProperty("top"), D.slides.style.removeProperty("bottom"), D.slides.style.removeProperty("right"), D.slides.style.removeProperty("transform"), Array.from(D.wrapper.querySelectorAll($4aa888c367b643f0$var$C)).forEach((e)=>{
             e.style.removeProperty("display"), e.style.removeProperty("top"), e.removeAttribute("hidden"), e.removeAttribute("aria-hidden");
         }));
     }
@@ -3619,11 +2718,11 @@ function z(a, s) {
         a.removeEventListener(e, t, n);
     }
     function qe(e) {
-        typeof e.layout == "string" && (T.layout = e.layout), typeof e.overview == "string" && (T.overview = e.overview), T.layout ? i(D.slides, T.layout + " " + T.overview) : i(D.slides, T.overview);
+        typeof e.layout == "string" && (T.layout = e.layout), typeof e.overview == "string" && (T.overview = e.overview), T.layout ? $4aa888c367b643f0$var$i(D.slides, T.layout + " " + T.overview) : $4aa888c367b643f0$var$i(D.slides, T.overview);
     }
     function Y({ target: t = D.wrapper, type: n, data: r, bubbles: i = !0 }) {
         let a = document.createEvent("HTMLEvents", 1, 2);
-        return a.initEvent(n, i, !0), e(a, r), t.dispatchEvent(a), t === D.wrapper && Ye(n), a;
+        return a.initEvent(n, i, !0), $4aa888c367b643f0$var$e(a, r), t.dispatchEvent(a), t === D.wrapper && Ye(n), a;
     }
     function Je(e) {
         Y({
@@ -3644,21 +2743,21 @@ function z(a, s) {
                 eventName: t,
                 state: Ft()
             };
-            e(r, n), window.parent.postMessage(JSON.stringify(r), "*");
+            $4aa888c367b643f0$var$e(r, n), window.parent.postMessage(JSON.stringify(r), "*");
         }
     }
     function X() {
         if (D.wrapper && !R.isActive()) {
             let e = D.viewport.offsetWidth, t = D.viewport.offsetHeight;
             if (!f.disableLayout) {
-                g && !f.embedded && document.documentElement.style.setProperty("--vh", window.innerHeight * .01 + "px");
+                $4aa888c367b643f0$var$g && !f.embedded && document.documentElement.style.setProperty("--vh", window.innerHeight * .01 + "px");
                 let n = L.isActive() ? Qe(e, t) : Qe(), r = S;
                 Xe(f.width, f.height), D.slides.style.width = n.width + "px", D.slides.style.height = n.height + "px", S = Math.min(n.presentationWidth / n.width, n.presentationHeight / n.height), S = Math.max(S, f.minScale), S = Math.min(S, f.maxScale), S === 1 || L.isActive() ? (D.slides.style.zoom = "", D.slides.style.left = "", D.slides.style.top = "", D.slides.style.bottom = "", D.slides.style.right = "", qe({
                     layout: ""
                 })) : (D.slides.style.zoom = "", D.slides.style.left = "50%", D.slides.style.top = "50%", D.slides.style.bottom = "auto", D.slides.style.right = "auto", qe({
                     layout: "translate(-50%, -50%) scale(" + S + ")"
                 }));
-                let i = Array.from(D.wrapper.querySelectorAll(C));
+                let i = Array.from(D.wrapper.querySelectorAll($4aa888c367b643f0$var$C));
                 for(let e = 0, t = i.length; e < t; e++){
                     let t = i[e];
                     t.style.display !== "none" && (f.center || t.classList.contains("center") ? t.classList.contains("stack") ? t.style.top = 0 : t.style.top = Math.max((n.height - t.scrollHeight) / 2, 0) + "px" : t.style.top = "");
@@ -3676,8 +2775,8 @@ function z(a, s) {
         }
     }
     function Xe(e, n) {
-        t(D.slides, "section > .stretch, section > .r-stretch").forEach((t)=>{
-            let r = d(t, n);
+        $4aa888c367b643f0$var$t(D.slides, "section > .stretch, section > .r-stretch").forEach((t)=>{
+            let r = $4aa888c367b643f0$var$d(t, n);
             if (/(img|video)/gi.test(t.nodeName)) {
                 let n = t.naturalWidth || t.videoWidth, i = t.naturalHeight || t.videoHeight, a = Math.min(e / n, r / i);
                 t.style.width = n * a + "px", t.style.height = i * a + "px";
@@ -3765,7 +2864,7 @@ function z(a, s) {
             }
         }).defaultPrevented) return;
         v = y;
-        let i = D.wrapper.querySelectorAll(w);
+        let i = D.wrapper.querySelectorAll($4aa888c367b643f0$var$w);
         if (L.isActive()) {
             let n = L.getSlideByIndices(e, t);
             n && L.scrollToSlide(n);
@@ -3776,7 +2875,7 @@ function z(a, s) {
         let o = x.concat();
         x.length = 0;
         let s = h || 0, c = _ || 0;
-        h = yt(w, e === void 0 ? h : e), _ = yt(te, t === void 0 ? _ : t);
+        h = yt($4aa888c367b643f0$var$w, e === void 0 ? h : e), _ = yt($4aa888c367b643f0$var$te, t === void 0 ? _ : t);
         let l = h !== s || _ !== c;
         l || (v = null);
         let u = i[h], d = u.querySelectorAll("section");
@@ -3815,7 +2914,7 @@ function z(a, s) {
         }), Je();
     }
     function ht() {
-        Ue(), He(), X(), O = f.autoSlide, Lt(), I.create(), H.writeURL(), f.sortFragmentsOnSync === !0 && z.sortAll(), h !== void 0 && (h = yt(w, h), _ = yt(te, _)), U.update(), W.update(), St(), J.update(), J.updateVisibility(), K.update(), I.update(!0), N.update(), M.formatEmbeddedContent(), f.autoPlayMedia === !1 ? M.stopEmbeddedContent(y, {
+        Ue(), He(), X(), O = f.autoSlide, Lt(), I.create(), H.writeURL(), f.sortFragmentsOnSync === !0 && z.sortAll(), h !== void 0 && (h = yt($4aa888c367b643f0$var$w, h), _ = yt($4aa888c367b643f0$var$te, _)), U.update(), W.update(), St(), J.update(), J.updateVisibility(), K.update(), I.update(!0), N.update(), M.formatEmbeddedContent(), f.autoPlayMedia === !1 ? M.stopEmbeddedContent(y, {
             unloadIframes: !1
         }) : M.startEmbeddedContent(y), B.isActive() && B.layout(), Y({
             type: "sync"
@@ -3831,7 +2930,7 @@ function z(a, s) {
     }
     function _t() {
         $().forEach((e)=>{
-            t(e, "section").forEach((e, t)=>{
+            $4aa888c367b643f0$var$t(e, "section").forEach((e, t)=>{
                 t > 0 && (e.classList.remove("present"), e.classList.remove("past"), e.classList.add("future"), e.setAttribute("aria-hidden", "true"));
             });
         });
@@ -3845,7 +2944,7 @@ function z(a, s) {
         });
     }
     function yt(e, n) {
-        let r = t(D.wrapper, e), i = r.length, a = L.isActive() || R.isActive(), o = !1, s = !1;
+        let r = $4aa888c367b643f0$var$t(D.wrapper, e), i = r.length, a = L.isActive() || R.isActive(), o = !1, s = !1;
         if (i) {
             f.loop && (n >= i && (o = !0), n %= i, n < 0 && (n = i + n, s = !0)), n = Math.max(Math.min(n, i - 1), 0);
             for(let e = 0; e < i; e++){
@@ -3868,12 +2967,12 @@ function z(a, s) {
         return n;
     }
     function bt(e) {
-        t(e, ".fragment").forEach((e)=>{
+        $4aa888c367b643f0$var$t(e, ".fragment").forEach((e)=>{
             e.classList.add("visible"), e.classList.remove("current-fragment");
         });
     }
     function xt(e) {
-        t(e, ".fragment.visible").forEach((e)=>{
+        $4aa888c367b643f0$var$t(e, ".fragment.visible").forEach((e)=>{
             e.classList.remove("visible", "current-fragment");
         });
     }
@@ -3881,9 +2980,9 @@ function z(a, s) {
         let e = $(), n = e.length, r, i;
         if (n && h !== void 0) {
             let a = B.isActive(), o = a ? 10 : f.viewDistance;
-            g && (o = a ? 6 : f.mobileViewDistance), R.isActive() && (o = Number.MAX_VALUE);
+            $4aa888c367b643f0$var$g && (o = a ? 6 : f.mobileViewDistance), R.isActive() && (o = Number.MAX_VALUE);
             for(let s = 0; s < n; s++){
-                let c = e[s], l = t(c, "section"), u = l.length;
+                let c = e[s], l = $4aa888c367b643f0$var$t(c, "section"), u = l.length;
                 if (r = Math.abs((h || 0) - s) || 0, f.loop && (r = Math.abs(((h || 0) - s) % (n - o)) || 0), r < o ? M.load(c) : M.unload(c), u) {
                     let e = a ? 0 : et(c);
                     for(let t = 0; t < u; t++){
@@ -3896,7 +2995,7 @@ function z(a, s) {
         }
     }
     function Q({ includeFragments: e = !1 } = {}) {
-        let t = D.wrapper.querySelectorAll(w), n = D.wrapper.querySelectorAll(te), r = {
+        let t = D.wrapper.querySelectorAll($4aa888c367b643f0$var$w), n = D.wrapper.querySelectorAll($4aa888c367b643f0$var$te), r = {
             left: h > 0,
             right: h < t.length - 1,
             up: _ > 0,
@@ -3942,7 +3041,7 @@ function z(a, s) {
             if (L.isActive()) n = parseInt(e.getAttribute("data-index-h"), 10), e.getAttribute("data-index-v") && (r = parseInt(e.getAttribute("data-index-v"), 10));
             else {
                 let i = tt(e), a = i ? e.parentNode : e, o = $();
-                n = Math.max(o.indexOf(a), 0), r = void 0, i && (r = Math.max(t(e.parentNode, "section").indexOf(e), 0));
+                n = Math.max(o.indexOf(a), 0), r = void 0, i && (r = Math.max($4aa888c367b643f0$var$t(e.parentNode, "section").indexOf(e), 0));
             }
         }
         if (!e && y && y.querySelectorAll(".fragment").length > 0) {
@@ -3956,16 +3055,16 @@ function z(a, s) {
         };
     }
     function Et() {
-        return t(D.wrapper, C + ":not(.stack):not([data-visibility=\"uncounted\"])");
+        return $4aa888c367b643f0$var$t(D.wrapper, $4aa888c367b643f0$var$C + ":not(.stack):not([data-visibility=\"uncounted\"])");
     }
     function $() {
-        return t(D.wrapper, w);
+        return $4aa888c367b643f0$var$t(D.wrapper, $4aa888c367b643f0$var$w);
     }
     function Dt() {
-        return t(D.wrapper, ".slides>section>section");
+        return $4aa888c367b643f0$var$t(D.wrapper, ".slides>section>section");
     }
     function Ot() {
-        return t(D.wrapper, w + ".stack");
+        return $4aa888c367b643f0$var$t(D.wrapper, $4aa888c367b643f0$var$w + ".stack");
     }
     function kt() {
         return $().length > 1;
@@ -3996,7 +3095,7 @@ function z(a, s) {
     }
     function Ft() {
         let e = Tt();
-        return F({
+        return $4aa888c367b643f0$var$F({
             indexh: e.h,
             indexv: e.v,
             indexf: e.f,
@@ -4006,15 +3105,15 @@ function z(a, s) {
     }
     function It(e) {
         if (typeof e == "object") {
-            Z(r(e.indexh), r(e.indexv), r(e.indexf));
-            let t = r(e.paused), n = r(e.overview);
+            Z($4aa888c367b643f0$var$r(e.indexh), $4aa888c367b643f0$var$r(e.indexv), $4aa888c367b643f0$var$r(e.indexf));
+            let t = $4aa888c367b643f0$var$r(e.paused), n = $4aa888c367b643f0$var$r(e.overview);
             typeof t == "boolean" && t !== lt() && ct(t), typeof n == "boolean" && n !== B.isActive() && B.toggle(n), K.setState(e);
         }
     }
     function Lt() {
         if (Rt(), y && f.autoSlide !== !1) {
             let e = y.querySelector(".current-fragment[data-autoslide]"), n = e ? e.getAttribute("data-autoslide") : null, r = y.parentNode ? y.parentNode.getAttribute("data-autoslide") : null, i = y.getAttribute("data-autoslide");
-            n ? O = parseInt(n, 10) : i ? O = parseInt(i, 10) : r ? O = parseInt(r, 10) : (O = f.autoSlide, y.querySelectorAll(".fragment").length === 0 && t(y, "video, audio").forEach((e)=>{
+            n ? O = parseInt(n, 10) : i ? O = parseInt(i, 10) : r ? O = parseInt(r, 10) : (O = f.autoSlide, y.querySelectorAll(".fragment").length === 0 && $4aa888c367b643f0$var$t(y, "video, audio").forEach((e)=>{
                 e.hasAttribute("data-autoplay") && O && e.duration * 1e3 / e.playbackRate > O && (O = e.duration * 1e3 / e.playbackRate + 1e3);
             })), O && !j && !lt() && !B.isActive() && (!at() || z.availableRoutes().next || f.loop === !0) && (A = setTimeout(()=>{
                 typeof f.autoSlideMethod == "function" ? f.autoSlideMethod() : Kt(), Lt();
@@ -4058,7 +3157,7 @@ function z(a, s) {
             });
             else {
                 let n;
-                if (n = f.rtl ? t(D.wrapper, w + ".future").pop() : t(D.wrapper, w + ".past").pop(), n && n.classList.contains("stack")) {
+                if (n = f.rtl ? $4aa888c367b643f0$var$t(D.wrapper, $4aa888c367b643f0$var$w + ".future").pop() : $4aa888c367b643f0$var$t(D.wrapper, $4aa888c367b643f0$var$w + ".past").pop(), n && n.classList.contains("stack")) {
                     let e = n.querySelectorAll("section").length - 1 || void 0;
                     Z(h - 1, e);
                 } else f.rtl ? Ht({
@@ -4088,7 +3187,7 @@ function z(a, s) {
     function Jt(e) {
         let t = e.data;
         if (typeof t == "string" && t.charAt(0) === "{" && t.charAt(t.length - 1) === "}" && (t = JSON.parse(t), t.method && typeof l[t.method] == "function")) {
-            if (E.test(t.method) === !1) {
+            if ($4aa888c367b643f0$var$E.test(t.method) === !1) {
                 let e = l[t.method].apply(l, t.args);
                 Ye("callback", {
                     method: t.method,
@@ -4109,7 +3208,7 @@ function z(a, s) {
         }));
     }
     function Xt(e) {
-        let t = o(e.target, "a[href^=\"#\"]");
+        let t = $4aa888c367b643f0$var$o(e.target, "a[href^=\"#\"]");
         if (t) {
             let n = t.getAttribute("href"), r = H.getIndicesFromHash(n);
             r && (l.slide(r.h, r.v, r.f), e.preventDefault());
@@ -4130,7 +3229,7 @@ function z(a, s) {
         at() && f.loop === !1 ? (Z(0, 0), Bt()) : j ? Bt() : zt();
     }
     let tn = {
-        VERSION: Te,
+        VERSION: $4aa888c367b643f0$var$Te,
         initialize: Oe,
         configure: Ve,
         destroy: We,
@@ -4224,7 +3323,7 @@ function z(a, s) {
         removeHiddenSlides: Me,
         getScale: ()=>S,
         getConfig: ()=>f,
-        getQueryHash: u,
+        getQueryHash: $4aa888c367b643f0$var$u,
         getSlidePath: H.getHash.bind(H),
         getRevealElement: ()=>a,
         getSlidesElement: ()=>D.slides,
@@ -4235,7 +3334,7 @@ function z(a, s) {
         getPlugin: G.getPlugin.bind(G),
         getPlugins: G.getRegisteredPlugins.bind(G)
     };
-    return e(l, F(F({}, tn), {}, {
+    return $4aa888c367b643f0$var$e(l, $4aa888c367b643f0$var$F($4aa888c367b643f0$var$F({}, tn), {}, {
         announceStatus: Fe,
         getStatusText: Ie,
         focus: q,
@@ -4260,11 +3359,11 @@ function z(a, s) {
 }
 //#endregion
 //#region js/index.ts
-var B = z, V = [];
-B.initialize = (e)=>{
+var $4aa888c367b643f0$export$2e2bcd8739ae039 = $4aa888c367b643f0$var$z, $4aa888c367b643f0$var$V = [];
+$4aa888c367b643f0$export$2e2bcd8739ae039.initialize = (e)=>{
     let t = document.querySelector(".reveal");
     if (!(t instanceof HTMLElement)) throw Error("Unable to find presentation root (<div class=\"reveal\">).");
-    return Object.assign(B, new z(t, e)), V.map((e)=>e(B)), B.initialize();
+    return Object.assign($4aa888c367b643f0$export$2e2bcd8739ae039, new $4aa888c367b643f0$var$z(t, e)), $4aa888c367b643f0$var$V.map((e)=>e($4aa888c367b643f0$export$2e2bcd8739ae039)), $4aa888c367b643f0$export$2e2bcd8739ae039.initialize();
 }, [
     "configure",
     "on",
@@ -4273,45 +3372,16 @@ B.initialize = (e)=>{
     "removeEventListener",
     "registerPlugin"
 ].forEach((e)=>{
-    B[e] = (...t)=>{
-        V.push((n)=>n[e].call(null, ...t));
+    $4aa888c367b643f0$export$2e2bcd8739ae039[e] = (...t)=>{
+        $4aa888c367b643f0$var$V.push((n)=>n[e].call(null, ...t));
     };
-}), B.isReady = ()=>!1, B.VERSION = Te;
+}), $4aa888c367b643f0$export$2e2bcd8739ae039.isReady = ()=>!1, $4aa888c367b643f0$export$2e2bcd8739ae039.VERSION = $4aa888c367b643f0$var$Te;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"1egVF"}],"1egVF":[function(require,module,exports,__globalThis) {
-exports.interopDefault = function(a) {
-    return a && a.__esModule ? a : {
-        default: a
-    };
-};
-exports.defineInteropFlag = function(a) {
-    Object.defineProperty(a, '__esModule', {
-        value: true
-    });
-};
-exports.exportAll = function(source, dest) {
-    Object.keys(source).forEach(function(key) {
-        if (key === 'default' || key === '__esModule' || Object.prototype.hasOwnProperty.call(dest, key)) return;
-        Object.defineProperty(dest, key, {
-            enumerable: true,
-            get: function() {
-                return source[key];
-            }
-        });
-    });
-    return dest;
-};
-exports.export = function(dest, destName, get) {
-    Object.defineProperty(dest, destName, {
-        enumerable: true,
-        get: get
-    });
-};
 
-},{}],"9rbGe":[function(require,module,exports,__globalThis) {
+var $3a40084cc1148c50$exports = {};
 (function(e, t) {
-    "object" == `object` && "object" < `u` ? module.exports = t() : typeof define == `function` && define.amd ? define([], t) : (e = typeof globalThis < `u` ? globalThis : e || self, e.RevealHighlight = t());
-})(this, function() {
+    "object" == `object` && "object" < `u` ? $3a40084cc1148c50$exports = t() : typeof define == `function` && define.amd ? define([], t) : (e = typeof globalThis < `u` ? globalThis : e || self, e.RevealHighlight = t());
+})($3a40084cc1148c50$exports, function() {
     var e = Object.create, t = Object.defineProperty, n = Object.getOwnPropertyDescriptor, r = Object.getOwnPropertyNames, i = Object.getPrototypeOf, a = Object.prototype.hasOwnProperty, o = (e, t)=>()=>(t || e((t = {
                 exports: {}
             }).exports, t), t.exports), s = (e, i, o, s)=>{
@@ -27025,10 +26095,11 @@ https://github.com/highlightjs/highlight.js/issues/2277`), i = e, r = t), n === 
     return ()=>$;
 });
 
-},{}],"9VHNm":[function(require,module,exports,__globalThis) {
+
+var $d8024fbd8c5f4891$exports = {};
 (function(e, t) {
-    "object" == `object` && "object" < `u` ? module.exports = t() : typeof define == `function` && define.amd ? define([], t) : (e = typeof globalThis < `u` ? globalThis : e || self, e.RevealMarkdown = t());
-})(this, function() {
+    "object" == `object` && "object" < `u` ? $d8024fbd8c5f4891$exports = t() : typeof define == `function` && define.amd ? define([], t) : (e = typeof globalThis < `u` ? globalThis : e || self, e.RevealMarkdown = t());
+})($d8024fbd8c5f4891$exports, function() {
     function e() {
         return {
             async: !1,
@@ -28803,10 +27874,11 @@ Please report this to https://github.com/markedjs/marked.`, e) {
     };
 });
 
-},{}],"b2uMh":[function(require,module,exports,__globalThis) {
+
+var $16d1888e98cd8a0f$exports = {};
 (function(e, t) {
-    "object" == `object` && "object" < `u` ? module.exports = t() : typeof define == `function` && define.amd ? define([], t) : (e = typeof globalThis < `u` ? globalThis : e || self, e.RevealZoom = t());
-})(this, function() {
+    "object" == `object` && "object" < `u` ? $16d1888e98cd8a0f$exports = t() : typeof define == `function` && define.amd ? define([], t) : (e = typeof globalThis < `u` ? globalThis : e || self, e.RevealZoom = t());
+})($16d1888e98cd8a0f$exports, function() {
     var e = {
         id: `zoom`,
         init: function(e) {
@@ -28884,10 +27956,11 @@ Please report this to https://github.com/markedjs/marked.`, e) {
     return t;
 });
 
-},{}],"juOEH":[function(require,module,exports,__globalThis) {
+
+var $6b0c1068c8869d9a$exports = {};
 (function(e, t) {
-    "object" == `object` && "object" < `u` ? module.exports = t() : typeof define == `function` && define.amd ? define([], t) : (e = typeof globalThis < `u` ? globalThis : e || self, e.RevealNotes = t());
-})(this, function() {
+    "object" == `object` && "object" < `u` ? $6b0c1068c8869d9a$exports = t() : typeof define == `function` && define.amd ? define([], t) : (e = typeof globalThis < `u` ? globalThis : e || self, e.RevealNotes = t());
+})($6b0c1068c8869d9a$exports, function() {
     var e = `<!--
 	NOTE: You need to build the notes plugin after making changes to this file.
 -->
@@ -31425,20 +30498,7 @@ Please report this to https://github.com/markedjs/marked.`, e) {
     };
 });
 
-},{}],"g7vIF":[function(require,module,exports,__globalThis) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "Header", ()=>(0, _headerDefault.default));
-parcelHelpers.export(exports, "Menu", ()=>(0, _menuDefault.default));
-parcelHelpers.export(exports, "Toolbar", ()=>(0, _toolbarDefault.default));
-var _header = require("./_header");
-var _headerDefault = parcelHelpers.interopDefault(_header);
-var _menu = require("./_menu");
-var _menuDefault = parcelHelpers.interopDefault(_menu);
-var _toolbar = require("./_toolbar");
-var _toolbarDefault = parcelHelpers.interopDefault(_toolbar);
 
-},{"./_header":"anVkR","./_menu":"2ywBn","./_toolbar":"8X25d","@parcel/transformer-js/src/esmodule-helpers.js":"1egVF"}],"anVkR":[function(require,module,exports,__globalThis) {
 /**
  * Reveal.js Header plugin
  *
@@ -31469,9 +30529,7 @@ var _toolbarDefault = parcelHelpers.interopDefault(_toolbar);
  * Copyright (c) 2025 Emiliano "pixu1980" Pisu
 
 * @returns {{ id: string, init: function, update: function }} A Reveal plugin definition.
- */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-const HeaderPlugin = ()=>{
+ */ const $4ded6e671b4245a5$var$HeaderPlugin = ()=>{
     let deck;
     const headerPlugin = {
         id: "header",
@@ -31520,9 +30578,9 @@ const HeaderPlugin = ()=>{
     };
     return headerPlugin;
 };
-exports.default = HeaderPlugin;
+var $4ded6e671b4245a5$export$2e2bcd8739ae039 = $4ded6e671b4245a5$var$HeaderPlugin;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"1egVF"}],"2ywBn":[function(require,module,exports,__globalThis) {
+
 /**
  * Reveal.js Menu Plugin
  *
@@ -31545,9 +30603,7 @@ exports.default = HeaderPlugin;
  * - For very long slide decks, consider debouncing UI updates.
 
  * Copyright (c) 2025 Emiliano "pixu1980" Pisu
-*/ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-const defaults = {
+*/ const $a7e48133286c7321$var$defaults = {
     side: 'right',
     numbers: false,
     titleSelector: 'h1, h2, h3, h4, h5',
@@ -31570,7 +30626,7 @@ const defaults = {
     delayInit: false,
     openOnInit: false
 };
-class Menu {
+class $a7e48133286c7321$var$Menu {
     deck;
     dom = {
         reveal: null,
@@ -32251,27 +31307,27 @@ class Menu {
     constructor(deck){
         this.deck = deck;
         this.settings = {
-            ...defaults,
+            ...$a7e48133286c7321$var$defaults,
             ...deck.getConfig()?.menu
         };
         this.init();
     }
 }
-const Plugin = ()=>{
+const $a7e48133286c7321$var$Plugin = ()=>{
     let instance;
     return {
         id: 'menu',
         init: (deck)=>{
-            instance = new Menu(deck);
+            instance = new $a7e48133286c7321$var$Menu(deck);
         },
         toggleMenu: ()=>{
             instance.toggle();
         }
     };
 };
-exports.default = Plugin;
+var $a7e48133286c7321$export$2e2bcd8739ae039 = $a7e48133286c7321$var$Plugin;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"1egVF"}],"8X25d":[function(require,module,exports,__globalThis) {
+
 /**
  * Reveal.js toolbar plugin
  * Toolbar plugin defaults.
@@ -32291,9 +31347,7 @@ exports.default = Plugin;
  * - Notes ?
  * - PDF export ?
  * - tooltips
- */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-const defaults = {
+ */ const $b03278a6677e60e6$var$defaults = {
     position: "top",
     fullscreen: true,
     colorScheme: true,
@@ -32303,7 +31357,7 @@ const defaults = {
     help: true,
     menu: true
 };
-class Toolbar {
+class $b03278a6677e60e6$var$Toolbar {
     deck;
     dom = {
         reveal: null,
@@ -32334,7 +31388,7 @@ class Toolbar {
 	 */ addAction(name, caption, options, handler) {
         const defaults = {
             class: `reveal-toolbar-button-${name}`,
-            caption,
+            caption: caption,
             content: undefined
         };
         const settings = {
@@ -32430,7 +31484,7 @@ class Toolbar {
 	 */ constructor(deck){
         this.deck = deck;
         this.settings = {
-            ...defaults,
+            ...$b03278a6677e60e6$var$defaults,
             ...deck.getConfig()?.toolbar
         };
         this.init();
@@ -32440,22 +31494,19 @@ class Toolbar {
 /**
  * Toolbar plugin factory for Reveal.js.
  * @returns {{ id: string, init: (deck:any)=>void }} Plugin definition
- */ const Plugin = ()=>{
+ */ const $b03278a6677e60e6$var$Plugin = ()=>{
     return {
         id: "toolbar",
         init: (deck)=>{
-            new Toolbar(deck);
+            new $b03278a6677e60e6$var$Toolbar(deck);
         }
     };
 };
-exports.default = Plugin;
+var $b03278a6677e60e6$export$2e2bcd8739ae039 = $b03278a6677e60e6$var$Plugin;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"1egVF"}],"lABBs":[function(require,module,exports,__globalThis) {
-var _diveIn = require("./_dive-in");
-var _stagger = require("./_stagger");
-var _tabs = require("./_tabs");
 
-},{"./_dive-in":"5jJFD","./_stagger":"5TVt1","./_tabs":"aVVRT"}],"5jJFD":[function(require,module,exports,__globalThis) {
+
+
 /**
  * DiveIn stacked container component
  *
@@ -32478,9 +31529,9 @@ var _tabs = require("./_tabs");
  * Performance notes:
  * - The `mousemove` handler writes CSS variables on every event. For complex
  *   scenes consider throttling with requestAnimationFrame.
- */ class DiveInElement extends HTMLElement {
+ */ class $3b2202c96a3f3027$var$DiveInElement extends HTMLElement {
     static{
-        !customElements.get('dive-in') && customElements.define('dive-in', DiveInElement);
+        !customElements.get('dive-in') && customElements.define('dive-in', $3b2202c96a3f3027$var$DiveInElement);
     }
     constructor(){
         super();
@@ -32513,7 +31564,7 @@ var _tabs = require("./_tabs");
     }
 }
 
-},{}],"5TVt1":[function(require,module,exports,__globalThis) {
+
 /**
  * Stagger animation components
  *
@@ -32533,9 +31584,9 @@ var _tabs = require("./_tabs");
  * Lifecycle:
  * - Registered as the `stagger` custom element.
  * - Recomputes child indexes when the element is connected.
- */ class StaggerElement extends HTMLElement {
+ */ class $3886aba8d280380c$var$StaggerElement extends HTMLElement {
     static{
-        !customElements.get('stagger-container') && customElements.define('stagger-container', StaggerElement);
+        !customElements.get('stagger-container') && customElements.define('stagger-container', $3886aba8d280380c$var$StaggerElement);
     }
     connectedCallback() {
         this.refreshItems();
@@ -32550,7 +31601,7 @@ var _tabs = require("./_tabs");
     }
 }
 
-},{}],"aVVRT":[function(require,module,exports,__globalThis) {
+
 /**
  * Tabs component
  *
@@ -32585,9 +31636,9 @@ var _tabs = require("./_tabs");
 
  * Notes:
  * - This component assumes a mostly static DOM structure after initialization.
- */ class TabsElement extends HTMLElement {
+ */ class $5134f742313fa3dc$var$TabsElement extends HTMLElement {
     static{
-        !customElements.get('tabs-container') && customElements.define('tabs-container', TabsElement);
+        !customElements.get('tabs-container') && customElements.define('tabs-container', $5134f742313fa3dc$var$TabsElement);
     }
     constructor(){
         super();
@@ -32658,7 +31709,9 @@ var _tabs = require("./_tabs");
     }
 }
 
-},{}],"9HSHT":[function(require,module,exports,__globalThis) {
+
+
+
 window.pixuTalks = {
     /**
    * Pass in an element and its CSS Custom Property that you want the value of.
@@ -32768,6 +31821,171 @@ window.pixuTalks = {
     }
 };
 
-},{}]},["kfVDd","8JWvp"], "8JWvp", "parcelRequire4ccd", {})
 
-//# sourceMappingURL=talk-template.c6396971.js.map
+addEventListener("DOMContentLoaded", ()=>{
+    let deck = new (0, $4aa888c367b643f0$export$2e2bcd8739ae039)(document.querySelector(".reveal"), {
+        ...window.location.href.includes("?print-pdf") && {
+            pdfSeparateFragments: false
+        },
+        hash: true,
+        // plugins: [Markdown, Highlight, Zoom, Notes, Menu, Toolbar, Header],
+        // plugins: [Markdown, Highlight, Zoom, Notes, Toolbar, Menu],
+        plugins: [
+            (0, (/*@__PURE__*/$parcel$interopDefault($d8024fbd8c5f4891$exports))),
+            (0, (/*@__PURE__*/$parcel$interopDefault($3a40084cc1148c50$exports))),
+            (0, (/*@__PURE__*/$parcel$interopDefault($16d1888e98cd8a0f$exports))),
+            (0, (/*@__PURE__*/$parcel$interopDefault($6b0c1068c8869d9a$exports))),
+            (0, $b03278a6677e60e6$export$2e2bcd8739ae039)
+        ],
+        navigationMode: "linear",
+        menu: {
+            // Specifies which side of the presentation the menu will
+            // be shown. Use 'left' or 'right'.
+            side: "left",
+            // Specifies the width of the menu.
+            // Can be one of the following:
+            // 'normal', 'wide', 'third', 'half', 'full', or
+            // any valid css length value
+            width: "normal",
+            // Add slide numbers to the titles in the slide list.
+            // Use 'true' or format string (same as reveal.js slide numbers)
+            numbers: true,
+            // Specifies which slide elements will be used for generating
+            // the slide titles in the menu. The default selects the first
+            // heading element found in the slide, but you can specify any
+            // valid css selector and the text from the first matching
+            // element will be used.
+            // Note: that a section data-menu-title attribute or an element
+            // with a menu-title class will take precedence over this option
+            titleSelector: "h1, h2, h3, h4, h5, h6",
+            // If slides do not have a matching title, attempt to use the
+            // start of the text content as the title instead
+            useTextContentForMissingTitles: false,
+            // Hide slides from the menu that do not have a title.
+            // Set to 'true' to only list slides with titles.
+            hideMissingTitles: true,
+            // Adds markers to the slide titles to indicate the
+            // progress through the presentation. Set to 'false'
+            // to hide the markers.
+            markers: true,
+            // Specify custom panels to be included in the menu, by
+            // providing an array of objects with 'title', 'icon'
+            // properties, and either a 'src' or 'content' property.
+            custom: false,
+            // // Specifies the themes that will be available in the themes
+            // // menu panel. Set to 'true' to show the themes menu panel
+            // // with the default themes list. Alternatively, provide an
+            // // array to specify the themes to make available in the
+            // // themes menu panel, for example...
+            // //
+            // // [
+            // //     { name: 'Black', theme: 'dist/theme/black.css' },
+            // //     { name: 'White', theme: 'dist/theme/white.css' },
+            // //     { name: 'League', theme: 'dist/theme/league.css' },
+            // //     {
+            // //       name: 'Dark',
+            // //       theme: 'lib/reveal.js/dist/theme/black.css',
+            // //       highlightTheme: 'lib/reveal.js/plugin/highlight/monokai.css'
+            // //     },
+            // //     {
+            // //       name: 'Code: Zenburn',
+            // //       highlightTheme: 'lib/reveal.js/plugin/highlight/zenburn.css'
+            // //     }
+            // // ]
+            // //
+            // // Note: specifying highlightTheme without a theme will
+            // // change the code highlight theme while leaving the
+            // // presentation theme unchanged.
+            // themes: false,
+            // // Specifies the path to the default theme files. If your
+            // // presentation uses a different path to the standard reveal
+            // // layout then you need to provide this option, but only
+            // // when 'themes' is set to 'true'. If you provide your own
+            // // list of themes or 'themes' is set to 'false' the
+            // // 'themesPath' option is ignored.
+            // themesPath: 'dist/theme/',
+            // Specifies if the transitions menu panel will be shown.
+            // Set to 'true' to show the transitions menu panel with
+            // the default transitions list. Alternatively, provide an
+            // array to specify the transitions to make available in
+            // the transitions panel, for example...
+            // ['None', 'Fade', 'Slide']
+            transitions: false,
+            // Adds a menu button to the slides to open the menu panel.
+            // Set to 'false' to hide the button.
+            openButton: false,
+            // If 'true' allows the slide number in the presentation to
+            // open the menu panel. The reveal.js slideNumber option must
+            // be displayed for this to take effect
+            openSlideNumber: false,
+            // If true allows the user to open and navigate the menu using
+            // the keyboard. Standard keyboard interaction with reveal
+            // will be disabled while the menu is open.
+            keyboard: true,
+            // Normally the menu will close on user actions such as
+            // selecting a menu item, or clicking the presentation area.
+            // If 'true', the sticky option will leave the menu open
+            // until it is explicitly closed, that is, using the close
+            // button or pressing the ESC or m key (when the keyboard
+            // interaction option is enabled).
+            sticky: false,
+            // If 'true' standard menu items will be automatically opened
+            // when navigating using the keyboard. Note: this only takes
+            // effect when both the 'keyboard' and 'sticky' options are enabled.
+            autoOpen: true,
+            // If 'true' the menu will not be created until it is explicitly
+            // requested by calling RevealMenu.init(). Note this will delay
+            // the creation of all menu panels, including custom panels, and
+            // the menu button.
+            delayInit: false,
+            // If 'true' the menu will be shown when the menu is initialised.
+            openOnInit: false
+        },
+        toolbar: {
+            // Specifies where the toolbar will be shown: 'top' or 'bottom'
+            position: "top",
+            // // If true, the reveal.js-menu will be moved into the toolbar.
+            // // Set to false to leave the menu on its own.
+            // menu: {
+            //   content: '<icon class="draft-ui-icon-hamburger"></icon>',
+            // },
+            menu: false,
+            // Add button to show the help overlay
+            help: {
+                content: '<icon class="draft-ui-icon-circle-info"></icon>'
+            },
+            // Add button to toggle the overview mode on and off
+            colorScheme: {
+                content: '<icon class="draft-ui-icon-computer"></icon>'
+            },
+            // Add button to toggle the overview mode on and off
+            overview: {
+                content: '<icon class="draft-ui-icon-apps"></icon>'
+            },
+            // Add button to toggle fullscreen mode for the presentation
+            fullscreen: {
+                content: '<icon class="draft-ui-icon-zoom-in"></icon>'
+            },
+            // Add button to pause (hide) the presentation display
+            pause: false,
+            // Add button to show the speaker notes
+            notes: false
+        }
+    });
+    // keyboard nav configuration
+    deck.configure({
+        keyboard: {
+            8: "prev",
+            // 27: null,
+            78: null
+        }
+    });
+    deck.initialize();
+    // Make the Reveal object globally available on the /demo page
+    window.Reveal = deck;
+});
+
+
+
+
+//# sourceMappingURL=talk-template.b1034a64.js.map
