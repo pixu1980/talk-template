@@ -1,7 +1,7 @@
 @layer pixu-talks.typography.fira-code {
   @font-face {
     font-family: Fira Code;
-    src: local(Fira Code Light), local(FiraCode-Light), url("FiraCode-200.0979ba40.woff2") format("woff2"), url("FiraCode-200.40a6c1d2.woff") format("woff");
+    src: local(Fira Code Light), local(FiraCode-Light), url("FiraCode-200.2b280b1d.woff2") format("woff2"), url("FiraCode-200.109b0c4b.woff") format("woff");
     font-weight: 200;
     font-style: normal;
     font-display: block;
@@ -9,7 +9,7 @@
 
   @font-face {
     font-family: Fira Code;
-    src: local(Fira Code Regular), local(FiraCode-Regular), url("FiraCode-400.c07636ac.woff2") format("woff2"), url("FiraCode-400.136276ba.woff") format("woff");
+    src: local(Fira Code Regular), local(FiraCode-Regular), url("FiraCode-400.dadb9792.woff2") format("woff2"), url("FiraCode-400.9b1ed65d.woff") format("woff");
     font-weight: 400;
     font-style: normal;
     font-display: block;
@@ -17,7 +17,7 @@
 
   @font-face {
     font-family: Fira Code;
-    src: local(Fira Code Medium), local(FiraCode-Medium), url("FiraCode-500.b02cecef.woff2") format("woff2"), url("FiraCode-500.1de1ab0b.woff") format("woff");
+    src: local(Fira Code Medium), local(FiraCode-Medium), url("FiraCode-500.f2d669c1.woff2") format("woff2"), url("FiraCode-500.1735f6ff.woff") format("woff");
     font-weight: 500;
     font-style: normal;
     font-display: block;
@@ -25,7 +25,7 @@
 
   @font-face {
     font-family: Fira Code;
-    src: local(Fira Code Bold), local(FiraCode-Bold), url("FiraCode-700.ee62a364.woff2") format("woff2"), url("FiraCode-700.a9e61bdf.woff") format("woff");
+    src: local(Fira Code Bold), local(FiraCode-Bold), url("FiraCode-700.384d92e0.woff2") format("woff2"), url("FiraCode-700.e899c4a9.woff") format("woff");
     font-weight: 700;
     font-style: normal;
     font-display: block;
@@ -33,7 +33,7 @@
 
   @font-face {
     font-family: Fira Code Retina;
-    src: local(Fira Code Retina), local(FiraCode-Retina), url("FiraCode-Retina.2be35569.woff2") format("woff2"), url("FiraCode-Retina.c766790a.woff") format("woff");
+    src: local(Fira Code Retina), local(FiraCode-Retina), url("FiraCode-Retina.cf3aaef7.woff2") format("woff2"), url("FiraCode-Retina.95ffca20.woff") format("woff");
     font-weight: 900;
     font-style: normal;
     font-display: block;
@@ -41,7 +41,7 @@
 
   @font-face {
     font-family: Fira Code Monospace;
-    src: local(Fira Code Retina), local(FiraCode-Retina), url("FiraCode-Retina.2be35569.woff2") format("woff2"), url("FiraCode-Retina.c766790a.woff") format("woff");
+    src: local(Fira Code Retina), local(FiraCode-Retina), url("FiraCode-Retina.cf3aaef7.woff2") format("woff2"), url("FiraCode-Retina.95ffca20.woff") format("woff");
     font-weight: normal;
     font-style: normal;
     unicode-range: U+30-39, U+20A3-20A7, U+2C, U+2E;
@@ -49,7 +49,7 @@
 
   @font-face {
     font-family: Fira Code Monospace Full;
-    src: local(Fira Code Retina), local(FiraCode-Retina), url("FiraCode-Retina.2be35569.woff2") format("woff2"), url("FiraCode-Retina.c766790a.woff") format("woff");
+    src: local(Fira Code Retina), local(FiraCode-Retina), url("FiraCode-Retina.cf3aaef7.woff2") format("woff2"), url("FiraCode-Retina.95ffca20.woff") format("woff");
     font-weight: normal;
     font-style: normal;
   }
@@ -58,7 +58,7 @@
 @layer pixu-talks.typography.rec-vf {
   @font-face {
     font-family: RecVF;
-    src: url("RecVF.e71349f6.woff2") format("woff2 supports variations"), url("RecVF.e71349f6.woff2") format("woff2-variations");
+    src: url("RecVF.ac9660a9.woff2") format("woff2 supports variations"), url("RecVF.ac9660a9.woff2") format("woff2-variations");
     font-weight: 300 1000;
     font-style: oblique 0deg 14deg;
     font-display: block;
@@ -143,7 +143,7 @@
 @layer pixu-talks.iconography.draft-ui-icons {
   @font-face {
     font-family: draft-ui-icons;
-    src: url("draft-ui-icons.171ad3c7.ttf") format("truetype"), url("draft-ui-icons.f35d360b.woff") format("woff"), url("draft-ui-icons.a2bd967c.svg#draft-ui-icons") format("svg");
+    src: url("draft-ui-icons.ff8db591.ttf") format("truetype"), url("draft-ui-icons.e8de5bf7.woff") format("woff"), url("draft-ui-icons.22023be0.svg#draft-ui-icons") format("svg");
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -489,7 +489,7 @@
 @layer pixu-talks.iconography.space-icons {
   @font-face {
     font-family: space-icons;
-    src: url("space-icons.9578aaab.ttf") format("truetype"), url("space-icons.e5497c7a.woff") format("woff"), url("space-icons.f9432e71.svg#space-icons") format("svg");
+    src: url("space-icons.a32631f9.ttf") format("truetype"), url("space-icons.2b9bd576.woff") format("woff"), url("space-icons.20d9ee12.svg#space-icons") format("svg");
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -11101,7 +11101,7 @@
 @layer pixu-talks.iconography.anicons {
   @font-face {
     font-family: anicons;
-    src: url("anicons.44b7a8d8.woff2") format("woff2 supports variations"), url("anicons.44b7a8d8.woff2") format("woff2-variations");
+    src: url("anicons.b0df9fb5.woff2") format("woff2 supports variations"), url("anicons.b0df9fb5.woff2") format("woff2-variations");
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -11109,7 +11109,7 @@
 
   @font-face {
     font-family: anicons-color;
-    src: url("anicons-color.7eebbc7e.woff2") format("woff2 supports variations"), url("anicons-color.7eebbc7e.woff2") format("woff2-variations");
+    src: url("anicons-color.298e1a5b.woff2") format("woff2 supports variations"), url("anicons-color.298e1a5b.woff2") format("woff2-variations");
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -12033,19 +12033,19 @@
   }
 
   .reveal .slides > section[data-transition="default"].past, .reveal .slides > section[data-transition~="default-out"].past, .reveal.default .slides > section:not([data-transition]).past {
-    transform: translate3d(-100%, 0, 0) rotateY(-90deg) translate3d(-100%, 0, 0);
+    transform: translate(-100%) rotateY(-90deg) translate(-100%);
   }
 
   .reveal .slides > section[data-transition="default"].future, .reveal .slides > section[data-transition~="default-in"].future, .reveal.default .slides > section:not([data-transition]).future {
-    transform: translate3d(100%, 0, 0) rotateY(90deg) translate3d(100%, 0, 0);
+    transform: translate(100%) rotateY(90deg) translate(100%);
   }
 
   .reveal .slides > section > section[data-transition="default"].past, .reveal .slides > section > section[data-transition~="default-out"].past, .reveal.default .slides > section > section:not([data-transition]).past {
-    transform: translate3d(0, -300px, 0) rotateX(70deg) translate3d(0, -300px, 0);
+    transform: translateY(-300px) rotateX(70deg) translateY(-300px);
   }
 
   .reveal .slides > section > section[data-transition="default"].future, .reveal .slides > section > section[data-transition~="default-in"].future, .reveal.default .slides > section > section:not([data-transition]).future {
-    transform: translate3d(0, 300px, 0) rotateX(-70deg) translate3d(0, 300px, 0);
+    transform: translateY(300px) rotateX(-70deg) translateY(300px);
   }
 
   .reveal .slides section[data-transition="convex"].stack, .reveal.convex .slides section.stack {
@@ -12053,19 +12053,19 @@
   }
 
   .reveal .slides > section[data-transition="convex"].past, .reveal .slides > section[data-transition~="convex-out"].past, .reveal.convex .slides > section:not([data-transition]).past {
-    transform: translate3d(-100%, 0, 0) rotateY(-90deg) translate3d(-100%, 0, 0);
+    transform: translate(-100%) rotateY(-90deg) translate(-100%);
   }
 
   .reveal .slides > section[data-transition="convex"].future, .reveal .slides > section[data-transition~="convex-in"].future, .reveal.convex .slides > section:not([data-transition]).future {
-    transform: translate3d(100%, 0, 0) rotateY(90deg) translate3d(100%, 0, 0);
+    transform: translate(100%) rotateY(90deg) translate(100%);
   }
 
   .reveal .slides > section > section[data-transition="convex"].past, .reveal .slides > section > section[data-transition~="convex-out"].past, .reveal.convex .slides > section > section:not([data-transition]).past {
-    transform: translate3d(0, -300px, 0) rotateX(70deg) translate3d(0, -300px, 0);
+    transform: translateY(-300px) rotateX(70deg) translateY(-300px);
   }
 
   .reveal .slides > section > section[data-transition="convex"].future, .reveal .slides > section > section[data-transition~="convex-in"].future, .reveal.convex .slides > section > section:not([data-transition]).future {
-    transform: translate3d(0, 300px, 0) rotateX(-70deg) translate3d(0, 300px, 0);
+    transform: translateY(300px) rotateX(-70deg) translateY(300px);
   }
 
   .reveal .slides section[data-transition="concave"].stack, .reveal.concave .slides section.stack {
@@ -12073,19 +12073,19 @@
   }
 
   .reveal .slides > section[data-transition="concave"].past, .reveal .slides > section[data-transition~="concave-out"].past, .reveal.concave .slides > section:not([data-transition]).past {
-    transform: translate3d(-100%, 0, 0) rotateY(90deg) translate3d(-100%, 0, 0);
+    transform: translate(-100%) rotateY(90deg) translate(-100%);
   }
 
   .reveal .slides > section[data-transition="concave"].future, .reveal .slides > section[data-transition~="concave-in"].future, .reveal.concave .slides > section:not([data-transition]).future {
-    transform: translate3d(100%, 0, 0) rotateY(-90deg) translate3d(100%, 0, 0);
+    transform: translate(100%) rotateY(-90deg) translate(100%);
   }
 
   .reveal .slides > section > section[data-transition="concave"].past, .reveal .slides > section > section[data-transition~="concave-out"].past, .reveal.concave .slides > section > section:not([data-transition]).past {
-    transform: translate3d(0, -80%, 0) rotateX(-70deg) translate3d(0, -80%, 0);
+    transform: translateY(-80%) rotateX(-70deg) translateY(-80%);
   }
 
   .reveal .slides > section > section[data-transition="concave"].future, .reveal .slides > section > section[data-transition~="concave-in"].future, .reveal.concave .slides > section > section:not([data-transition]).future {
-    transform: translate3d(0, 80%, 0) rotateX(70deg) translate3d(0, 80%, 0);
+    transform: translateY(80%) rotateX(70deg) translateY(80%);
   }
 
   .reveal .slides section[data-transition="zoom"], .reveal.zoom .slides section:not([data-transition]) {
@@ -12161,22 +12161,22 @@
 
   .reveal.cube .slides > section.past {
     transform-origin: 100% 0;
-    transform: translate3d(-100%, 0, 0) rotateY(-90deg);
+    transform: translate(-100%) rotateY(-90deg);
   }
 
   .reveal.cube .slides > section.future {
     transform-origin: 0 0;
-    transform: translate3d(100%, 0, 0) rotateY(90deg);
+    transform: translate(100%) rotateY(90deg);
   }
 
   .reveal.cube .slides > section > section.past {
     transform-origin: 0 100%;
-    transform: translate3d(0, -100%, 0) rotateX(90deg);
+    transform: translateY(-100%) rotateX(90deg);
   }
 
   .reveal.cube .slides > section > section.future {
     transform-origin: 0 0;
-    transform: translate3d(0, 100%, 0) rotateX(-90deg);
+    transform: translateY(100%) rotateX(-90deg);
   }
 
   .reveal.page .slides {
@@ -12229,22 +12229,22 @@
 
   .reveal.page .slides > section.past {
     transform-origin: 0 0;
-    transform: translate3d(-40%, 0, 0) rotateY(-80deg);
+    transform: translate(-40%) rotateY(-80deg);
   }
 
   .reveal.page .slides > section.future {
     transform-origin: 100% 0;
-    transform: translateZ(0);
+    transform: translate(0);
   }
 
   .reveal.page .slides > section > section.past {
     transform-origin: 0 0;
-    transform: translate3d(0, -40%, 0) rotateX(80deg);
+    transform: translateY(-40%) rotateX(80deg);
   }
 
   .reveal.page .slides > section > section.future {
     transform-origin: 0 100%;
-    transform: translateZ(0);
+    transform: translate(0);
   }
 
   .reveal .slides section[data-transition="fade"], .reveal.fade .slides section:not([data-transition]), .reveal.fade .slides > section > section:not([data-transition]) {
@@ -12391,42 +12391,42 @@
 
   .reveal[data-background-transition="convex"] > .backgrounds .slide-background.past:not([data-background-transition]), .reveal > .backgrounds .slide-background.past[data-background-transition="convex"] {
     opacity: 0;
-    transform: translate3d(-100%, 0, 0) rotateY(-90deg) translate3d(-100%, 0, 0);
+    transform: translate(-100%) rotateY(-90deg) translate(-100%);
   }
 
   .reveal[data-background-transition="convex"] > .backgrounds .slide-background.future:not([data-background-transition]), .reveal > .backgrounds .slide-background.future[data-background-transition="convex"] {
     opacity: 0;
-    transform: translate3d(100%, 0, 0) rotateY(90deg) translate3d(100%, 0, 0);
+    transform: translate(100%) rotateY(90deg) translate(100%);
   }
 
   .reveal[data-background-transition="convex"] > .backgrounds .slide-background > .slide-background.past:not([data-background-transition]), .reveal > .backgrounds .slide-background > .slide-background.past[data-background-transition="convex"] {
     opacity: 0;
-    transform: translate3d(0, -100%, 0) rotateX(90deg) translate3d(0, -100%, 0);
+    transform: translateY(-100%) rotateX(90deg) translateY(-100%);
   }
 
   .reveal[data-background-transition="convex"] > .backgrounds .slide-background > .slide-background.future:not([data-background-transition]), .reveal > .backgrounds .slide-background > .slide-background.future[data-background-transition="convex"] {
     opacity: 0;
-    transform: translate3d(0, 100%, 0) rotateX(-90deg) translate3d(0, 100%, 0);
+    transform: translateY(100%) rotateX(-90deg) translateY(100%);
   }
 
   .reveal[data-background-transition="concave"] > .backgrounds .slide-background.past:not([data-background-transition]), .reveal > .backgrounds .slide-background.past[data-background-transition="concave"] {
     opacity: 0;
-    transform: translate3d(-100%, 0, 0) rotateY(90deg) translate3d(-100%, 0, 0);
+    transform: translate(-100%) rotateY(90deg) translate(-100%);
   }
 
   .reveal[data-background-transition="concave"] > .backgrounds .slide-background.future:not([data-background-transition]), .reveal > .backgrounds .slide-background.future[data-background-transition="concave"] {
     opacity: 0;
-    transform: translate3d(100%, 0, 0) rotateY(-90deg) translate3d(100%, 0, 0);
+    transform: translate(100%) rotateY(-90deg) translate(100%);
   }
 
   .reveal[data-background-transition="concave"] > .backgrounds .slide-background > .slide-background.past:not([data-background-transition]), .reveal > .backgrounds .slide-background > .slide-background.past[data-background-transition="concave"] {
     opacity: 0;
-    transform: translate3d(0, -100%, 0) rotateX(-90deg) translate3d(0, -100%, 0);
+    transform: translateY(-100%) rotateX(-90deg) translateY(-100%);
   }
 
   .reveal[data-background-transition="concave"] > .backgrounds .slide-background > .slide-background.future:not([data-background-transition]), .reveal > .backgrounds .slide-background > .slide-background.future[data-background-transition="concave"] {
     opacity: 0;
-    transform: translate3d(0, 100%, 0) rotateX(90deg) translate3d(0, 100%, 0);
+    transform: translateY(100%) rotateX(90deg) translateY(100%);
   }
 
   .reveal[data-background-transition="zoom"] > .backgrounds .slide-background:not([data-background-transition]), .reveal > .backgrounds .slide-background[data-background-transition="zoom"] {
@@ -12591,7 +12591,7 @@
     right: var(--r-overlay-margin);
     bottom: var(--r-overlay-margin);
     left: var(--r-overlay-margin);
-    border-radius: min(var(--r-overlay-margin),6px);
+    border-radius: min(var(--r-overlay-margin), 6px);
     z-index: 99;
     backdrop-filter: blur(10px);
     color: #fff;
@@ -12891,7 +12891,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    transform: translate3d(0, 110%, 0) rotateX(-90deg);
+    transform: translateY(110%) rotateX(-90deg);
   }
 
   .reveal aside.notes {
@@ -13138,7 +13138,7 @@
     width: var(--slide-width) !important;
     height: var(--slide-height) !important;
     opacity: 1 !important;
-    transform: scale(var(--slide-scale)) translate(-50%,-50%) !important;
+    transform: scale(var(--slide-scale)) translate(-50%, -50%) !important;
     transform-style: flat !important;
     transform-origin: 0 0 !important;
     display: block !important;
@@ -13209,7 +13209,7 @@
     width: var(--r-scrollbar-width);
     height: var(--r-scrollbar-width);
     border-radius: var(--r-scrollbar-width);
-    background-color: rgba(var(--r-overlay-element-bg-color),1);
+    background-color: rgba(var(--r-overlay-element-bg-color), 1);
     z-index: 11;
     transition: background-color .2s;
     position: absolute;
@@ -13218,9 +13218,9 @@
   }
 
   .reveal-viewport.reveal-scroll .scrollbar .scrollbar-slide {
-    background-color: rgba(var(--r-overlay-element-bg-color),.2);
+    background-color: rgba(var(--r-overlay-element-bg-color), .2);
     width: 100%;
-    box-shadow: 0 0 0 1px rgba(var(--r-overlay-element-fg-color),.1);
+    box-shadow: 0 0 0px 1px rgba(var(--r-overlay-element-fg-color), .1);
     border-radius: var(--r-scrollbar-width);
     transition: background-color .2s;
     position: absolute;
@@ -13238,7 +13238,7 @@
   }
 
   .reveal-viewport.reveal-scroll .scrollbar .scrollbar-slide:hover, .reveal-viewport.reveal-scroll .scrollbar .scrollbar-slide.active {
-    background-color: rgba(var(--r-overlay-element-bg-color),.4);
+    background-color: rgba(var(--r-overlay-element-bg-color), .4);
   }
 
   .reveal-viewport.reveal-scroll .scrollbar .scrollbar-trigger {
@@ -13248,7 +13248,7 @@
   }
 
   .reveal-viewport.reveal-scroll .scrollbar .scrollbar-slide.active.has-triggers {
-    background-color: rgba(var(--r-overlay-element-bg-color),.4);
+    background-color: rgba(var(--r-overlay-element-bg-color), .4);
     z-index: 10;
   }
 
@@ -13256,7 +13256,7 @@
     content: "";
     width: var(--r-scrollbar-trigger-size);
     height: var(--r-scrollbar-trigger-size);
-    background-color: rgba(var(--r-overlay-element-bg-color),1);
+    background-color: rgba(var(--r-overlay-element-bg-color), 1);
     opacity: .4;
     border-radius: 20px;
     transition: transform .2s, opacity .2s;
@@ -13271,8 +13271,8 @@
   }
 
   .reveal-viewport.reveal-scroll .scrollbar .scrollbar-slide.active .scrollbar-trigger ~ .scrollbar-trigger.active:after {
-    transform: translate(calc(var(--r-scrollbar-width) * -2));
-    background-color: rgba(var(--r-overlay-element-bg-color),1);
+    transform: translate(calc(var(--r-scrollbar-width) * -2), 0);
+    background-color: rgba(var(--r-overlay-element-bg-color), 1);
   }
 
   html.reveal-print * {
@@ -14373,7 +14373,7 @@
       }
     }
 
-    stagger[animation="fade-in"] {
+    stagger-container[animation="fade-in"] {
       --ani--name: fade-in;
 
       & > * {
@@ -14391,7 +14391,7 @@
 
 @layer pixu-talks.animations.stagger {
   @layer stagger {
-    stagger {
+    stagger-container {
       --stagger--delay: .4s;
       display: block;
 
@@ -14727,8 +14727,8 @@
     }
   }
 
-  @layer pixu {
-    [pixu] {
+  @layer speaker {
+    [speaker] {
       & img {
         border-radius: 50%;
         inline-size: 20rem;
@@ -14786,7 +14786,7 @@
   }
 
   @layer tabs {
-    tabs {
+    tabs-container {
       margin-top: 1rem;
       display: block;
 
@@ -14949,7 +14949,7 @@
         }
       }
 
-      & [pixu] {
+      & [speaker] {
         aspect-ratio: 1;
         inline-size: 18rem;
         margin: auto;
@@ -15273,4 +15273,4 @@
     }
   }
 }
-/*# sourceMappingURL=talk-template.ee5fb5fc.css.map */
+/*# sourceMappingURL=talk-template.ebeadb08.css.map */
