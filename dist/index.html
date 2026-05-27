@@ -109,8 +109,104 @@
 
 
 <section>
-  <!-- Here goes the talk slides -->
+  <section data-topic="boilerplate" data-menu-title="Section opener">
+  <h3><mark>Topic</mark> name</h3>
+  <small balance="">One sentence that frames why this topic matters and where the audience is going next.</small>
+  <aside class="notes">Use this as the first slide of a vertical topic group.</aside>
 </section>
+
+  <section data-topic="boilerplate" data-menu-title="Concept">
+  <h4>Core <mark>idea</mark></h4>
+  <small balance=""> Explain one concept in plain language. Keep the slide focused: one claim, one reason, one memorable phrase. </small>
+  <small>
+    <ul>
+      <li class="fragment"><mark>Problem</mark>: what hurts today</li>
+      <li class="fragment"><mark>Shift</mark>: what this API or pattern changes</li>
+      <li class="fragment"><mark>Payoff</mark>: what the audience can now do</li>
+    </ul>
+  </small>
+</section>
+
+  <section data-topic="boilerplate" data-menu-title="Code walkthrough">
+  <h4><mark>Code</mark> walkthrough</h4>
+  <pre>    <code class="hljs language-javascript" data-trim="" data-line-numbers="1-3|5-8|10-12">
+const state = {
+  count: 0,
+};
+
+function update(nextCount) {
+  state.count = nextCount;
+  render();
+}
+
+function render() {
+  document.body.dataset.count = state.count;
+}
+    </code>
+  </pre>
+  <aside class="notes">Use data-line-numbers ranges to reveal the story step by step.</aside>
+</section>
+
+  <section data-topic="boilerplate" data-menu-title="Code and output">
+  <h4>Code beside <mark>result</mark></h4>
+  <comparison>
+    <example code="" class="fragment">
+      <small>component.html</small>
+      <pre>        <code class="hljs language-html" data-trim="" data-line-numbers="">
+<button data-state="ready">
+  Launch
+</button>
+        </code>
+      </pre>
+    </example>
+    <small class="fragment">
+      <button data-state="ready">Launch</button>
+      <p balance="">The right side shows the rendered behavior or visual result.</p>
+    </small>
+  </comparison>
+</section>
+
+  <section data-topic="boilerplate" data-menu-title="Live demo">
+  <h4><mark>Live</mark> demo</h4>
+  <small balance="">Keep controls close to the result. Let the audience see cause and effect immediately.</small>
+  <comparison>
+    <left>
+      <button type="button" aria-pressed="false" data-demo-toggle="">Toggle state</button>
+      <p><small>Optional JS should only sync attributes or demo state.</small></p>
+    </left>
+    <right>
+      <output aria-live="polite" data-demo-output="">data-state="idle"</output>
+    </right>
+  </comparison>
+  <aside class="notes">If JavaScript is needed, keep it small and colocate the state contract in docs.</aside>
+</section>
+
+  <section data-topic="boilerplate" data-menu-title="Support note">
+  <h4>Support and <mark>fallback</mark></h4>
+  <small balance="">Call out browser support, Baseline status, fallback path, and adoption risk before the audience asks.</small>
+  <small>
+    <ul>
+      <li class="fragment"><mark>Status</mark>: widely available, newly available, or limited availability</li>
+      <li class="fragment"><mark>Fallback</mark>: what users get when support is missing</li>
+      <li class="fragment"><mark>Decision</mark>: when this is ready for production</li>
+    </ul>
+  </small>
+  <aside class="notes">Replace this with a baseline-status element or project specific support table when available.</aside>
+</section>
+
+  <section data-topic="boilerplate" data-menu-title="Takeaways">
+  <h4>What to <mark>remember</mark></h4>
+  <small>
+    <ul>
+      <li class="fragment">One sharp takeaway from the section</li>
+      <li class="fragment">One practical rule the audience can apply tomorrow</li>
+      <li class="fragment">One bridge to the next section</li>
+    </ul>
+  </small>
+</section>
+
+</section>
+
 
 <section>
   <section data-transition="convex">

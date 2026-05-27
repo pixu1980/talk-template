@@ -31,8 +31,8 @@ importers:
         specifier: 2.16.4
         version: 2.16.4(@parcel/core@2.16.4(@swc/helpers@0.5.21))
       baseline-browser-mapping:
-        specifier: 2.10.29
-        version: 2.10.29
+        specifier: 2.10.32
+        version: 2.10.32
       lightningcss:
         specifier: 1.32.0
         version: 1.32.0
@@ -819,6 +819,11 @@ packages:
 
   baseline-browser-mapping@2.10.29:
     resolution: {integrity: sha512-Asa2krT+XTPZINCS+2QcyS8WTkObE77RwkydwF7h6DmnKqbvlalz93m/dnphUyCa6SWSP51VgtEUf2FN+gelFQ==}
+    engines: {node: '>=6.0.0'}
+    hasBin: true
+
+  baseline-browser-mapping@2.10.32:
+    resolution: {integrity: sha512-wbPvpyjJPC0zdfdKXxqEL3Ea+bOMD/87X4lftiJkkaBiuG6ALQy1SLmEd7BSmVCuwCQsBrCamgBoLyfFDD1EPg==}
     engines: {node: '>=6.0.0'}
     hasBin: true
 
@@ -2136,6 +2141,8 @@ snapshots:
       safe-buffer: 5.2.1
 
   baseline-browser-mapping@2.10.29: {}
+
+  baseline-browser-mapping@2.10.32: {}
 
   boolbase@1.0.0: {}
 
